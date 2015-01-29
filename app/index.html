@@ -2,7 +2,7 @@
 <html class="no-js">
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <title>Qiao Studio</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -16,44 +16,46 @@
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/theme/blackboard.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/theme/monokai.min.css">
+        <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic|Maven+Pro:400,900,700,500|Rosario:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="styles/custom.css" />
         <link href="scripts/lib/summernote/summernote.css" rel="stylesheet">
 
         <!-- endbuild -->
     </head>
-    <body ng-app="xtripApp">
+    <body ng-app="xiaoqiaoApp">
         <!--[if lt IE 7]>
           <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
         <!-- Add your site or application content here -->
         <div class="container" ng-controller="headerController">
-            <div class="header">
-                <ul class="nav nav-pills pull-right">
-                    <li class="active"><a ng-href="#">Home</a></li>
-                    <li><a ng-href="#/about">About</a></li>
-                    <li><a ng-href="#">Contact</a></li>         
+             <header >
+    <div class="home-btn">
+      <img src="images/logo.png"/>
+    </div>
 
-                    <li ng-if="loginedUser === null">
-                        <!-- code to render a large video block-->
-                             <a ng-click="login()" >login</a>
-                    </li>
-                    <li ng-if="loginedUser !== null">
-                          Hi {{loginedUser.name}}
-                        <!-- code to render the regular video block -->
-                    </li>
+    <div class="search-box"></div>
 
-                </ul>
-                <h3 class="text-muted">xtrip</h3>
-            </div>
+    <div class="right-col">
+      <i class="fa fa-sign-in">&nbsp;&nbsp;&nbsp;</i>
+      <span>Sign up as a dealer</span>
+    </div>
+
+  </header>  
+
+  <nav>
+
+
+  </nav>
 
             <div ng-view=""></div>
 
-            <div class="footer">
-                <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-            </div>
+         
         </div>
-        
-        <div id="test"> asdfafasdf</div>
+
+    
         <!--<div class="wrap" loginandregister-directive>Call directive login form</div>-->
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -110,6 +112,8 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/lib/summernote/summernote.js"></script>
+          <script src="scripts/lib/jquery-1.11.0.js"></script>
+  <script src="scripts/lib/script.js"></script>
         <script src="scripts/lib/javascriptHelper.js"></script>
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
