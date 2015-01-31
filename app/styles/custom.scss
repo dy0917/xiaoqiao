@@ -3,6 +3,11 @@
 @import "mixin";
 
 
+$orange: #F06421;
+$darkblue: #121920;
+
+
+
 
 
 * {
@@ -20,8 +25,8 @@ body{
     box-sizing: border-box;
     background-color:#eee;
 
-   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-   font-weight: 300;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 300;
 
 }
 
@@ -37,6 +42,9 @@ input{
     //font-weight:100;
 }
 }
+
+a{color:white; text-decoration:none;}
+
 
 header{
     width: 100%;
@@ -59,10 +67,38 @@ main{
 }
 
 nav{
-    background: #121920;
+    background: $darkblue;
     width: 100px;
     height: 100%;
     position:fixed;
+
+    .left-menu{
+        color: white;
+        font-size: 12px;
+        text-align: center;
+        top: 130px;
+        position: relative;
+
+        li{
+            height: 80px;
+            padding: 10px ;
+            cursor:pointer;
+
+
+            i{
+                font-size: 20px;
+                display: block;
+                margin:10px;
+            }
+
+            &:hover{
+                background-color:white;
+                color: $darkblue;
+
+            }
+
+        }
+    }
 }
 
 aside{
@@ -77,36 +113,37 @@ aside{
 
 
 .home-btn{
-    background-color:#F06421;
+    background-color:$orange;
     height: 100px;
     width: 100px;
 
     position:relative;
+    float: left;
 
 
-    img{width:60px; margin:30px 19px;}
+    img{width:60px; margin:33px 19px;}
 }
 
 
 
 .right-col{
-position:absolute;
-right: 0;
-top: 0;
+    position:absolute;
+    right: 0;
+    top: 0;
 
-width: 280px;
-height: 100px;
-line-height: 100px;
-text-align: center;
-max-width: 350px; 
-cursor: pointer;
+    width: 280px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    max-width: 350px; 
+    cursor: pointer;
 
-color:#aaa;
-font-size:14px;
+    color:#aaa;
+    font-size:14px;
 
-&{
-    color: #555;
-}
+    &:hover{
+        color: #555;
+    }
 }
 
 
@@ -181,7 +218,38 @@ font-size:14px;
 }
 
 
+.search-box{
+    margin: 30px;
+    position: relative;
+    display: block;
+    float: left;
+    border-bottom: 1px solid #ddd;
+    width:350px;
+    padding: 10px 0;
 
+    i{
+        font-size: 14px;
+        float: right;
+        margin: 0 10px;
+        color: #aaa;
+        cursor:pointer;
+
+        &:hover{color:#555}
+    }
+}
+
+
+.lang-switch{
+    right:300px;
+    position: absolute;
+    top: 40px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #aaa;
+
+    &:hover{color:#555;}
+
+}
 
 
 
@@ -201,18 +269,88 @@ font-size:14px;
 
 
 .btn1{
-    background-color:#F06421;
+    background-color:$orange;
     border:none;
 }
 
 .center-position{
     margin:20px auto;
-width: 100px;
-display: block;
+    width: 100px;
+    display: block;
 }
 
 
 // =======================================btn-end========================================
+
+
+
+
+
+// masonry========================================
+
+
+#container{
+    width: calc(100% - 350px);
+    left: 0px;
+    right: 280px;
+    margin: 20px 3% 0;
+}
+
+.item { 
+    width: 250px; 
+    overflow: hidden;
+    margin: 15px;
+    @include border-radius(3px);
+
+    img{width:100%}
+}
+
+.m-item-dec-wrapper{
+    width: 100%;
+    min-height: 50px;
+    background-color: white;
+    padding: 10px 15px;
+
+    @include clearfix();
+}
+
+
+.item.w2 { 
+    width: 530px; 
+}
+
+
+
+.m-item-dec{
+    font-size: 14px;
+    position: absolute;
+
+    .item-title{font-weight:bold;}
+    .item-date{font-size:11px;}
+}
+
+.like{
+    float: right;
+    font-size: 11px;
+    font-weight: bold;
+    color: $orange;
+
+    margin-top: 8px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
