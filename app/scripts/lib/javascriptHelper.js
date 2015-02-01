@@ -2,6 +2,21 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+$(document).ready(function(){
+
+// masonry
+setTimeout(function() {
+ var container = document.querySelector('#container');
+ var msnry = new Masonry( container, {
+  // options
+  columnWidth: 5,
+  itemSelector: '.item'
+});
+}, 300);
+
+
+});
+
 
 function getRestAPIURL() {
 //    var api_url = document.domain;
