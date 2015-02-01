@@ -20,35 +20,6 @@ $(document).ready(function(){
 
   //fade page animation
 
-$(".animsition").animsition({
-  
-    inClass               :   'fade-in',
-    outClass              :   'fade-out',
-    inDuration            :    1500,
-    outDuration           :    800,
-    linkElement           :   '.animsition-link', 
-    // e.g. linkElement   :   'a:not([target="_blank"]):not([href^=#])'
-    loading               :    true,
-    loadingParentElement  :   'body', //animsition wrapper element
-    loadingClass          :   'animsition-loading',
-    unSupportCss          : [ 'animation-duration',
-                              '-webkit-animation-duration',
-                              '-o-animation-duration'
-                            ],
-    //"unSupportCss" option allows you to disable the "animsition" in case the css property in the array is not supported by your browser. 
-    //The default setting is to disable the "animsition" in a browser that does not support "animation-duration".
-    
-    overlay               :   false,
-    
-    overlayClass          :   'animsition-overlay-slide',
-    overlayParentElement  :   'body'
-  });
-
-
-
-
-
-
 
 
 
@@ -87,40 +58,6 @@ setTimeout(function() {
   itemSelector: '.item'
 });
 }, 300);
-
-
-
-
-
-
-
-
-
-// menu-btn
-$(".menu-toggle").click(function(){
-	if($(".lines").hasClass("menu-x")){
-    $(".overlay").removeClass("close-menu");
-    $(".lines").removeClass("menu-x");
-    $('#header').css("background-color", "transparent");
-    $("#navList2").slideUp( 300 );
-  } else {
-    $(".overlay").addClass("close-menu");
-    $(".lines").addClass("menu-x");
-    $('#header').css("background-color", "rgba(0,0,0,.8)");
-    $("#navList2").slideDown( 300 );
-
-    $(".close-menu").click(function(){
-
-      $(".overlay").removeClass("close-menu");
-      $(".lines").removeClass("menu-x");
-      $('#header').css("background-color", "transparent");
-      $("#navList2").slideUp( 300 );
-      
-    });
-  }
-
-});
-// menu-btn-end
 
 
 
