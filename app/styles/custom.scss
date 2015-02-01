@@ -57,7 +57,13 @@ header{
 }
 
 
-
+.main-content-wrapper{
+background-color: #eee;
+width: calc(100% - 100px);
+left: 100px;
+top:100px;
+position: relative;
+}
 
 main{
     background-color:#eee;
@@ -66,10 +72,7 @@ main{
     position: relative;
 }
 
-.main-content-wrapper{
 
-    
-}
 
 nav{
     background: $darkblue;

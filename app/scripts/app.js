@@ -33,11 +33,11 @@
     templateUrl: 'views/blog.html',
     controller: 'BlogCtrl'
   })
-  .when('/contact', {
+  .when('/product', {
     templateUrl: 'views/product.html',
     controller: 'ProductCtrl'
   })
-  .when('/product', {
+  .when('/contact', {
     templateUrl: 'views/contact.html',
     controller: 'ContactCtrl'
   })
