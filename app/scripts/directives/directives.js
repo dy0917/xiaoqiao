@@ -6,8 +6,8 @@
 
 
 'use strict';
-app.directive('loginandregisterDirective',function(){
+app.directive('aside',function(){
 	return{
-		templateUrl:'views/partials/loginAndRegisterLightbox.html'
+		templateUrl:'views/partials/aside.html'
 	};
 });

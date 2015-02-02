@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 
+
 function getRestAPIURL() {
 //    var api_url = document.domain;
 //    api_url = "http://api." + api_url;
