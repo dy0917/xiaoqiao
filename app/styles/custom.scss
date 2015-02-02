@@ -261,6 +261,20 @@ aside{
 
 
 
+
+
+
+
+.email-pattern{
+    background: #00ff00 url("../images/contactbg.png") repeat fixed center; 
+    width: 100%;
+    height: 30px;
+}
+
+
+
+
+
 // =======================================btn========================================
 
 .btn-shape{
@@ -330,6 +344,12 @@ aside{
     width: 530px; 
 }
 
+
+.item.contact-w3{
+    width: 380px;
+display: inline-block;
+vertical-align:top;
+}
 
 
 .m-item-dec{

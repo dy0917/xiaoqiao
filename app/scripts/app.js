@@ -35,11 +35,11 @@ var app = angular
                         controller: 'BlogCtrl'
                     })
                     .when('/contact', {
-                        templateUrl: 'views/product.html',
+                        templateUrl: 'views/contact.html',
                         controller: 'ProductCtrl'
                     })
                     .when('/product', {
-                        templateUrl: 'views/contact.html',
+                        templateUrl: 'views/product.html',
                         controller: 'ContactCtrl'
                     })
                     .when('/blog/:blogid', {
