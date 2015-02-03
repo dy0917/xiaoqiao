@@ -30,11 +30,12 @@ body{
 
 }
 
-input{
+input,textarea{
     box-shadow: none;
     border: none;
     font-size: 14px;
     padding:0 8px;
+    resize: none;
 
     @include placeholder {
     //font-style:italic;
@@ -42,6 +43,8 @@ input{
     //font-weight:100;
 }
 }
+
+
 
 a{color:white; text-decoration:none;}
 
@@ -296,7 +299,23 @@ aside{
 }
 
 
+.send-email-wrapper{
+    width: 95%;
+    margin: 10px auto 0;
 
+    input,textarea{
+        border-bottom: 1px solid #ddd;
+        height: 35px;
+        line-height: 33px;
+        margin: 0 0 15px 10px; 
+        width: 93%;
+    }
+    textarea{
+        height: 200px;
+        margin-bottom: 0;
+    }
+
+}
 
 
 
@@ -313,6 +332,7 @@ aside{
     color: white;
     border:1px solid white;
     font-size: 12px;
+    text-align: center;
 
     @include border-radius(3px);
 }
@@ -344,7 +364,7 @@ aside{
     width: calc(100% - 320px);
     left: 0px;
     right: 280px;
-    margin: 20px 3% 0;
+    margin: 20px 2% 0;
 }
 
 .item { 
