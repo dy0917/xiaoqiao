@@ -9,7 +9,9 @@
  * Main module of the application.
  */
 
-var apiPath = "http://api.editor";
+//var apiPath = "http://api.editor";
+
+var apiPath = "http://test.api.xiaoqiaonz.com/index.php";
 var app = angular
         .module('xiaoqiaoApp', [
             'ngAnimate',
@@ -43,8 +45,8 @@ var app = angular
                         controller: 'ContactCtrl'
                     })
                     .when('/blog/:blogid', {
-                        templateUrl: 'views/oneblog.html',
-                        controller: 'OneBlogCtrl'
+                        templateUrl: 'views/singleblog.html',
+                        controller: 'singleBlogCtrl'
                     })
                     .otherwise({
                         redirectTo: '/'

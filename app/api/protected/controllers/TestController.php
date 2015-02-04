@@ -1,48 +1,42 @@
 <?php
 
-class TestController extends Controller
-{
-	/**
-	 * Declares class-based actions.
-	 */
-	public function actions()
-	{
+class TestController extends Controller {
 
-	}
-
-	/**
-	 * This is the default 'index' action that is invoked
-	 * when an action is not explicitly requested by users.
-	 */
-	public function actionIndex()
-	{
-            error_log("asdfasdfasdfa");
-	 echo "index";
-	}
+    /**
+     * Declares class-based actions.
+     */
+    public function actions() {
         
-        public function actionRead()
-	{
-	 echo "readddddd";
-	}
-        
-        public function actionCreate()
-	{
-	 echo "this is create";
-	}
+    }
 
-            public function actionWriteImage() {
+    /**
+     * This is the default 'index' action that is invoked
+     * when an action is not explicitly requested by users.
+     */
+    public function actionIndex() {
+        error_log("asdfasdfasdfa");
+        echo "index";
+    }
+
+    public function actionRead() {
+        echo "readddddd";
+    }
+
+    public function actionCreate() {
+        echo "this is create";
+    }
+
+    public function actionWriteImage() {
         $temp_request = $this->getClientPost();
-         $request=   $temp_request;
-
-//        $request = CJSON::decode($temp_request, true);
-//        $userid = $request['userid'];
+        $request = $temp_request;
         $imageSrc = $this->getInputData($request['type'], $request['src']);
-        $foldername = Yii::app()->params['diskpath'] . '/images/';
-      //  error_log($foldername . $request['imagename']);
+        $foldername = realpath(Yii::app()->basePath . '/../images');
+
+          error_log($foldername . $request['imagename']);
         if (!file_exists($foldername)) {
             mkdir($foldername, 0777);
         }
-        file_put_contents($foldername .  $request['imagename'], $imageSrc);
+        file_put_contents($foldername .DIRECTORY_SEPARATOR. $request['imagename'], $imageSrc);
         $ImageUrl = $_SERVER['SERVER_NAME'] . "/images/" . $request['imagename'];
         echo $ImageUrl;
     }
@@ -61,15 +55,12 @@ class TestController extends Controller
         $data = base64_decode($tempInput);
         return $data;
     }
+
+    /**
+     * This is the action to handle external exceptions.
+     */
+    public function actionError() {
         
-	/**
-	 * This is the action to handle external exceptions.
-	 */
-	public function actionError()
-	{
-
-	}
-
-
+    }
 
 }

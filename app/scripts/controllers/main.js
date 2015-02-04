@@ -17,12 +17,11 @@ angular.module('xiaoqiaoApp')
                     columnWidth: 5,
                     itemSelector: '.item'
                 });
-            }, 300);
+            }, 50);
 
             // loginService.login();
 
             $scope.displayLogin = function() {
-                console.log("login dispaly");
                 //	loginService.login(data,$scope); //call login service
             };
             $scope.login = function(user) {

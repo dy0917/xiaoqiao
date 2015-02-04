@@ -11,3 +11,9 @@ app.directive('aside',function(){
 		templateUrl:'views/partials/aside.html'
 	};
 });
+
+app.directive('loginandregisterdirective',function(){
+	return{
+		templateUrl:'views/partials/loginAndRegisterLightbox.html'
+	};
+});
