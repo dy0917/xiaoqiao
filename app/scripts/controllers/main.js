@@ -8,16 +8,9 @@
  * Controller of the xtripApp
  */
 angular.module('xiaoqiaoApp')
-        .controller('MainCtrl', function($scope, loginService) {
+        .controller('MainCtrl', function($scope, loginService, masonryService) {
 
-            setTimeout(function() {
-                var container = document.querySelector('#container');
-                var msnry = new Masonry(container, {
-                    // options
-                    columnWidth: 5,
-                    itemSelector: '.item'
-                });
-            }, 50);
+            masonryService.masonryinit(50);
 
             // loginService.login();
 

@@ -38,11 +38,12 @@ var app = angular
                     })
                     .when('/contact', {
                         templateUrl: 'views/contact.html',
-                        controller: 'ProductCtrl'
+                        controller: 'ContactCtrl'
                     })
                     .when('/product', {
                         templateUrl: 'views/product.html',
-                        controller: 'ContactCtrl'
+                        controller: 'ProductCtrl'                        
+
                     })
                     .when('/blog/:blogid', {
                         templateUrl: 'views/singleblog.html',

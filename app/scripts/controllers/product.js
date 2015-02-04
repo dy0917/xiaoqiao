@@ -8,8 +8,8 @@
  * Controller of the xtripApp
  */
 angular.module('xiaoqiaoApp')
-  .controller('ProductCtrl', function ($scope,$http) {
+  .controller('ProductCtrl', function ($scope,$http,masonryService) {
    
-
-  
+   masonryService.masonryinit(50);
+  console.log("products");
   });
