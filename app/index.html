@@ -47,7 +47,7 @@
 
                 <div class="right-col">
                     <i class="fa fa-sign-in">&nbsp;&nbsp;&nbsp;</i>
-                    <span>Sign up as a dealer</span>
+                    <span ng-click="toggleLogin()">Sign up as a dealer</span>
                 </div>
 
             </header>  
@@ -74,9 +74,9 @@
                 </ul>
 
             </nav>
-
-            <div loginandregisterdirective></div>
-            
+            <div ng-if=" display == true">
+                <div loginandregisterdirective></div>
+            </div>
             <div ng-view=""></div>
 
         </div>
@@ -138,7 +138,7 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
 
         <script src="scripts/lib/jquery-1.11.0.js"></script>
-          <script src="scripts/lib/masonry.pkgd.min.js"></script>
+        <script src="scripts/lib/masonry.pkgd.min.js"></script>
         <script src="scripts/lib/javascriptHelper.js"></script>
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
@@ -151,7 +151,7 @@
         <script src="scripts/directives/directives.js"></script>
         <script src="scripts/services/loginService.js"></script>
         <script src="scripts/lib/summernote/summernote.js"></script>
-      
+
         <!--<script src="scripts/lib/script.js"></script>-->
         <!-- endbuild -->
         <script>
