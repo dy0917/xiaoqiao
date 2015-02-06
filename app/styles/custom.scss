@@ -369,6 +369,8 @@ article{
     background-color:white;
     overflow: hidden;
     @include border-radius(3px);
+    @include box-shadow(0,0,10px,0,#ddd);
+
 
     z-index: 200;
 }
