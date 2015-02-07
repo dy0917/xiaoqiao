@@ -8,11 +8,14 @@
  * Controller of the xtripApp
  */
 angular.module('xiaoqiaoApp')
-        .controller('singleBlogCtrl', function($scope, $http, $routeParams) {
+        .controller('singleBlogCtrl', function($scope, $http, $routeParams, facotryblogs) {
 
-//            var currentId = $routeParams.blogid;
-//            console.log($routeParams);
-//            console.log(currentId);
+            var currentId = $routeParams.blogid;
+
+            console.log(facotryblogs.getobjectbyid(currentId));
+
+
+
 
             $http({
                 url: apiPath + "/blog/" + $routeParams.blogid,

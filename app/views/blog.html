@@ -10,15 +10,30 @@
     <!-- masonry======================= -->
 
     <div id="container">
-        <div ng-repeat="blog in blogs">
+        <div ng-repeat="blog in testblogs">
 
 
             <div class="item">
-               <a href="#/blog/{{blog.blogid}}"> <img  ng-src="{{blog.imgurl}}"></a>
+                <a href="#/blog/{{blog.blogid}}"> <img  ng-src="{{blog.imgurl}}"></a>
                 <div class="m-item-dec-wrapper">
                     <div class="m-item-dec">
                         <div class="item-title">About Joanne</div>
                         <div class="item-date">5 Jan 2015</div>
+                    </div>
+                    <div class="like"><i class="fa fa-heart-o">&nbsp;</i>{{blog.views}}</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div ng-repeat="blog in blogs">
+
+            <div class="item">
+                <a href="#/blog/{{blog.blogid}}"> <img  ng-src="{{blog.FeatureIamge}}"></a>
+                <div class="m-item-dec-wrapper">
+                    <div class="m-item-dec">
+                        <div class="item-title">{{blog.title}}</div>
+                        <div class="item-date">{{blog.createTime}}</div>
                     </div>
                     <div class="like"><i class="fa fa-heart-o">&nbsp;</i>{{blog.views}}</div>
                 </div>

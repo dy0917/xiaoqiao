@@ -6,13 +6,16 @@ class BlogController extends Controller {
     const JSON_RESPONSE_ROOT_PLURAL = 'blogs';
 
     public function actionIndex() {
-        echo "index";
+        $models = Blog::model()->findAll();
+//        var_dump($models);
+//        $json = json_encode($models->attributes);
+        $json = $this->arrtoJson(null, $models);
+        $this->sendResponse(200, $json);
     }
 
     public function actionRead() {
         $model = Blog::model()->findByPk(8);
         $json = $this->objtoJson(self::JSON_RESPONSE_ROOT_SINGLE, $model);
-
         $this->sendResponse(200, $json);
     }
 
@@ -22,14 +25,28 @@ class BlogController extends Controller {
         $model = new Blog;
         $model->setAttributes($request);
         $model->CreatebyUser = 3;
-        $date = new DateTime();
-        $model->createTime =  new CDbExpression(' UTC_TIMESTAMP()');
+
+        $model->createTime = new CDbExpression(' UTC_TIMESTAMP()');
         $model->LastUpdateTime = new CDbExpression('UTC_TIMESTAMP()');
 
         if ($model->validate()) {
             $model->save(false);
-            var_dump($model->Attributes);
-//            $this->sendResponse(200, $model->Attributes);
+            $this->sendResponse(200, "saveSeccessful");
+        } else {
+
+            $this->sendResponse(500);
+        }
+    }
+
+    public function actionUpdate() {
+        $request = $this->getClientPost();
+        $model = Blog::model()->findByPk($request["Blogid"]);
+//        var_dump($request);
+        $model->setAttributes($request);
+        $model->LastUpdateTime = new CDbExpression('UTC_TIMESTAMP()');
+        if ($model->validate()) {
+            $model->save(false);
+            $this->sendResponse(200, "updateSeccessful");
         } else {
 
             $this->sendResponse(500);

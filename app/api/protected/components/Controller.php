@@ -114,12 +114,12 @@ class Controller extends CController {
     protected function arrtoJson($modelType, $modelList) {
         $arr = array();
         foreach ($modelList as $model) {
-            error_log(var_export($model->author->attributes, true));
+            // error_log(var_export($model->author->attributes, true));
             array_push($arr, $model->attributes);
         }
 
-        $json = '{"' . $modelType . '":' . json_encode($arr) . '}';
-
+//        $json = '{"' . $modelType . '":' . json_encode($arr) . '}';
+        $json = json_encode($arr);
         return $json;
     }
 
