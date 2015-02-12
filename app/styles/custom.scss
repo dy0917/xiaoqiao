@@ -113,6 +113,19 @@ nav{
     }
 }
 
+
+dialog{
+    position: fixed;
+    top: 110px;
+    right: 20px;
+    width: 300px;
+    padding: 10px 20px;
+
+    @include border-radius(5px);
+    background-color:rgba(250, 255, 189,.95);
+}
+
+
 aside{
     position: absolute;
     max-width: 350px;
