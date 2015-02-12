@@ -11,21 +11,21 @@ angular.module('xiaoqiaoApp')
         .controller('singleBlogCtrl', function($scope, $http, $routeParams, facotryblogs) {
 
             var currentId = $routeParams.blogid;
+            $scope.blog = facotryblogs.getobjectbyid(currentId);
 
-            console.log(facotryblogs.getobjectbyid(currentId));
+            console.log($scope.blog);
+            if (typeof $scope.blog == 'undefined' || $scope.blog == null)
+            {
+                $http({
+                    url: apiPath + "/blog/" + $routeParams.blogid,
+                    method: "get",
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                }).success(function(data, status, headers, config) {
+                    console.log(data.blog);
+                    $scope.blog = data.blog;
+                }).error(function(data, status, headers, config) {
 
-
-
-
-            $http({
-                url: apiPath + "/blog/" + $routeParams.blogid,
-                method: "get",
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function(data, status, headers, config) {
-
-                console.log(data);
-            }).error(function(data, status, headers, config) {
-
-                console.log("error");
-            });
+                    console.log("error");
+                });
+            }
         });

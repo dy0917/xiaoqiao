@@ -10,7 +10,7 @@
     <!-- masonry======================= -->
 
     <div id="container">
-        <div ng-repeat="blog in testblogs">
+<!--        <div ng-repeat="blog in testblogs">
 
 
             <div class="item">
@@ -24,12 +24,13 @@
                 </div>
             </div>
 
-        </div>
+        </div>-->
 
         <div ng-repeat="blog in blogs">
 
             <div class="item">
-                <a href="#/blog/{{blog.blogid}}"> <img  ng-src="{{blog.FeatureIamge}}"></a>
+                <a href="#/blog/{{blog.Blogid}}"> 
+                    <img  ng-src="{{getimage(blog)}}"></a>
                 <div class="m-item-dec-wrapper">
                     <div class="m-item-dec">
                         <div class="item-title">{{blog.title}}</div>

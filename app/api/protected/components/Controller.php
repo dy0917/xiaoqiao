@@ -140,11 +140,24 @@ class Controller extends CController {
 
     public function clearExpireSession
     () {
-        Yii::app()->db->createCommand("DELETE FROM studioSession WHERE expire < UNIX_TIMESTAMP()")->execute();
+        Yii::app()->db->createCommand("DELETE FROM sessionTable WHERE expire < UNIX_TIMESTAMP()")->execute();
     }
 
     public function getTest() {
         return 'test';
+    }
+
+    public function getSessionVarByName($name, $strSession) {
+
+        $arr = explode(";", $strSession);
+        while (list(, $tempval) = each($arr)) {
+            if (strpos($tempval, $name) !== false) {
+                break;    /* You could also write 'break 1;' here. */
+            }
+        }
+        $strtemp = explode(':', $tempval)[2];
+        $strtemp = str_replace('"', "", $strtemp);
+        return $strtemp;
     }
 
 }

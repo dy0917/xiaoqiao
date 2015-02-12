@@ -22,4 +22,7 @@ angular.module('xiaoqiaoApp')
             $scope.toggleLogin = function() {
                 $scope.display = !$scope.display;
             }
+            $scope.togglespinner = function() {
+                $scope.display = !$scope.display;
+            }
         });

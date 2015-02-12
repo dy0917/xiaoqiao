@@ -65,27 +65,55 @@ class SiteController extends Controller {
         $this->render('contact', array('model' => $model));
     }
 
+    public function actionCheckState() {
+        //get user input
+        $temp_request = $this->getClientPost();
+        $request = CJSON::decode($temp_request, true);
+        $sessionid = $request['session_id'];
+        // get session
+        $connection = Yii::app()->db;
+        $sql = 'SELECT * FROM sessionTable WHERE id = :sessionid';
+        $command = $connection->createCommand($sql);
+        $command->bindParam(':sessionid', $sessionid, PDO::PARAM_STR);
+        $rowCount = $command->execute();
+        $dataReader = $command->queryAll();
+        if ($rowCount == 1) {
+            $session_record = $dataReader[0]["data"];
+            $id = $this->getSessionVarByName('UserId', $session_record);
+            $this->sendResponse(200, $id);
+        } else {
+            echo "SESSION_MISSING";
+        }
+    }
+
     /**
      * Displays the login page
      */
     public function actionLogin() {
-        $model = new LoginForm;
 
-        // if it is ajax validation request
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
-            echo CActiveForm::validate($model);
-            Yii::app()->end();
+        $request = $this->getClientPost();
+
+        if (isset($request['username']) && isset($request['password'])) {
+            $identity = new UserIdentity($request['username'], $request['password']);
+        } else {
+            $this->sendResponse(200, '{"error":"ERROR_USERNAME_INVALID"}');
         }
 
-        // collect user input data
-        if (isset($_POST['LoginForm'])) {
-            $model->attributes = $_POST['LoginForm'];
-            // validate user input and redirect to the previous page if valid
-            if ($model->validate() && $model->login())
-                $this->redirect(Yii::app()->user->returnUrl);
+        $error_code = $identity->authenticate();
+
+        if ($error_code == UserIdentity::ERROR_USERNAME_INVALID) {
+            $this->sendResponse(200, '{"error":"ERROR_USERNAME_INVALID"}');
+        } else if ($error_code == UserIdentity::ERROR_PASSWORD_INVALID) {
+            $this->sendResponse(200, '{"error":"ERROR_PASSWORD_INVALID"}');
+        } else {//create session, correct data
+            Yii::app()->session->add('UserId', $identity->getId());
+            $date = new DateTime();
+            Yii::app()->session->add('date', $date->format('Y-m-d H:i:s'));
+            $model = User::model()->findByPk($identity->getId());
+            $arr = $model->attributes;
+            unset($arr['password']);
+            $this->sendResponse(200, json_encode($arr));
         }
-        // display the login form
-        $this->render('login', array('model' => $model));
     }
 
     /**

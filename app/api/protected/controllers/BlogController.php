@@ -7,14 +7,15 @@ class BlogController extends Controller {
 
     public function actionIndex() {
         $models = Blog::model()->findAll();
-//        var_dump($models);
-//        $json = json_encode($models->attributes);
+
         $json = $this->arrtoJson(null, $models);
         $this->sendResponse(200, $json);
     }
 
     public function actionRead() {
-        $model = Blog::model()->findByPk(8);
+        $temp = explode("/", $_SERVER['REQUEST_URI']);
+        $id = $temp [sizeof($temp) - 1];
+        $model = Blog::model()->findByPk($id);
         $json = $this->objtoJson(self::JSON_RESPONSE_ROOT_SINGLE, $model);
         $this->sendResponse(200, $json);
     }
