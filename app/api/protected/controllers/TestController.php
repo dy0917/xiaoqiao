@@ -32,16 +32,17 @@ class TestController extends Controller {
         $imageSrc = $this->getInputData($request['type'], $request['src']);
         $foldername = realpath(Yii::app()->basePath . '/../images');
 
-          error_log($foldername . $request['imagename']);
         if (!file_exists($foldername)) {
             mkdir($foldername, 0777);
         }
-        file_put_contents($foldername .DIRECTORY_SEPARATOR. $request['imagename'], $imageSrc);
-        $ImageUrl = $_SERVER['SERVER_NAME'] . "/images/" . $request['imagename'];
+        $extention = $this->getInputType($request['type']);
+        file_put_contents($foldername . DIRECTORY_SEPARATOR . $request['imagename'] . $extention, $imageSrc);
+        $ImageUrl = "http://" . $_SERVER['SERVER_NAME'] . DIRECTORY_SEPARATOR . "images" . DIRECTORY_SEPARATOR . $request['imagename'] . $extention;
+
         echo $ImageUrl;
     }
 
-    public function getInputData($inputDataType, $inputData) {
+    private function getInputData($inputDataType, $inputData) {
         $tempInput = "";
         if ($inputDataType == "image/jpeg") {
             $tempInput = str_replace('data:image/jpeg;base64,', '', $inputData);
@@ -54,6 +55,20 @@ class TestController extends Controller {
         }
         $data = base64_decode($tempInput);
         return $data;
+    }
+
+    private function getInputType($inputDataType) {
+        $tempInput = "";
+        if ($inputDataType == "image/jpeg") {
+            $tempInput = ".jpg";
+        } elseif ($inputDataType == "application/pdf") {
+            $tempInput = ".pdf";
+        } elseif ($inputDataType == "image/png") {
+            $tempInput = ".png";
+        } elseif ($inputDataType == "image/gif") {
+            $tempInput = ".gif";
+        }
+        return $tempInput;
     }
 
     /**

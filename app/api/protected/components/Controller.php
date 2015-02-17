@@ -7,8 +7,7 @@
 header("Access-Control-Allow-Origin: *");
 header('Content-type: *');
 header('Access-Control-Request-Method: *');
-header('Access-Control-Allow-Methods: PUT, POST, OPTIONS, GET, DELETE');
-
+header('Access-Control-Allow-Methods: PUT, POST,UPDATE, OPTIONS, GET, DELETE');
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
 
 class Controller extends CController {

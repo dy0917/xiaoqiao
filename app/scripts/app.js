@@ -23,6 +23,7 @@ var app = angular
                     //  'angular-redactor'
         ])
         .config(function($routeProvider) {
+
             $routeProvider
                     .when('/', {
                         templateUrl: 'views/main.html',
@@ -42,8 +43,15 @@ var app = angular
                     })
                     .when('/product', {
                         templateUrl: 'views/product.html',
-                        controller: 'ProductCtrl'                        
-
+                        controller: 'ProductCtrl'
+                    })
+                    .when('/aboutJo', {
+                        templateUrl: 'views/aboutJo.html',
+//                        controller: 'ProductCtrl'
+                    })
+                    .when('/book', {
+                        templateUrl: 'views/book.html',
+//                        controller: 'ProductCtrl'
                     })
                     .when('/blog/:blogid', {
                         templateUrl: 'views/singleblog.html',
