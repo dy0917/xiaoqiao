@@ -350,8 +350,22 @@ article{
     .article-in-here{
         margin: 20px 0;
         line-height: 20px;
+
+        ul{
+            padding-left: 30px;
+font-size: 14px;
+font-weight: bold;
+        }
     }
 
+}
+
+.demo-chapter{
+    background-color: white;
+padding: 4% 8%;
+margin: 40px 30px 10px;
+
+@include border-radius(5px);
 }
 
 .control-btn-section{
@@ -471,6 +485,7 @@ article{
     background-color: white;
     padding: 10px 15px;
     margin-top: -3px;
+    color: #555;
 
     @include clearfix();
 }
@@ -618,42 +633,292 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
-  /*================================MEDIA QUERIES FROM HERE=======================================*/
+
+// ================================spinner css========================================
+
+
+// ======spinner1============
+
+
+#loadingProgressG{
+    width:100%;
+    height:3px;
+    overflow:hidden;
+    background-color:#ffffff;
+
+    position: fixed;
+    z-index: 1000
+}
+
+.loadingProgressG{
+    background-color:$orange;
+    margin-top:0;
+    -moz-animation-name:bounce_loadingProgressG;
+    -moz-animation-duration:2.3s;
+    -moz-animation-iteration-count:infinite;
+    -moz-animation-timing-function:linear;
+    -webkit-animation-name:bounce_loadingProgressG;
+    -webkit-animation-duration:2.3s;
+    -webkit-animation-iteration-count:infinite;
+    -webkit-animation-timing-function:linear;
+    -ms-animation-name:bounce_loadingProgressG;
+    -ms-animation-duration:2.3s;
+    -ms-animation-iteration-count:infinite;
+    -ms-animation-timing-function:linear;
+    -o-animation-name:bounce_loadingProgressG;
+    -o-animation-duration:2.3s;
+    -o-animation-iteration-count:infinite;
+    -o-animation-timing-function:linear;
+    animation-name:bounce_loadingProgressG;
+    animation-duration:2.3s;
+    animation-iteration-count:infinite;
+    animation-timing-function:linear;
+    width:10px;
+    height:3px;
+}
+
+@-moz-keyframes bounce_loadingProgressG{
+    0%{
+        width:10px;
+    }
+
+    100%{
+        width:100%;
+    }
+
+}
+
+@-webkit-keyframes bounce_loadingProgressG{
+    0%{
+        width:10px;
+    }
+
+    100%{
+        width:100%;
+    }
+
+}
+
+@-ms-keyframes bounce_loadingProgressG{
+    0%{
+        width:10px;
+    }
+
+    100%{
+        width:100%;
+    }
+
+}
+
+@-o-keyframes bounce_loadingProgressG{
+    0%{
+        width:10px;
+    }
+
+    100%{
+        width:100%;
+    }
+
+}
+
+@keyframes bounce_loadingProgressG{
+    0%{
+        width:10px;
+    }
+
+    100%{
+        width:100%;
+    }
+
+} 
 
 
 
-
-  /* Landscape phones and down */
-
-  @media (max-width: 639px) { 
+// ======spinner2============
 
 
+.spinner {
+width: 40px;
+height: 40px;
+position: absolute;
+margin: auto;
+left: 0;
+right: 0;
+z-index: 10000000;
+top: 50%;
+margin-top: -20px;
+}
+
+.double-bounce1, .double-bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: $orange;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  -webkit-animation: bounce 2.0s infinite ease-in-out;
+  animation: bounce 2.0s infinite ease-in-out;
+}
+
+.double-bounce2 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes bounce {
+  0%, 100% { -webkit-transform: scale(0.0) }
+  50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes bounce {
+  0%, 100% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 50% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
   }
-
-  /* Landscape phone to portrait tablet */
-  @media (min-width: 640px) and (max-width: 780px) { 
-
-
-  }
-
-  /* Portrait tablet to landscape and desktop */
-  @media (min-width: 781px) and (max-width: 979px) { 
-
-
-  }
-
-  /* Large desktop */
-  @media (min-width: 1200px) { 
-
-
-  }
+}
 
 
 
 
-  @media (max-width: 410px) { 
+
+// ===============================slider===================================
 
 
-  }
+.cbp-fwslider {
+    position: relative;
+    margin: 0 0 10px;
+    overflow: hidden;
+    padding: 40px 0 60px;
+}
+
+.cbp-fwslider ul {
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    list-style-type: none;
+}
+
+.cbp-fwslider ul li {
+    transform: translateZ(0);
+    float: left;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.cbp-fwslider ul li > a,
+.cbp-fwslider ul li > div {
+    display: block;
+    text-align: center;
+    outline: none;
+}
+
+.cbp-fwslider ul li > a img {
+    border: none;
+    display: block;
+    margin: 0 auto;
+    max-width: 75%;
+}
+
+.cbp-fwslider nav span {
+    position: absolute;
+    top: 50%;
+    width: 50px;
+    height: 100px;
+    background: #47a3da;
+    color: #fff;
+    font-size: 50px;
+    text-align: center;
+    margin-top: -50px;
+    line-height: 100px;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.cbp-fwslider nav span:hover {
+    background: #378fc3;
+}
+
+.cbp-fwslider nav span.cbp-fwnext {
+    right: 0px;
+}
+
+.cbp-fwslider nav span.cbp-fwprev {
+    left: 0px;
+}
+
+.cbp-fwdots {
+    position: absolute;
+    bottom: 0px;
+    white-space: nowrap;
+    text-align: center;
+    width: 100%;
+}
+
+.cbp-fwdots span {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: #ddd;
+    margin: 4px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.cbp-fwdots span:hover {
+    background: #999;
+}
+
+.cbp-fwdots span.cbp-fwcurrent {
+    background: #47a3da;
+    box-shadow: 0 0 0 2px #47a3da;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+
+
+/*================================MEDIA QUERIES FROM HERE=======================================*/
+
+
+
+
+/* Landscape phones and down */
+
+@media (max-width: 639px) { 
+
+
+}
+
+/* Landscape phone to portrait tablet */
+@media (min-width: 640px) and (max-width: 780px) { 
+
+
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 781px) and (max-width: 979px) { 
+
+
+}
+
+/* Large desktop */
+@media (min-width: 1200px) { 
+
+
+}
+
+
+
+
+@media (max-width: 410px) { 
+
+
+}
 
 
