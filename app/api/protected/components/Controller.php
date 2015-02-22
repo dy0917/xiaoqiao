@@ -9,6 +9,7 @@ header('Content-type: *');
 header('Access-Control-Request-Method: *');
 header('Access-Control-Allow-Methods: PUT, POST,UPDATE, OPTIONS, GET, DELETE');
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+header('Accept-Language:en-GB,en-US;q=0.8,en;q=0.6,zh-CN;q=0.4,zh-TW;q=0.2');
 
 class Controller extends CController {
 

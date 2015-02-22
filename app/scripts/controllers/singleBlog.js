@@ -13,7 +13,7 @@ angular.module('xiaoqiaoApp')
             var currentId = $routeParams.blogid;
             $scope.blog = facotryblogs.getobjectbyid(currentId);
 
-            console.log($scope.blog);
+
             if (typeof $scope.blog == 'undefined' || $scope.blog == null)
             {
                 $http({

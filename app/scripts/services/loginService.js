@@ -13,7 +13,7 @@ app.factory('loginService', function($http) {
         login: function()
         {
             $http({
-                url: apiPath + "/test",
+                url: apiPath + "/index.php/test",
                 method: "POST",
                 data: "asdfasdfa",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
@@ -76,10 +76,10 @@ app.factory('facotryblogs', function($http, $rootScope) {
     var factory = [];
     var blogs;
     factory.getblogs = function() {
-        return $http.get(apiPath + "/blog/").then(function(result) {
+        return $http.get(apiPath + "/index.php/blog/").then(function(result) {
 
             var blogs = result.data;
-            
+
             return  blogs;
         });
     };
@@ -91,7 +91,7 @@ app.factory('facotryblogs', function($http, $rootScope) {
     };
     factory.getobjectbyid = function(id) {
 
-       
+
         if ($rootScope.blogs)
         {
             var blogs = $rootScope.blogs;
@@ -131,5 +131,34 @@ app.factory('blogservice', function() {
             return  blog.title;
         }
 
+    };
+});
+
+app.factory('checkoutservice', function() {
+    return {
+        redirectPost: function(post, location, args, target)
+        {
+//            var form = '';
+//            $.each(args, function(key, value) {
+//                form += '<input type="hidden" name="' + key + '" value="' + value + '">';
+//            });
+//            $('<form action="' + location + '" method="POST">' + form + '</form>').appendTo('body').submit();
+
+            var form = document.createElement("form");
+            form.action = location;
+            form.method = post;
+            form.target = target || "_self";
+            if (args) {
+                for (var key in args) {
+                    var input = document.createElement("textarea");
+                    input.name = key;
+                    input.value = typeof args[key] === "object" ? JSON.stringify(args[key]) : args[key];
+                    form.appendChild(input);
+                }
+            }
+            form.style.display = 'none';
+            document.body.appendChild(form);
+            form.submit();
+        }
     };
 });

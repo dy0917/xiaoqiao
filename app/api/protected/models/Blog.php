@@ -6,7 +6,8 @@
  * The followings are the available columns in table 'Blog':
  * @property integer $Blogid
  * @property string $title
- * @property integer $BlogType
+ * @property integer $BlogTypeid
+ * @property integer $BlogStatusid
  * @property string $FeatureIamge
  * @property integer $CreatebyUser
  * @property string $body
@@ -14,105 +15,108 @@
  * @property string $LastUpdateTime
  *
  * The followings are the available model relations:
+ * @property BlogStatus $blogStatus
+ * @property BlogType $blogType
  * @property User $createbyUser
  */
-class Blog extends CActiveRecord
-{
-	/**
-	 * @return string the associated database table name
-	 */
-	public function tableName()
-	{
-		return 'Blog';
-	}
+class Blog extends CActiveRecord {
 
-	/**
-	 * @return array validation rules for model attributes.
-	 */
-	public function rules()
-	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
-		return array(
-			array('title', 'required'),
-			array('BlogType, CreatebyUser', 'numerical', 'integerOnly'=>true),
-			array('title, body,FeatureIamge', 'length', 'max'=>65535),
-			array('createTime, LastUpdateTime', 'safe'),
-			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
-			array('Blogid, title, BlogType, FeatureIamge, CreatebyUser, body, createTime, LastUpdateTime', 'safe', 'on'=>'search'),
-		);
-	}
+    public $BlogStatus;
 
-	/**
-	 * @return array relational rules.
-	 */
-	public function relations()
-	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
-		return array(
-			'createbyUser' => array(self::BELONGS_TO, 'User', 'CreatebyUser'),
-		);
-	}
+    /**
+     * @return string the associated database table name
+     */
+    public function tableName() {
+        return 'Blog';
+    }
 
-	/**
-	 * @return array customized attribute labels (name=>label)
-	 */
-	public function attributeLabels()
-	{
-		return array(
-			'Blogid' => 'Blogid',
-			'title' => 'Title',
-			'BlogType' => 'Blog Type',
-			'FeatureIamge' => 'Feature Iamge',
-			'CreatebyUser' => 'Createby User',
-			'body' => 'Body',
-			'createTime' => 'Create Time',
-			'LastUpdateTime' => 'Last Update Time',
-		);
-	}
+    /**
+     * @return array validation rules for model attributes.
+     */
+    public function rules() {
+        // NOTE: you should only define rules for those attributes that
+        // will receive user inputs.
+        return array(
+            array('title', 'required'),
+            array('BlogTypeid, BlogStatusid, CreatebyUser', 'numerical', 'integerOnly' => true),
+            array('body', 'length', 'max' => 255),
+            array('FeatureIamge, createTime, LastUpdateTime', 'safe'),
+            // The following rule is used by search().
+            // @todo Please remove those attributes that should not be searched.
+            array('Blogid, Title, BlogTypeid, BlogStatusid, FeatureIamge, CreatebyUser, body, createTime, LastUpdateTime', 'safe', 'on' => 'search'),
+        );
+    }
 
-	/**
-	 * Retrieves a list of models based on the current search/filter conditions.
-	 *
-	 * Typical usecase:
-	 * - Initialize the model fields with values from filter form.
-	 * - Execute this method to get CActiveDataProvider instance which will filter
-	 * models according to data in model fields.
-	 * - Pass data provider to CGridView, CListView or any similar widget.
-	 *
-	 * @return CActiveDataProvider the data provider that can return the models
-	 * based on the search/filter conditions.
-	 */
-	public function search()
-	{
-		// @todo Please modify the following code to remove attributes that should not be searched.
+    /**
+     * @return array relational rules.
+     */
+    public function relations() {
+        // NOTE: you may need to adjust the relation name and the related
+        // class name for the relations automatically generated below.
+        return array(
+            'blogStatus' => array(self::BELONGS_TO, 'BlogStatus', 'BlogStatusid'),
+            'blogType' => array(self::BELONGS_TO, 'BlogType', 'BlogTypeid'),
+            'createbyUser' => array(self::BELONGS_TO, 'User', 'CreatebyUser'),
+        );
+    }
 
-		$criteria=new CDbCriteria;
+    /**
+     * @return array customized attribute labels (name=>label)
+     */
+    public function attributeLabels() {
+        return array(
+            'Blogid' => 'Blogid',
+            'title' => 'Title',
+            'BlogTypeid' => 'Blog Typeid',
+            'BlogStatusid' => 'Blog Statusid',
+            'FeatureIamge' => 'Feature Iamge',
+            'CreatebyUser' => 'Createby User',
+            'body' => 'Body',
+            'createTime' => 'Create Time',
+            'LastUpdateTime' => 'Last Update Time',
+        );
+    }
 
-		$criteria->compare('Blogid',$this->Blogid);
-		$criteria->compare('title',$this->title,true);
-		$criteria->compare('BlogType',$this->BlogType);
-		$criteria->compare('FeatureIamge',$this->FeatureIamge,true);
-		$criteria->compare('CreatebyUser',$this->CreatebyUser);
-		$criteria->compare('body',$this->body,true);
-		$criteria->compare('createTime',$this->createTime,true);
-		$criteria->compare('LastUpdateTime',$this->LastUpdateTime,true);
+    /**
+     * Retrieves a list of models based on the current search/filter conditions.
+     *
+     * Typical usecase:
+     * - Initialize the model fields with values from filter form.
+     * - Execute this method to get CActiveDataProvider instance which will filter
+     * models according to data in model fields.
+     * - Pass data provider to CGridView, CListView or any similar widget.
+     *
+     * @return CActiveDataProvider the data provider that can return the models
+     * based on the search/filter conditions.
+     */
+    public function search() {
+        // @todo Please modify the following code to remove attributes that should not be searched.
 
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
-	}
+        $criteria = new CDbCriteria;
 
-	/**
-	 * Returns the static model of the specified AR class.
-	 * Please note that you should have this exact method in all your CActiveRecord descendants!
-	 * @param string $className active record class name.
-	 * @return Blog the static model class
-	 */
-	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
-	}
+        $criteria->compare('Blogid', $this->Blogid);
+        $criteria->compare('title', $this->title, true);
+        $criteria->compare('BlogTypeid', $this->BlogTypeid);
+        $criteria->compare('BlogStatusid', $this->BlogStatusid);
+        $criteria->compare('FeatureIamge', $this->FeatureIamge, true);
+        $criteria->compare('CreatebyUser', $this->CreatebyUser);
+        $criteria->compare('body', $this->body, true);
+        $criteria->compare('createTime', $this->createTime, true);
+        $criteria->compare('LastUpdateTime', $this->LastUpdateTime, true);
+
+        return new CActiveDataProvider($this, array(
+            'criteria' => $criteria,
+        ));
+    }
+
+    /**
+     * Returns the static model of the specified AR class.
+     * Please note that you should have this exact method in all your CActiveRecord descendants!
+     * @param string $className active record class name.
+     * @return Blog the static model class
+     */
+    public static function model($className = __CLASS__) {
+        return parent::model($className);
+    }
+
 }

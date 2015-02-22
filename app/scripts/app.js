@@ -9,9 +9,8 @@
  * Main module of the application.
  */
 
-//var apiPath = "http://api.editor";
-
-var apiPath = "http://test.api.xiaoqiaonz.com/index.php";
+var apiPath = "http://local.test.api.xiaoqiaonz.com/";
+//var apiPath = "http://test.api.xiaoqiaonz.com";
 var app = angular
         .module('xiaoqiaoApp', [
             'ngAnimate',
@@ -51,7 +50,7 @@ var app = angular
                     })
                     .when('/book', {
                         templateUrl: 'views/book.html',
-//                        controller: 'ProductCtrl'
+                        controller: 'BookCtrl'
                     })
                     .when('/blog/:blogid', {
                         templateUrl: 'views/singleblog.html',

@@ -6,9 +6,18 @@ class BlogController extends Controller {
     const JSON_RESPONSE_ROOT_PLURAL = 'blogs';
 
     public function actionIndex() {
-        $models = Blog::model()->findAll();
 
-        $json = $this->arrtoJson(null, $models);
+        $criteria = new CDbCriteria;
+        $criteria->select = 't.id';
+//        $models = Blog::model()->with('blogStatus')->together()->findAll($criteria);
+
+        $models = Yii::app()->db->createCommand()
+                ->select('*')
+                ->from('Blog, BlogStatus')
+                ->where('Blog.BlogStatusid=BlogStatus.BlogStatusid')
+                ->queryAll();
+////        var_dump($models);
+        $json = json_encode($models);
         $this->sendResponse(200, $json);
     }
 
@@ -26,27 +35,16 @@ class BlogController extends Controller {
         $model = new Blog;
         $model->setAttributes($request);
         $model->CreatebyUser = 3;
-
         $model->createTime = new CDbExpression(' UTC_TIMESTAMP()');
         $model->LastUpdateTime = new CDbExpression('UTC_TIMESTAMP()');
 
         if ($model->validate()) {
             $model->save(false);
-            $this->sendResponse(200, "saveSeccessful");
-        } else {
-
-            $this->sendResponse(500);
-        }
-    }
-
-    public function actionBlogupdate() {
-        $request = $this->getClientPost();
-        $model = Blog::model()->findByPk($request["Blogid"]);
-        $model->setAttributes($request);
-        $model->LastUpdateTime = new CDbExpression('UTC_TIMESTAMP()');
-        if ($model->validate()) {
-            $model->save(false);
-            $this->sendResponse(200, "updateSeccessful");
+            $model->createTime = date("Y-m-d H:i:s");
+            $arrjson = $model->attributes;
+            $arrjson['BlogStatus'] = $request['BlogStatus'];
+            $json = json_encode($arrjson);
+            echo $json;
         } else {
 
             $this->sendResponse(500);
@@ -56,11 +54,26 @@ class BlogController extends Controller {
     public function actionUpdate() {
         $request = $this->getClientPost();
         $model = Blog::model()->findByPk($request["Blogid"]);
+
         $model->setAttributes($request);
+
         $model->LastUpdateTime = new CDbExpression('UTC_TIMESTAMP()');
         if ($model->validate()) {
             $model->save(false);
-            $this->sendResponse(200, "updateSeccessful");
+            echo "updateSeccessful";
+        } else {
+
+            $this->sendResponse(500);
+        }
+    }
+
+    public function actionDelete() {
+        $request = $this->getClientPost();
+        $model = Blog::model()->findByPk($request["Blogid"]);
+
+        if ($model->validate()) {
+            $model->delete();
+            echo "updateSeccessful";
         } else {
 
             $this->sendResponse(500);
