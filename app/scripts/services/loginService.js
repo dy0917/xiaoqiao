@@ -76,7 +76,7 @@ app.factory('facotryblogs', function($http, $rootScope) {
     var factory = [];
     var blogs;
     factory.getblogs = function() {
-        return $http.get(apiPath + "/index.php/blog/").then(function(result) {
+        return $http.get(apiPath + "/blog/").then(function(result) {
 
             var blogs = result.data;
 
