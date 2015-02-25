@@ -13,6 +13,7 @@ return array(
     'import' => array(
         'application.models.*',
         'application.components.*',
+        'application.vendor.*',
     ),
     'modules' => array(
         // uncomment the following to enable the Gii tool
@@ -96,6 +97,5 @@ return array(
         // this is used in contact page
         'adminEmail' => 'webmaster@example.com',
         'diskpath' => '/work/NetBeansProjects/xiaoqiao/app/api'
-        
     ),
 );

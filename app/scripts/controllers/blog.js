@@ -47,7 +47,7 @@ angular.module('xiaoqiaoApp')
 
             $scope.checkout = function()
             {
-                var postData = {Quantity: 1, Reference: 4324, Address1: 242, Address2: 4234234, Address3: "data.orderid", Submit: "Submit"};
+                var postData = {Quantity: 1, Reference: 22222, Address1: 242, Address2: 4234234, Address3: "data.orderid", Submit: "Submit"};
 //                $.redirectPost("/payment/dps/PxPay_Sample_Curl.php", postData);
 //                apiPath + "/payment/dps/PxPay_Sample_Curl.php"
                 checkoutservice.redirectPost("POST", apiPath + "/checkout", postData, "_blank");

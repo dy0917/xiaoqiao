@@ -1,17 +1,17 @@
 <?php
 
-include "PxPay_Curl.inc.php";
+require_once Yii::app()->basePath . '/vendor/PxPay_Curl.inc.php';
 
 class CheckoutController extends Controller {
 
     private $PxPay_Url = "https://sec.paymentexpress.com/pxaccess/pxpay.aspx";
     private $PxPay_Userid = "webstudio_dev"; #Important! Update with your UserId
     private $PxPay_Key = "15027d94e4d1c4e03a1232b038d0204ddae3ba2b22466b5f3e4d513fd9dae615"; #Important! Update with your Key
+    private $pxpay;
 
     /**
      * Declares class-based actions.
      */
-
     public function actions() {
         
     }
@@ -21,35 +21,38 @@ class CheckoutController extends Controller {
      * when an action is not explicitly requested by users.
      */
     public function actionIndex() {
-        $pxpay = new PxPay_Curl($PxPay_Url, $PxPay_Userid, $PxPay_Key);
-
+        $this->pxpay = new PxPay_Curl($this->PxPay_Url, $this->PxPay_Userid, $this->PxPay_Key);
         if (isset($_REQUEST["result"])) {
             # this is a redirection from the payments page.
-            print_result();
+            $this->print_result();
         } elseif (isset($_REQUEST["Submit"])) {
             # this is a post back -- redirect to payments page.
-            redirect_form();
+            $this->redirect_form();
         } else {
             # this is a fresh request -- display the purchase form.
-            print_form();
+            $this->print_form();
         }
     }
 
     public function actionRead() {
-        echo "readddddd";
+        echo "";
     }
 
     public function actionCreate() {
-
+     
+        $this->pxpay = new PxPay_Curl($this->PxPay_Url, $this->PxPay_Userid, $this->PxPay_Key);
         if (isset($_REQUEST["result"])) {
             # this is a redirection from the payments page.
-            print_result();
+   
+            $this->print_result();
         } elseif (isset($_REQUEST["Submit"])) {
+     
             # this is a post back -- redirect to payments page.
-            redirect_form();
+            $this->redirect_form();
         } else {
+      
             # this is a fresh request -- display the purchase form.
-            print_form();
+            $this->print_form();
         }
     }
 
@@ -106,93 +109,106 @@ class CheckoutController extends Controller {
     }
 
     public function print_result() {
-        global $pxpay;
-        $orderid = crulTest();
+
+//        $orderid = crulTest();
         $enc_hex = $_REQUEST["result"];
-        #getResponse method in PxPay object returns PxPayResponse object
-        #which encapsulates all the response data
-        $rsp = $pxpay->getResponse($enc_hex);
+
+        $rsp = $this->pxpay->getResponse($enc_hex);
+        $model = new Order;
+        $model->setAttributes(array('buyfromuser' => 3, 'total' => 2, 'note' => 'test', 'status' => 1));
+        $model->createtime = new CDbExpression(' UTC_TIMESTAMP()');
+        $model->lastupdatetime = new CDbExpression('UTC_TIMESTAMP()');
 
 
-        # the following are the fields available in the PxPayResponse object
-        $Success = $rsp->getSuccess();   # =1 when request succeeds
-        $AmountSettlement = $rsp->getAmountSettlement();
-        $AuthCode = $rsp->getAuthCode();  # from bank
-        $CardName = $rsp->getCardName();  # e.g. "Visa"
-        $CardNumber = $rsp->getCardNumber(); # Truncated card number
-        $DateExpiry = $rsp->getDateExpiry(); # in mmyy format
-        $DpsBillingId = $rsp->getDpsBillingId();
-        $BillingId = $rsp->getBillingId();
-        $CardHolderName = $rsp->getCardHolderName();
-        $DpsTxnRef = $rsp->getDpsTxnRef();
-        $TxnType = $rsp->getTxnType();
-        $TxnData1 = $rsp->getTxnData1();
-        $TxnData2 = $rsp->getTxnData2();
-        $TxnData3 = $rsp->getTxnData3();
-//    $Boodk = $rsp->getTxnData4();
-        $CurrencySettlement = $rsp->getCurrencySettlement();
-        $ClientInfo = $rsp->getClientInfo(); # The IP address of the user who submitted the transaction
-        $TxnId = $rsp->getTxnId();
-        $CurrencyInput = $rsp->getCurrencyInput();
-        $EmailAddress = $rsp->getEmailAddress();
-        $MerchantReference = $rsp->getMerchantReference();
-        $ResponseText = $rsp->getResponseText();
-        $TxnMac = $rsp->getTxnMac(); # An indication as to the uniqueness of a card used in relation to others
 
-        header("Location: http://api.localhost/order/getbook?bookid=" . $orderid);
-        die();
-
-
-        if ($rsp->getSuccess() == "1") {
-
-
-            header('Location: http://staging.trendsideas.com', true, 'parameters');
-            $result = "The transaction was approved.";
-            # Sending invoices/updating order status within database etc.
-            if (!isProcessed($TxnId)) {
-                # Send emails, generate invoices, update order status etc.
-            }
+        if ($model->validate()) {
+            $model->save(false);
+            $url = "http://$_SERVER[HTTP_HOST]/index.php/getbook";
+            header("Location: " . $url . "?bookid=" . $model->orderid);
         } else {
-            $result = "The transaction was declined.";
+
+            $this->sendResponse(500);
         }
 
-        print <<<HTMLEOF
-<html>
-<head>
-<title>Direct Payment Solutions PxPay transaction result</title>
-</head>
-<body>
-<h1>Direct Payment Solutions PxPay transaction result</h1>
-<p>$result</p>
-  <table border=1>
-	<tr><th>Name</th>				<th>Value</th> </tr>
-	<tr><td>Success</td>			<td>$Success</td></tr>
-	<tr><td>TxnType</td>			<td>$TxnType</td></tr>
-	<tr><td>CurrencyInput</td>		<td>$CurrencyInput</td></tr>
-	<tr><td>MerchantReference</td>	<td>$MerchantReference</td></tr>
-	<tr><td>TxnData1</td>			<td>$TxnData1</td></tr>
-	<tr><td>TxnData2</td>			<td>$TxnData2</td></tr>
-	<tr><td>TxnData3</td>			<td>$TxnData3</td></tr>
-	<tr><td>AuthCode</td>			<td>$AuthCode</td></tr>
-	<tr><td>CardName</td>			<td>$CardName</td></tr>
-	<tr><td>CardHolderName</td>		<td>$CardHolderName</td></tr>
-	<tr><td>CardNumber</td>			<td>$CardNumber</td></tr>
-	<tr><td>DateExpiry</td>			<td>$DateExpiry</td></tr>
-	<tr><td>CardHolderName</td>		<td>$CardHolderName</td></tr>
-	<tr><td>ClientInfo</td>			<td>$ClientInfo</td></tr>
-	<tr><td>TxnId</td>				<td>$TxnId</td></tr>
-	<tr><td>EmailAddress</td>		<td>$EmailAddress</td></tr>
-	<tr><td>DpsTxnRef</td>			<td>$DpsTxnRef</td></tr>
-	<tr><td>BillingId</td>			<td>$BillingId</td></tr>
-	<tr><td>DpsBillingId</td>		<td>$DpsBillingId</td></tr>
-	<tr><td>AmountSettlement</td>	<td>$AmountSettlement</td></tr>
-	<tr><td>CurrencySettlement</td>	<td>$CurrencySettlement</td></tr>
-	<tr><td>TxnMac</td>				<td>$TxnMac</td></tr>
-	<tr><td>ResponseText</td>		<td>$ResponseText</td></tr>
-</table>
-</body>
-</html>
-HTMLEOF;
+
+
+
+//        # the following are the fields available in the PxPayResponse object
+//        $Success = $rsp->getSuccess();   # =1 when request succeeds
+//        $AmountSettlement = $rsp->getAmountSettlement();
+//        $AuthCode = $rsp->getAuthCode();  # from bank
+//        $CardName = $rsp->getCardName();  # e.g. "Visa"
+//        $CardNumber = $rsp->getCardNumber(); # Truncated card number
+//        $DateExpiry = $rsp->getDateExpiry(); # in mmyy format
+//        $DpsBillingId = $rsp->getDpsBillingId();
+//        $BillingId = $rsp->getBillingId();
+//        $CardHolderName = $rsp->getCardHolderName();
+//        $DpsTxnRef = $rsp->getDpsTxnRef();
+//        $TxnType = $rsp->getTxnType();
+//        $TxnData1 = $rsp->getTxnData1();
+//        $TxnData2 = $rsp->getTxnData2();
+//        $TxnData3 = $rsp->getTxnData3();
+////    $Boodk = $rsp->getTxnData4();
+//        $CurrencySettlement = $rsp->getCurrencySettlement();
+//        $ClientInfo = $rsp->getClientInfo(); # The IP address of the user who submitted the transaction
+//        $TxnId = $rsp->getTxnId();
+//        $CurrencyInput = $rsp->getCurrencyInput();
+//        $EmailAddress = $rsp->getEmailAddress();
+//        $MerchantReference = $rsp->getMerchantReference();
+//        $ResponseText = $rsp->getResponseText();
+//        $TxnMac = $rsp->getTxnMac(); # An indication as to the uniqueness of a card used in relation to others
+////        header("Location: http://api.localhost/order/getbook?bookid=" . $orderid);
+////        die();
+////        if ($rsp->getSuccess() == "1") {
+////
+////
+////            header('Location: http://staging.trendsideas.com', true, 'parameters');
+////            $result = "The transaction was approved.";
+////            # Sending invoices/updating order status within database etc.
+////            if (!isProcessed($TxnId)) {
+////                # Send emails, generate invoices, update order status etc.
+////            }
+////        } else {
+////            $result = "The transaction was declined.";
+////        }
+//
+//        print <<<HTMLEOF
+//<html>
+//<head>
+//<title>Direct Payment Solutions PxPay transaction result</title>
+//</head>
+//<body>
+//<h1>Direct Payment Solutions PxPay transaction result</h1>
+//<p>$result</p>
+//  <table border=1>
+//	<tr><th>Name</th>				<th>Value</th> </tr>
+//	<tr><td>Success</td>			<td>$Success</td></tr>
+//	<tr><td>TxnType</td>			<td>$TxnType</td></tr>
+//	<tr><td>CurrencyInput</td>		<td>$CurrencyInput</td></tr>
+//	<tr><td>MerchantReference</td>	<td>$MerchantReference</td></tr>
+//	<tr><td>TxnData1</td>			<td>$TxnData1</td></tr>
+//	<tr><td>TxnData2</td>			<td>$TxnData2</td></tr>
+//	<tr><td>TxnData3</td>			<td>$TxnData3</td></tr>
+//	<tr><td>AuthCode</td>			<td>$AuthCode</td></tr>
+//	<tr><td>CardName</td>			<td>$CardName</td></tr>
+//	<tr><td>CardHolderName</td>		<td>$CardHolderName</td></tr>
+//	<tr><td>CardNumber</td>			<td>$CardNumber</td></tr>
+//	<tr><td>DateExpiry</td>			<td>$DateExpiry</td></tr>
+//	<tr><td>CardHolderName</td>		<td>$CardHolderName</td></tr>
+//	<tr><td>ClientInfo</td>			<td>$ClientInfo</td></tr>
+//	<tr><td>TxnId</td>				<td>$TxnId</td></tr>
+//	<tr><td>EmailAddress</td>		<td>$EmailAddress</td></tr>
+//	<tr><td>DpsTxnRef</td>			<td>$DpsTxnRef</td></tr>
+//	<tr><td>BillingId</td>			<td>$BillingId</td></tr>
+//	<tr><td>DpsBillingId</td>		<td>$DpsBillingId</td></tr>
+//	<tr><td>AmountSettlement</td>	<td>$AmountSettlement</td></tr>
+//	<tr><td>CurrencySettlement</td>	<td>$CurrencySettlement</td></tr>
+//	<tr><td>TxnMac</td>				<td>$TxnMac</td></tr>
+//	<tr><td>ResponseText</td>		<td>$ResponseText</td></tr>
+//</table>
+//</body>
+//</html>
+//HTMLEOF;
     }
 
 #******************************************************************************
@@ -263,7 +279,7 @@ HTMLEOF;
 #******************************************************************************
 
     public function redirect_form() {
-        global $pxpay;
+//         $pxpay;
 
         $request = new PxPayRequest();
 
@@ -272,8 +288,9 @@ HTMLEOF;
         $server_url = "http://$http_host";
         #$script_url  = "$server_url/$request_uri"; //using this code before PHP version 4.3.4
         #$script_url  = "$server_url$request_uri"; //Using this code after PHP version 4.3.4
-        $script_url = (version_compare(PHP_VERSION, "4.3.4", ">=")) ? "$server_url$request_uri" : "$server_url/$request_uri";
+//        $script_url = (version_compare(PHP_VERSION, "4.3.4", ">=")) ? "$server_url$request_uri" : "$server_url/" . "checkout";
 
+        $script_url = "http://$_SERVER[HTTP_HOST]/index.php/checkout";
         # the following variables are read from the form
         $Quantity = $_REQUEST["Quantity"];
         $MerchantReference = $_REQUEST["Reference"];
@@ -312,7 +329,7 @@ HTMLEOF;
         # $request->setBillingId($BillingId);
         # $request->setOpt($Opt);
         #Call makeRequest function to obtain input XML
-        $request_string = $pxpay->makeRequest($request);
+        $request_string = $this->pxpay->makeRequest($request);
 
         #Obtain output XML
         $response = new MifMessage($request_string);

@@ -11,7 +11,15 @@ angular.module('xiaoqiaoApp')
         .controller('MainCtrl', function($scope, loginService, masonryService) {
 
             masonryService.masonryinit(50);
+//            jQuery(document).ready(function($) {
 
+            $('#banner-fade').bjqs({
+                height: 320,
+                width: 620,
+                responsive: true
+            });
+
+//            });
             // loginService.login();
 
             $scope.displayLogin = function() {
