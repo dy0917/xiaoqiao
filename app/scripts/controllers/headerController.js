@@ -11,6 +11,7 @@ angular.module('xiaoqiaoApp')
         .controller('headerController', function($scope, loginService) {
             $scope.user = null;
             $scope.display = false;
+            $scope.isloading = false;
             $scope.login = function() {
 
                 console.log($scope.user);
@@ -21,8 +22,11 @@ angular.module('xiaoqiaoApp')
 
             $scope.toggleLogin = function() {
                 $scope.display = !$scope.display;
-            }
+            };
             $scope.togglespinner = function() {
                 $scope.display = !$scope.display;
-            }
+            };
+            $scope.$on('isloading', function(event, bool) {
+                $scope.isloading = bool;
+            });
         });

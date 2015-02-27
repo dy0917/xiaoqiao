@@ -13,7 +13,7 @@ app.factory('loginService', function($http) {
         login: function()
         {
             $http({
-                url: apiPath + "/index.php/test",
+                url: apiPath + "test",
                 method: "POST",
                 data: "asdfasdfa",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
@@ -49,8 +49,9 @@ app.factory('masonryService', function() {
 });
 app.service('servicecallback', function($http) {
     return {
-        http: function(url, method, data, successcallback, errorcallback)
+        http: function(url, method, data, successcallback, errorcallback, afterfunction)
         {
+            $rootScope.$broadcast('isloading', true);
             $http({
                 url: url,
                 method: method,
@@ -59,10 +60,18 @@ app.service('servicecallback', function($http) {
             }).success(function(data, status, headers, config) {
                 //  $scope.persons = data; // assign  $scope.persons here as promise is resolved here 
                 successcallback(data);
+                $rootScope.$broadcast('isloading', false);
             }).error(function(data, status, headers, config) {
                 // $scope.status = status;
                 errorcallback(data);
+                $rootScope.$broadcast('isloading', false);
+            }).then(function() {
+                $rootScope.$broadcast('isloading', false);
+                if (afterfunction) {
+                    afterfunction();
+                }
             });
+            ;
         },
         test: function()
         {
