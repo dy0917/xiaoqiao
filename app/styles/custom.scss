@@ -173,11 +173,15 @@ aside{
 
 
 .theme-slide{
-    height: 450px;
+    height: 450px!important;
     width: 100%;
     overflow: hidden;
 
-    img{width:100%; }
+    ul{height:450px!important;
+        li{height:450px!important;overflow:hidden;}
+    }
+
+    img{width:100%;height:auto!important; }
 }
 
 .wechat-box{
