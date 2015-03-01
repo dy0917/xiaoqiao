@@ -8,9 +8,9 @@
  * Controller of the xtripApp
  */
 angular.module('xiaoqiaoApp')
-  .controller('AboutCtrl', function ($scope,$http,masonryService) {
-      
-         masonryService. masonryinit(50);
+        .controller('AboutCtrl', function($scope, $http, masonryService) {
+
+            masonryService.masonryinit(50);
 //      $scope.save=function(){
 //var sHTML = $('#summernote').code();
 //console.log(sHTML);
@@ -67,5 +67,15 @@ angular.module('xiaoqiaoApp')
 //}
 //  );
 
-  
-  });
+
+        });
+angular.module('xiaoqiaoApp')
+        .controller('testCtrl', function($scope, $http, masonryService) {
+
+            $('#summernote').summernote(
+                  
+            );
+
+
+
+        });

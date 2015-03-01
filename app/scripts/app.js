@@ -56,6 +56,27 @@ var app = angular
                         templateUrl: 'views/singleblog.html',
                         controller: 'singleBlogCtrl'
                     })
+                    .when('/test', {
+                        templateUrl: 'views/test.html',
+                        controller: 'testCtrl'
+                    }).when('/housedairy', {
+                templateUrl: 'views/housedairy.html',
+//                controller: 'testCtrl'
+            }).when('/tipsblog', {
+                templateUrl: 'views/tipsblog.html',
+//                controller: 'testCtrl'
+            }).when('/investmentexample', {
+                templateUrl: 'views/investmentexample.html',
+//                controller: 'testCtrl'
+            })
+                    .when('/companyintroduction', {
+                        templateUrl: 'views/companyintroduction.html',
+//                controller: 'testCtrl'
+                    }).when('/distributor', {
+                templateUrl: 'views/distributor.html',
+//                controller: 'testCtrl'
+            })
+
                     .otherwise({
                         redirectTo: '/'
                     });
