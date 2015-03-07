@@ -1,43 +1,43 @@
-<div ng-click="toggleLogin()" >
-  <div class="fade-bg"></div>
+<!--<div ng-click="toggleLogin()" >-->
+<div class="fade-bg"></div>
 
-  <div class="login-popup">
+<div class="login-popup">
 
     <div class="login-intro">
-      <img src="../images/login-intro-bg.jpeg">
-      <div class="intro-content">
-        <h6>Becoming a Dealer</h6>
-        <p>Pitchfork meggings pug art party forage fixie. Schlitz seitan mlkshk, polaroid jean shorts tilde Brooklyn beard. Sriracha Banksy taxidermy, retro single-origin coffee cold-pressed fanny pack literally biodiesel lo-fi Tumblr Schlitz sartorial McSweeney's. Keffiyeh Echo Park semiotics squid, mixtape cliche four dollar toast mumblecore Tumblr four loko stumptown sustainable. Put a bird on it wayfarers tousled, pork belly migas 90's leggings.</p>
-      </div>
+        <img src="../images/login-intro-bg.jpeg">
+        <div class="intro-content">
+            <h6>Becoming a Dealer</h6>
+            <p>Pitchfork meggings pug art party forage fixie. Schlitz seitan mlkshk, polaroid jean shorts tilde Brooklyn beard. Sriracha Banksy taxidermy, retro single-origin coffee cold-pressed fanny pack literally biodiesel lo-fi Tumblr Schlitz sartorial McSweeney's. Keffiyeh Echo Park semiotics squid, mixtape cliche four dollar toast mumblecore Tumblr four loko stumptown sustainable. Put a bird on it wayfarers tousled, pork belly migas 90's leggings.</p>
+        </div>
     </div>
 
 
-<div class="login-insert-part">
+    <div class="login-insert-part">
 
-    <h6><i class="fa fa-sign-in"></i>&nbsp;&nbsp;Login</h6>
-    <form role="form" name="form1">
-      <div class="form-group">
-      <!-- <p>Welcome : <span>{{user.mail}}</span></p> -->
-       <label for="exampleInputEmail1"><i class="fa fa-envelope"></i></label>
-       <input type="text" placeholder="Enter name"  class="form-control" ng-model="user.mail" required>
-     </div>
-     <div class="form-group">
-      <label for="exampleInputPassword1"><i class="fa fa-lock"></i></label>
-      <input type="password" placeholder="Password" id="exampleInputPassword1" class="form-control" ng-model="user.pass" required>
+        <h6><i class="fa fa-sign-in"></i>&nbsp;&nbsp;Login</h6>
+        <form role="form" name="loginform">
+            <div class="form-group">
+                <!-- <p>Welcome : <span>{{user.mail}}</span></p> -->
+                <label for="exampleInputEmail1"><i class="fa fa-envelope"></i></label>
+                <input type="text" placeholder="Enter name" name="mail" class="form-control" ng-model="user.username" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1"><i class="fa fa-lock"></i></label>
+                <input type="password" placeholder="Password" name="password" id="exampleInputPassword1" class="form-control" ng-model="user.password" required>
+            </div>
+
+<!--            <div class="remember-pw">
+                <div class="check-box"></div>
+                <span>Remember Passwords</span>
+            </div>-->
+            <input class="btn-shape btn1 center-position" type="submit" ng-click="login(user)" ng-disabled="loginform.mail.$invalid ||
+                        loginform.password.$invalid" value="Login">
+        </form>
     </div>
 
-    <div class="remember-pw">
-      <div class="check-box"></div>
-      <span>Remember Passwords</span>
-    </div>
-    <div class="btn-shape btn1 center-position" type="submit" ng-click="login(user)" ng-disabled="form1.$invalid">Login</div>
-    <p>{{msgtxt}}</p>
-  </form>
-</div>
-
 
 </div>
 
 
 
-</div>
+<!--</div>-->

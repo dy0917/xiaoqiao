@@ -2,72 +2,77 @@
 
 
 
-	<main>
-		<div class="theme-slide">
-			<img src="images/contact-theme-img.jpeg"/>
-		</div>
+<main>
+    <div class="theme-slide">
+        <img src="images/contact-theme-img.jpeg"/>
+    </div>
 
 
-		<!-- masonry======================= -->
+    <!-- masonry======================= -->
 
 
-		<div id="container">
+    <div id="container">
 
 
-			<div class="item contact-w3">
-				<img src="images/contact.jpg">
-				<div class="m-item-dec-wrapper" style="padding:15px 20px;">
+        <div class="item contact-w3">
+            <img src="images/contact.jpg">
+            <div class="m-item-dec-wrapper" style="padding:15px 20px;">
 
-					<div class="contact-info-each">
-						<i class="fa fa-map-marker"></i>
-						<div>38 College Hill, Freemans Bay, Auckland, New Zealand 1010.</div>
-					</div>
+                <div class="contact-info-each">
+                    <i class="fa fa-map-marker"></i>
+                    <div>38 College Hill, Freemans Bay, Auckland, New Zealand 1010.</div>
+                </div>
 
-					<div class="contact-info-each">
-						<i class="fa fa-envelope"></i>
-						<div>jo@squirrel.co.nz</div>
-					</div>
+                <div class="contact-info-each">
+                    <i class="fa fa-envelope"></i>
+                    <div>jo@squirrel.co.nz</div>
+                </div>
 
-					<div class="contact-info-each">
-						<i class="fa fa-phone"></i>
-						<div>09 360 9036</div>
-					</div>
+                <div class="contact-info-each">
+                    <i class="fa fa-phone"></i>
+                    <div>09 360 9036</div>
+                </div>
 
-					<div class="contact-info-each">
-						<i class="fa fa-mobile"></i>
-						<div>+64 21 106 1961（可加微信 &nbsp;<i class="fa fa-wechat"></i>）</div>
-					</div>
+                <div class="contact-info-each">
+                    <i class="fa fa-mobile"></i>
+                    <div>+64 21 106 1961（可加微信 &nbsp;<i class="fa fa-wechat"></i>）</div>
+                </div>
 
-				</div>
-			</div>
+            </div>
+        </div>
 
-			<div class="item contact-w3">
-				<div class="email-pattern"></div>
-				<div class="m-item-dec-wrapper" >
-					<div class="send-email-wrapper">
-						<input class="input1" type="text" placeholder="Your email address"></input>
-						<input class="input1" type="text" placeholder="标题"></input>
-						<textarea class="input1" type="text" placeholder="想对小乔说..."></textarea>
-					</div>
+        <div class="item contact-w3">
+            <form name="emailform" novalidate>
+                <div class="email-pattern"></div>
+                <div class="m-item-dec-wrapper" >
+                    <div class="send-email-wrapper">
+                        <input class="input1" type="email" name="email" placeholder="Your email address" ng-model="mail.email"required></input>
+                        <input class="input1" type="text" name="title" placeholder="标题" ng-model="mail.title" required></input>
+                        <textarea class="input1" type="text" ng-model="mail.content" placeholder="想对小乔说..."></textarea>
+                    </div>
+
+                    <input class="btn-shape btn1 center-position" 
+                           type="submit" ng-disabled="emailform.email.$invalid||emailform.title.$invalid"
+                           ng-click="sendmail(mail)" value="Send">
+                    <!--//                    <div class="btn-shape btn1 center-position" ng-click="sendmail()"><i class="fa fa-paper-plane"></i>&nbsp;&nbsp;Send</div>-->
+
+                </div>
+            </form>
+        </div>
 
 
-					<div class="btn-shape btn1 center-position"><i class="fa fa-paper-plane"></i>&nbsp;&nbsp;&nbsp;Send</div>
 
-				</div>
-			</div>
+    </div>
 
-
-		</div>
-
-		<div aside></div>
+    <div aside></div>
 
 
-	</main>
-	<!-- Footer -->
+</main>
+<!-- Footer -->
 
-	<footer >
+<footer >
 
-	</footer>
+</footer>
 
 
 </body>

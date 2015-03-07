@@ -47,7 +47,7 @@ app.factory('masonryService', function() {
     };
 
 });
-app.service('servicecallback', function($http) {
+app.service('servicecallback', function($http, $rootScope) {
     return {
         http: function(url, method, data, successcallback, errorcallback, afterfunction)
         {
@@ -59,11 +59,14 @@ app.service('servicecallback', function($http) {
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function(data, status, headers, config) {
                 //  $scope.persons = data; // assign  $scope.persons here as promise is resolved here 
-                successcallback(data);
+                if (successcallback) {
+                    successcallback(data);
+                }
                 $rootScope.$broadcast('isloading', false);
             }).error(function(data, status, headers, config) {
-                // $scope.status = status;
-                errorcallback(data);
+                if (errorcallback) {
+                    errorcallback(data);
+                }
                 $rootScope.$broadcast('isloading', false);
             }).then(function() {
                 $rootScope.$broadcast('isloading', false);
@@ -95,8 +98,9 @@ app.factory('facotryblogs', function($http, $rootScope) {
     factory.method1 = function() {
         console.log(blogs);
     };
-    factory.method2 = function() {
-        console.log("method2");
+    factory.decodeuri = function(body) {
+
+        return decodeURI(body);
     };
     factory.getobjectbyid = function(id) {
 
@@ -117,8 +121,9 @@ app.factory('facotryblogs', function($http, $rootScope) {
         } else {
             return null;
         }
-//        return null;
     };
+
+
     return factory;
 });
 app.factory('blogservice', function() {

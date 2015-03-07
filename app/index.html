@@ -28,18 +28,18 @@
 
 
 
-                        <div id="loadingProgressG" ng-if="isloading"> 
-                            <div id="loadingProgressG_1" class="loadingProgressG">
-                            </div>
-                        </div>
-            
-            
-            
-            
-<!--                        <div class="spinner">
-                            <div class="double-bounce1"></div>
-                            <div class="double-bounce2"></div>
-                        </div>-->
+            <div id="loadingProgressG" ng-if="isloading"> 
+                <div id="loadingProgressG_1" class="loadingProgressG">
+                </div>
+            </div>
+
+
+
+
+            <!--                        <div class="spinner">
+                                        <div class="double-bounce1"></div>
+                                        <div class="double-bounce2"></div>
+                                    </div>-->
 
 
             <header >
@@ -56,9 +56,13 @@
                     <span class="lang-en">En</span>&nbsp; / &nbsp;<span class="lang-cn">中</span>
                 </div>
 
-                <div class="right-col">
+                <div class="right-col"  ng-if=" user == null">
                     <i class="fa fa-sign-in">&nbsp;&nbsp;&nbsp;</i>
                     <span ng-click="toggleLogin()">Sign up as a dealer</span>
+                </div>
+                <div class="right-col"  ng-if=" user != null">
+                    <i class="fa fa-sign-in">&nbsp;&nbsp;&nbsp;</i>
+                    Hi, {{user.username}}
                 </div>
 
             </header>  
@@ -150,6 +154,7 @@
         <script src="scripts/lib/jquery-1.11.0.js"></script>
         <script src="scripts/lib/masonry.pkgd.min.js"></script>
         <script src="scripts/lib/javascriptHelper.js"></script>
+        <script src="scripts/lib/md5.js"></script>
         <script src="scripts/lib/slider/bjqs-1.3.min.js"></script>
         <!--<script src="scripts/lib/jquery.secret-source.min.js"></script>-->
         <script src="scripts/app.js"></script>

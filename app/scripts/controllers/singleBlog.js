@@ -21,11 +21,26 @@ angular.module('xiaoqiaoApp')
                     method: "get",
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).success(function(data, status, headers, config) {
-                    console.log(data.blog);
                     $scope.blog = data.blog;
+                    $scope.blog.body = facotryblogs.decodeuri($scope.blog.body);
+
                 }).error(function(data, status, headers, config) {
 
                     console.log("error");
                 });
+
+            } else {
+                $scope.blog.body = facotryblogs.decodeuri($scope.blog.body);
             }
+
+        });
+
+
+angular.module('xiaoqiaoApp')
+        .controller('messageCtrl', function($scope) {
+
+
+
+
+
         });
