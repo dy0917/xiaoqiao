@@ -8,11 +8,10 @@
  * Controller of the xtripApp
  */
 angular.module('xiaoqiaoApp')
-        .controller('singleBlogCtrl', function($scope, $http, $routeParams, facotryblogs) {
+        .controller('singleBlogCtrl', function($scope, $http, $routeParams, facotryblogs, $rootScope, factorymessages) {
 
             var currentId = $routeParams.blogid;
-            $scope.blog = facotryblogs.getobjectbyid(currentId);
-
+            $rootScope.blog = facotryblogs.getobjectbyid(currentId);
 
             if (typeof $scope.blog == 'undefined' || $scope.blog == null)
             {
@@ -21,26 +20,46 @@ angular.module('xiaoqiaoApp')
                     method: "get",
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).success(function(data, status, headers, config) {
-                    $scope.blog = data.blog;
-                    $scope.blog.body = facotryblogs.decodeuri($scope.blog.body);
-
+                    $rootScope.blog = data.blog;
+                    $rootScope.blog.body = facotryblogs.decodeuri($rootScope.blog.body);
+                    factorymessages.getmessagesbyid($rootScope.blog.Blogid);
                 }).error(function(data, status, headers, config) {
 
                     console.log("error");
                 });
 
             } else {
-                $scope.blog.body = facotryblogs.decodeuri($scope.blog.body);
+                console.log("v");
+                $rootScope.blog.body = facotryblogs.decodeuri($rootScope.blog.body);
+                factorymessages.getmessagesbyid($rootScope.blog.Blogid);
             }
 
         });
 
 
 angular.module('xiaoqiaoApp')
-        .controller('messageCtrl', function($scope) {
+        .controller('messageCtrl', function($scope, $rootScope, servicecallback, $http) {
 
+            var path = apiPath + "/message/getmessagebyid";
 
+            $scope.sendmessage = function(message)
+            {
+                $scope.message.Blogid = $rootScope.blog.Blogid;
 
+                var path = apiPath + "/message";
+                servicecallback.http(path, "POST", $scope.message, function() {
 
+                }, function() {
+                });
+            };
 
+//            $scope.$on('getmessages', function(event, id) {
+//                console.log("aaaaaaaaaaaaaaa");
+//                $http.post(path, {id: id}).success(
+//                        function(data, status, headers, config)
+//                        {
+//                            $scope.messages = data;
+//                        }
+//                ).error();
+//            });
         });

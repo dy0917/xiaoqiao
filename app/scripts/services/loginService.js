@@ -113,6 +113,7 @@ app.factory('facotryblogs', function($http, $rootScope) {
                 var object = blogs[i];
                 if (object.Blogid == id)
                 {
+
                     return object;
                     break;
                 }
@@ -121,6 +122,10 @@ app.factory('facotryblogs', function($http, $rootScope) {
         } else {
             return null;
         }
+    };
+    factory.getBlog = function()
+    {
+        return $rootScope.blog;
     };
 
 
@@ -145,6 +150,22 @@ app.factory('blogservice', function() {
             return  blog.title;
         }
 
+    };
+});
+
+
+app.factory('factorymessages', function($http, $rootScope) {
+
+    return {
+        getmessagesbyid: function(id) {
+            var path = apiPath + "/message/getmessagebyid";
+            $http.post(path, {id: id}).success(
+                    function(data, status, headers, config)
+                    {
+                        $rootScope.messages = data;
+                    }
+            ).error();
+        }
     };
 });
 
