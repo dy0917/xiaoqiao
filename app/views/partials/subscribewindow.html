@@ -1,0 +1,26 @@
+
+<div class="fade-bg" ng-click="toggleLogin()"></div>
+
+<div class="login-popup">
+
+
+    <div class="login-insert-part">
+
+        <h6><i class="fa fa-sign-in"></i>&nbsp;&nbsp;Subcribe</h6>
+        <form role="form" name="subcribeform">
+            <div class="form-group">
+                <!-- <p>Welcome : <span>{{user.mail}}</span></p> -->
+                <label for="exampleInputEmail1"><i class="fa fa-envelope"></i></label>
+                <input type="text" placeholder="Enter name" name="mail" class="form-control" ng-model="subcribe.email" required>
+            </div>
+
+            <input class="btn-shape btn1 center-position" type="submit" ng-click="subcribe(subcribe)" ng-disabled="subcribeform.mail.$invalid" value="Subcribe">
+        </form>
+    </div>
+
+
+</div>
+
+
+
+<!--</div>-->

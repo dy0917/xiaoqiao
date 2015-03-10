@@ -23,3 +23,9 @@ app.directive('messagedirective', function() {
         templateUrl: 'views/partials/messageboard.html'
     };
 });
+
+app.directive('subscribewindow', function() {
+    return{
+        templateUrl: 'views/partials/subscribewindow.html'
+    };
+});

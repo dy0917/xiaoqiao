@@ -163,6 +163,7 @@ app.factory('factorymessages', function($http, $rootScope) {
                     function(data, status, headers, config)
                     {
                         $rootScope.messages = data;
+                        
                     }
             ).error();
         }

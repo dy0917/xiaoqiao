@@ -25,11 +25,10 @@ angular.module('xiaoqiaoApp')
                     factorymessages.getmessagesbyid($rootScope.blog.Blogid);
                 }).error(function(data, status, headers, config) {
 
-                    console.log("error");
+
                 });
 
             } else {
-                console.log("v");
                 $rootScope.blog.body = facotryblogs.decodeuri($rootScope.blog.body);
                 factorymessages.getmessagesbyid($rootScope.blog.Blogid);
             }
@@ -39,27 +38,34 @@ angular.module('xiaoqiaoApp')
 
 angular.module('xiaoqiaoApp')
         .controller('messageCtrl', function($scope, $rootScope, servicecallback, $http) {
-
             var path = apiPath + "/message/getmessagebyid";
-
-            $scope.sendmessage = function(message)
+            $scope.sendmessage = function(event, message)
             {
+
+                var buttonString = "wait";
+                console.log(buttonString);
+                $scope.$emit("isloading", true);
                 $scope.message.Blogid = $rootScope.blog.Blogid;
-
                 var path = apiPath + "/message";
-                servicecallback.http(path, "POST", $scope.message, function() {
-
+                servicecallback.http(path, "POST", $scope.message, function(data) {
+                    $rootScope.messages.push(data);
+                    $scope.message.owner = "";
+                    $scope.message.body = "";
+                    $scope.$emit("isloading", false);
+                    var i = 5;
+                    var t = setInterval(function() {
+                        if (i != 0)
+                        {
+                            i--;
+                            event.target.value = buttonString + " " + i;
+                        }
+                        else {
+                            clearInterval();
+                        }
+                    }, 1000);
                 }, function() {
                 });
             };
 
-//            $scope.$on('getmessages', function(event, id) {
-//                console.log("aaaaaaaaaaaaaaa");
-//                $http.post(path, {id: id}).success(
-//                        function(data, status, headers, config)
-//                        {
-//                            $scope.messages = data;
-//                        }
-//                ).error();
-//            });
+
         });
