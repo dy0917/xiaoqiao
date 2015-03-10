@@ -331,6 +331,7 @@ aside{
     textarea{
         height: 200px;
         margin-bottom: 0;
+        border:1px solid #ddd;
     }
 
 }
@@ -357,8 +358,8 @@ article{
 
         ul{
             padding-left: 30px;
-font-size: 14px;
-font-weight: bold;
+            font-size: 14px;
+            font-weight: bold;
         }
     }
 
@@ -366,10 +367,10 @@ font-weight: bold;
 
 .demo-chapter{
     background-color: white;
-padding: 4% 8%;
-margin: 40px 30px 10px;
+    padding: 4% 8%;
+    margin: 40px 30px 10px;
 
-@include border-radius(5px);
+    @include border-radius(5px);
 }
 
 .control-btn-section{
@@ -742,15 +743,15 @@ h1, h2, h3, h4, h5, h6 {
 
 
 .spinner {
-width: 40px;
-height: 40px;
-position: absolute;
-margin: auto;
-left: 0;
-right: 0;
-z-index: 10000000;
-top: 50%;
-margin-top: -20px;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    z-index: 10000000;
+    top: 50%;
+    margin-top: -20px;
 }
 
 .double-bounce1, .double-bounce2 {
@@ -781,10 +782,10 @@ margin-top: -20px;
   0%, 100% { 
     transform: scale(0.0);
     -webkit-transform: scale(0.0);
-  } 50% { 
-    transform: scale(1.0);
-    -webkit-transform: scale(1.0);
-  }
+    } 50% { 
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
 }
 
 
