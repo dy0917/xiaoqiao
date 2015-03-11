@@ -247,6 +247,9 @@ aside{
 }
 
 
+
+
+
 .search-box{
     margin: 30px;
     position: relative;
@@ -341,6 +344,22 @@ aside{
 
 
 
+
+.blog-breadcrums{
+    float: left;
+    font-size: 14px;
+    margin: 40px 100px 40px 40px;
+    color: #aaa;
+}
+
+.blog-menu-btn{
+    cursor: pointer;
+
+    &:hover{color:#555;}
+}
+
+
+
 article{
 
     width: calc(100% - 320px);
@@ -375,6 +394,36 @@ article{
 
 .control-btn-section{
     margin: 40px 40px 20px;
+}
+
+
+.about-squirrel-theme{
+    background-color: $orange;
+    width: calc(100% - 280px);
+
+    img{
+position: relative;
+width: 373px;
+margin: auto;
+display: block;
+top:50%;
+margin-top: -80px
+    }
+}
+
+.asociation{
+@include clearfix;
+
+    ul{
+        padding:0;
+        list-style-type:none;
+
+        li{
+            float: left;
+            margin-right: 40px;
+            margin-bottom: 20px;
+        }
+    }
 }
 
 
@@ -460,6 +509,9 @@ article{
     span{font-size:12px;}
 
 }
+
+
+
 
 
 
@@ -625,7 +677,16 @@ h1, h2, h3, h4, h5, h6 {
   }
 
 
+.text-on-white{
+    color: #555;
 
+    a{
+        color:#555;
+        cursor:pointer;
+
+        &:hover{color:$orange}
+    }
+}
 
 
 

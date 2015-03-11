@@ -12,7 +12,7 @@
         <!-- endbuild -->
         <!-- build:css(.tmp) styles/main.css -->
 
-
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="styles/custom.css" />
         <link rel="stylesheet" href="styles/bjqs.css" />
 
@@ -47,8 +47,18 @@
                         <img src="images/logo.png"/>
                     </div></a>
 
+                    <div class="blog-breadcrums">
+
+                        <span>博客  </span>&nbsp;/&nbsp;
+                        <span class="blog-menu-btn">买房日记 <i class="fa fa-angle-down"></i> </span>&nbsp;/&nbsp;
+
+
+                    </div>
+
+
+
                 <div class="search-box">
-                    <input class="input1" type="text" placeholder="Search for article"></input>
+                    <input class="input1" type="text" placeholder="搜索文章"></input>
                     <i class="fa fa-search"></i>
                 </div>
 
@@ -58,7 +68,7 @@
 
                 <div class="right-col"  ng-if=" user == null">
                     <i class="fa fa-sign-in">&nbsp;&nbsp;&nbsp;</i>
-                    <span ng-click="toggleLogin()">Sign up as a dealer</span>
+                    <span ng-click="toggleLogin()">注册成为分销商</span>
                 </div>
                 <div class="right-col"  ng-if=" user != null">
                     <i class="fa fa-sign-in">&nbsp;&nbsp;&nbsp;</i>
@@ -71,19 +81,19 @@
                 <ul class="left-menu">
                     <a ng-href="#/about"><li>
                             <i class="fa fa-info-circle"></i>
-                            <span>ABOUT</span>
+                            <span>关于</span>
                         </li></a>
                     <a ng-href="#/blog"><li>
                             <i class="fa fa-paint-brush"></i>
-                            <span>BLOG</span>
+                            <span>博客</span>
                         </li></a>
                     <a ng-href="#/product"> <li>
                             <i class="fa fa-shopping-cart"></i>
-                            <span>PRODUCT</span>
+                            <span>产品</span>
                         </li></a>
                     <a ng-href="#/contact"> <li>
                             <i class="fa fa-phone"></i>
-                            <span>CONTACT</span>
+                            <span>联系方式</span>
                         </li></a>
 
                 </ul>
