@@ -12,6 +12,7 @@ angular.module('xiaoqiaoApp')
             $scope.user = null;
             $scope.display = false;
             $scope.isloading = false;
+            $scope.isSubscribewindow = false;
             $scope.login = function(user) {
                 var hash = CryptoJS.MD5(user.password);
                 user.password = hash.toString();
@@ -43,8 +44,12 @@ angular.module('xiaoqiaoApp')
             $scope.togglespinner = function() {
 //                $scope.display = !$scope.display;
             };
+            $scope.toggleSubcribewindow = function() {
+                $scope.isSubscribewindow = !$scope.isSubscribewindow;
+            };
             $scope.$on('isloading', function(event, bool) {
                 $scope.isloading = bool;
             });
+
 
         });

@@ -1,6 +1,6 @@
 <?php
 
-class MessageController extends Controller {
+class SubscribeController extends Controller {
 
     /**
      * Declares class-based actions.
@@ -14,18 +14,8 @@ class MessageController extends Controller {
      * when an action is not explicitly requested by users.
      */
     public function actionIndex() {
-
-        $models = Yii::app()->db->createCommand()
-                ->select('*')
-                ->from('message')
-                ->queryAll();
-        $tempArray = array();
-        foreach ($models as $model) {
-            array_push($tempArray, $model);
-        }
-        $json = json_encode($tempArray);
-
-        $this->sendResponse(200, $json);
+        error_log("asdfasdfasdfa");
+        echo "index";
     }
 
     public function actionRead() {
@@ -33,16 +23,18 @@ class MessageController extends Controller {
     }
 
     public function actionCreate() {
-
         $request = $this->getClientPost();
-        $model = new Message;
+        $model = new SubscribeEmail;
         $model->setAttributes($request);
+        $model->enable = 1;
         $model->createtime = new CDbExpression(' UTC_TIMESTAMP()');
+        $model->lastupdatetime = new CDbExpression('UTC_TIMESTAMP()');
 
         if ($model->validate()) {
             $model->save(false);
             $model->createtime = date("Y-m-d H:i:s");
             $arrjson = $model->attributes;
+            $arrjson['BlogStatus'] = $request['BlogStatus'];
             $json = json_encode($arrjson);
             echo $json;
         } else {
@@ -51,23 +43,20 @@ class MessageController extends Controller {
         }
     }
 
-    public function actionGetmessagebyid() {
+    public function actionUnsubscribe() {
 
         $request = $this->getClientPost();
+        $model = SubscribeEmail::model()->findByAttributes(array(
+            'email' => $request['email']
+        ));
 
-
-        $models = Yii::app()->db->createCommand()
-                ->select('*')
-                ->from('message')
-                ->where('id=:id', array(':id' => $request['id']))
-                ->queryAll();
-        $tempArray = array();
-        foreach ($models as $model) {
-            array_push($tempArray, $model);
+        if ($model) {
+            $model->enable = 0;
+            $model->save(false);
+            $this->sendResponse(200, json_encode($model));
+        } else {
+            $this->sendResponse(200, "email not found");
         }
-        $json = json_encode($tempArray);
-
-        $this->sendResponse(200, $json);
     }
 
     /**

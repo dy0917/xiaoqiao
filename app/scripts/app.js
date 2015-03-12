@@ -75,8 +75,10 @@ var app = angular
                     }).when('/distributor', {
                 templateUrl: 'views/distributor.html',
 //                controller: 'testCtrl'
+            }).when('/register', {
+                templateUrl: 'views/register.html',
+//                controller: 'testCtrl'
             })
-
                     .otherwise({
                         redirectTo: '/'
                     });
