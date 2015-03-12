@@ -22,7 +22,6 @@ angular.module('xiaoqiaoApp')
 
                     );
 
-
         });
 angular.module('xiaoqiaoApp')
         .controller('Subcribewindowcontroller', function($scope, servicecallback) {
@@ -35,14 +34,29 @@ angular.module('xiaoqiaoApp')
                 });
 
             },
-            $scope.unsubmit = function(subcribe) {
-                var path = apiPath + "/subscribe/unsubscribe";
-                servicecallback.http(path, "POST", subcribe, function() {
+                    $scope.unsubmit = function(subcribe) {
+                        var path = apiPath + "/subscribe/unsubscribe";
+                        servicecallback.http(path, "POST", subcribe, function() {
 
-                }, function() {
-                });
+                        }, function() {
+                        });
 
-            }
+                    }
 
+
+        });
+angular.module('xiaoqiaoApp')
+        .controller('registerCtrl', function($scope, checkoutservice, $rootScope, servicecallback) {
+
+
+
+
+
+            $scope.register = function(user)
+            {
+                path=
+               servicecallback
+
+            };
 
         });

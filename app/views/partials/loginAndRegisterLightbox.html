@@ -26,14 +26,14 @@
                 <input type="password" placeholder="请输入密码" name="password" id="exampleInputPassword1" class="form-control" ng-model="user.password" required>
             </div>
 
-<!--            <div class="remember-pw">
-                <div class="check-box"></div>
-                <span>Remember Passwords</span>
-            </div>-->
+            <!--            <div class="remember-pw">
+                            <div class="check-box"></div>
+                            <span>Remember Passwords</span>
+                        </div>-->
             <input class="btn-shape btn1 center-position" type="submit" ng-click="login(user)" ng-disabled="loginform.mail.$invalid ||
                         loginform.password.$invalid" value="Login">
         </form>
-        <p class="text-on-white"><a>注册成为分销商</a></p>
+        <p class="text-on-white"><a ng-click="toRegisterPage()">注册成为分销商</a></p>
     </div>
 
 

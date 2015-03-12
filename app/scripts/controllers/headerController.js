@@ -37,6 +37,11 @@ angular.module('xiaoqiaoApp')
                 $scope.sliders = result.data;
             });
 
+            $scope.toRegisterPage = function() {
+
+                $scope.toggleLogin();
+                $location.path("/register");
+            };
             $scope.toggleLogin = function() {
 
                 $scope.display = !$scope.display;

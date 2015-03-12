@@ -77,7 +77,7 @@ var app = angular
 //                controller: 'testCtrl'
             }).when('/register', {
                 templateUrl: 'views/register.html',
-//                controller: 'testCtrl'
+                controller: 'registerCtrl'
             })
                     .otherwise({
                         redirectTo: '/'
@@ -85,3 +85,4 @@ var app = angular
             //  redactorOptions.buttons = ['formatting', '|', 'bold', 'italic']; 
         });
 
+//app.constant
