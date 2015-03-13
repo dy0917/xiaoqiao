@@ -8,11 +8,13 @@
  * Controller of the xtripApp
  */
 angular.module('xiaoqiaoApp')
-        .controller('headerController', function($scope, loginService, $http, servicecallback, $rootScope, $location) {
+        .controller('headerController', function($scope, $http, servicecallback, $rootScope, $location) {
             $scope.user = null;
             $scope.display = false;
             $scope.isloading = false;
             $scope.isSubscribewindow = false;
+
+
             $scope.login = function(user) {
                 var hash = CryptoJS.MD5(user.password);
                 user.password = hash.toString();
@@ -26,7 +28,7 @@ angular.module('xiaoqiaoApp')
                         $location.path("/distributor");
                     }
                     else {
-//                        $rootScope.$broadcast("popuplogin", true);
+
                     }
                 }, function() {
                 });
@@ -54,6 +56,9 @@ angular.module('xiaoqiaoApp')
             };
             $scope.$on('isloading', function(event, bool) {
                 $scope.isloading = bool;
+            });
+            $scope.$on('routeupdate', function(event, route) {
+                $scope.currentroute = route;
             });
 
 

@@ -42,18 +42,25 @@
 
 
 
-            <header >
+            <header>
+
                 <a ng-href="#"><div class="home-btn">
                         <img src="images/logo.png"/>
                     </div></a>
 
-                    <div class="blog-breadcrums">
 
-                        <span>博客  </span>&nbsp;/&nbsp;
-                        <span class="blog-menu-btn">买房日记 <i class="fa fa-angle-down"></i> </span>&nbsp;/&nbsp;
+                <div class="blog-breadcrums" ng-switch on="currentroute">
+                    <div ng-switch-when="/blog">
+                        <div  ng-controller="BlogCtrl">
+                            <span>博客  </span>&nbsp;/&nbsp;
+                            <span class="blog-menu-btn">
+                                <select ng-options="blogtype as blogtype.value for blogtype in blogtypes" ng-model="selectItem" ng-change="test()">
 
-
+                                </select>
+                                <i class="fa fa-angle-down"></i> </span>&nbsp;/&nbsp;
+                        </div>
                     </div>
+                </div>
 
 
 

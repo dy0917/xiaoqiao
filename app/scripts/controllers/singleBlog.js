@@ -48,7 +48,7 @@ angular.module('xiaoqiaoApp')
                 $scope.message.Blogid = $rootScope.blog.Blogid;
                 var path = apiPath + "/message";
                 servicecallback.http(path, "POST", $scope.message, function(data) {
-                    $rootScope.messages.push(data);
+                    $scope.messages.push(data);
                     $scope.message.owner = "";
                     $scope.message.body = "";
                     $scope.$emit("isloading", false);
@@ -66,6 +66,8 @@ angular.module('xiaoqiaoApp')
                 }, function() {
                 });
             };
-
+            $scope.$on('setMessages', function(event, data) {
+                $scope.messages = data;
+            });
 
         });

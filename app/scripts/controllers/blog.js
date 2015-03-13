@@ -9,8 +9,9 @@
  */
 angular.module('xiaoqiaoApp')
         .controller('BlogCtrl', function($scope, $http, masonryService, facotryblogs, $rootScope) {
-
+//            routeservice.updateroute();
             $scope.blogs = [];
+            $scope.blogtypes = [{value: "test", name: "test"}, {value: "test1", name: "test1"}, {value: "test2", name: "test2"}];
             if ($rootScope.blogs == null) {
                 facotryblogs.getblogs().then(function(data) {
                     $rootScope.blogs = data;
@@ -22,10 +23,8 @@ angular.module('xiaoqiaoApp')
                 $scope.blogs = $rootScope.blogs;
                 masonryService.masonryinit(500);
             }
-
             $scope.getimage = function(blog)
             {
-
                 if (typeof blog.FeatureIamge === 'undefined' || blog.FeatureIamge === null)
                 {
                     return "defaultmissing.jpg";
@@ -33,9 +32,11 @@ angular.module('xiaoqiaoApp')
                 else {
                     return blog.FeatureIamge;
                 }
-
             };
-
+            $scope.test = function()
+            {
+                console.log("test");
+            };
         });
 
 

@@ -95,9 +95,6 @@ app.factory('facotryblogs', function($http, $rootScope) {
             return  blogs;
         });
     };
-    factory.method1 = function() {
-        console.log(blogs);
-    };
     factory.decodeuri = function(body) {
 
         return decodeURI(body);
@@ -154,7 +151,7 @@ app.factory('blogservice', function() {
 });
 
 
-app.factory('factorymessages', function($http, $rootScope) {
+app.factory('factorymessages', function($http, $rootScope, shareservice) {
 
     return {
         getmessagesbyid: function(id) {
@@ -162,8 +159,7 @@ app.factory('factorymessages', function($http, $rootScope) {
             $http.post(path, {id: id}).success(
                     function(data, status, headers, config)
                     {
-                        $rootScope.messages = data;
-                        
+                        shareservice.broadcastItem('setMessages', data);
                     }
             ).error();
         }
@@ -174,12 +170,6 @@ app.factory('checkoutservice', function() {
     return {
         redirectPost: function(post, location, args, target)
         {
-//            var form = '';
-//            $.each(args, function(key, value) {
-//                form += '<input type="hidden" name="' + key + '" value="' + value + '">';
-//            });
-//            $('<form action="' + location + '" method="POST">' + form + '</form>').appendTo('body').submit();
-
             var form = document.createElement("form");
             form.action = location;
             form.method = post;
@@ -197,4 +187,17 @@ app.factory('checkoutservice', function() {
             form.submit();
         }
     };
+
+
 });
+
+app.factory('shareservice', function($rootScope) {
+
+    return {
+        broadcastItem: function(event, value) {
+            $rootScope.$broadcast(event, value);
+        }
+    };
+
+});
+

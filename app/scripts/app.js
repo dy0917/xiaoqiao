@@ -83,6 +83,22 @@ var app = angular
                         redirectTo: '/'
                     });
             //  redactorOptions.buttons = ['formatting', '|', 'bold', 'italic']; 
-        });
+        }).run(function($rootScope, $location) {
+    $rootScope.$on('$routeChangeStart', function(event, next, current) {
+        $rootScope.$broadcast('routeupdate', $location.path());
+//        console.log("asdfasdfasdf");
+    });
+});
 
+//app.factory('routeservice', function($rootScope, $location) {
+//    return {
+//        updateroute: function() {
+//
+//            $rootScope.$broadcast('routeupdate', $location.path());
+//        }
+//
+//    };
+//
+//
+//});
 //app.constant

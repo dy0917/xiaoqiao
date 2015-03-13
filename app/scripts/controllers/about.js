@@ -10,9 +10,8 @@
 angular.module('xiaoqiaoApp')
         .controller('AboutCtrl', function($scope, $http, masonryService) {
 
+//            routeservice.updateroute();
             masonryService.masonryinit(50);
-
-
 
         });
 angular.module('xiaoqiaoApp')
@@ -41,21 +40,24 @@ angular.module('xiaoqiaoApp')
                         }, function() {
                         });
 
-                    }
-
-
+                    };
         });
 angular.module('xiaoqiaoApp')
-        .controller('registerCtrl', function($scope, checkoutservice, $rootScope, servicecallback) {
-
-
-
-
-
+        .controller('registerCtrl', function($scope, servicecallback) {
             $scope.register = function(user)
             {
-                path=
-               servicecallback
+                var hash = CryptoJS.MD5(user.Password);
+                user.Password = hash.toString();
+                var hash2 = CryptoJS.MD5(user.password2);
+                user.password2 = hash2.toString();
+                if ($scope.user.Password == $scope.user.password2) {
+                    var path = apiPath + "/user";
+                    servicecallback.http(path, "POST", user, function() {
+                    }, function() {
+                    });
+                } else {
+                    console.log("password not match");
+                }
 
             };
 
