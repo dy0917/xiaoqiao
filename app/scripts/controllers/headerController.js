@@ -35,9 +35,6 @@ angular.module('xiaoqiaoApp')
 
             };
 
-            $http.get(apiPath + "/slider/").then(function(result) {
-                $scope.sliders = result.data;
-            });
 
             $scope.toRegisterPage = function() {
 
