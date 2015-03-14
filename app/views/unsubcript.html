@@ -1,0 +1,33 @@
+
+
+
+<div class="fade-bg" ng-click="toggleSubcribewindow()"></div>
+
+<div class="login-popup"  ng-controller="Subcribewindowcontroller" style="height:auto">
+
+
+
+
+<div class="subscribe-insert-part">
+
+     <img src="../../images/logo2.png"/>
+
+    <h6><i class="fa fa-star"></i>&nbsp;&nbsp;关注我们</h6>
+    <form role="form" name="unsubcribeform">
+        <div class="form-group">
+
+            <label for="exampleInputEmail1"><i class="fa fa-envelope"></i></label>
+            <input type="email" placeholder="请输入邮箱地址" name="mail" class="form-control" ng-model="subcribe.email" required>
+            <div ng-if="subcribeform.mail.$invalid && !subcribe.email">请填写正确的邮箱地址</div>
+        </div>
+
+        <input class="btn-shape btn1 center-position" type="submit" ng-click="unsubmit(subcribe)" ng-disabled="unsubcribeform.mail.$invalid" value="取消关注">
+    </form>
+</div>
+
+</div>
+
+
+
+
+

@@ -79,6 +79,10 @@ var app = angular
                 templateUrl: 'views/register.html',
                 controller: 'registerCtrl'
             })
+            .when('/unsubcript', {
+                templateUrl: 'views/unsubcript.html',
+                // controller: 'registerCtrl'
+            })
                     .otherwise({
                         redirectTo: '/'
                     });

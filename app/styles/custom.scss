@@ -26,7 +26,8 @@ body{
     box-sizing: border-box;
     background-color:#eee;
 
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-family:"Microsoft YaHei",微软雅黑,"Microsoft JhengHei",华文细黑,STHeiti,MingLiu;
+    // font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
     font-weight: 300;
 
 }
@@ -35,8 +36,11 @@ input,textarea{
     box-shadow: none;
     border: none;
     font-size: 14px;
-    padding:0 8px;
+    padding: 0 8px 0 30px;
     resize: none;
+    width: 100%;
+    height: 40px;
+    &:focus{border:none}
 
     @include placeholder {
     //font-style:italic;
@@ -45,6 +49,11 @@ input,textarea{
 }
 }
 
+
+label{
+    position: absolute;
+    margin: 10px 0;
+}
 
 
 a{color:white; text-decoration:none;}
@@ -259,12 +268,21 @@ aside{
     width:350px;
     padding: 10px 0;
 
+    margin: 15px 30px;
+    position: relative;
+    display: block;
+    float: left;
+    border-bottom: 1px solid $line-color;
+    width: 350px;
+    padding: 10px 0;
+
     i{
         font-size: 14px;
-        float: right;
-        margin: 0 10px;
+        right: 0;
+        padding: 15px;
         color: #aaa;
-        cursor:pointer;
+        cursor: pointer;
+        position: absolute;
 
         &:hover{color:#555}
     }
@@ -361,12 +379,12 @@ aside{
 
 
 article{
-
+    @include clearfix;
     width: calc(100% - 320px);
     left: 0px;
     right: 280px;
-    margin: 20px 2% 0;
-    padding: 0 20px;
+    margin: 20px 0;
+    padding: 0 6%;
 
     font-size: 11px;
 
@@ -385,12 +403,84 @@ article{
 }
 
 .demo-chapter{
+    position:relative;
     background-color: white;
-    padding: 4% 8%;
+    padding: 4%;
     margin: 40px 30px 10px;
+    overflow: hidden;
 
     @include border-radius(5px);
+    @include clearfix;
 }
+
+
+.product-img{
+    width: 40%;
+    float: left;
+
+    img{width:100%;}
+
+}
+
+.product-info{
+    width: 55%;
+    float: right;
+
+    p{margin-bottom: 5px;}
+    h6{margin-bottom:5px;}
+}
+
+
+
+.price-ribbon{
+    position:absolute;
+    right: 0;
+
+    .ribbon{
+        width: 160px;
+        height: 280px;
+        position: absolute;
+        top: -150px;
+        right:-100px;
+
+
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+
+        background-color: lighten( $orange, 10% )
+    }
+
+
+    p{
+        z-index: 10;
+        color: white;
+        position: absolute;
+        top: -10px;
+        right: 20px;
+    }
+}
+
+
+
+
+
+
+
+.purchure-btn-section{
+    margin-top:30px;
+    color: #555;
+
+    p{
+        margin-bottom: 10px;
+    }
+}
+
+
+
+
 
 .control-btn-section{
     margin: 40px 40px 20px;
@@ -402,17 +492,17 @@ article{
     width: calc(100% - 280px);
 
     img{
-position: relative;
-width: 373px;
-margin: auto;
-display: block;
-top:50%;
-margin-top: -80px
+        position: relative;
+        width: 373px;
+        margin: auto;
+        display: block;
+        top:50%;
+        margin-top: -80px
     }
 }
 
 .asociation{
-@include clearfix;
+    @include clearfix;
 
     ul{
         padding:0;
@@ -518,6 +608,111 @@ margin-top: -80px
 
 
 
+// =======================commet section===================
+
+.comment-section{
+    width: calc(100% - 320px);
+    left: 0px;
+    right: 280px;
+    margin: 20px 0;
+    padding: 0 3%;
+}
+
+.each-comment{margin:20px 0;}
+
+
+.leave-comment-box{
+    background-color:white;
+    padding: 10px;
+    @include border-radius(5px);
+    @include clearfix;
+
+    position: relative;
+    overflow: hidden;
+}
+
+
+.avatar{
+    width: 40px;
+    height: 40px;
+    background-color:#ddd;
+    margin-right: 20px;
+    overflow: hidden;
+
+    @include border-radius(50%);
+    @include box-shadow(0, 0, 10px,0, rgba(0,0,0,.4));
+    display: inline-block;
+    vertical-align: top;
+
+    text-align: center;
+    line-height: 38px;
+
+    img{width:100%;}
+}
+
+
+.comment-dec{
+    font-size: 14px;
+    display: inline-block;
+}
+
+
+
+// ===================profile page============================
+
+
+.profile-basic{
+    position: absolute;
+    top: 170px;
+    min-width: 800px;
+    width: 80%;
+    margin: auto;
+    left: 0;
+    right:0;
+}
+
+.profile-page-avatar{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.profile-board{
+    width: calc(100% - 230px);
+    height: 230px;
+    background-color:white;
+    display: inline-block;
+    vertical-align: middle;
+
+    @include border-radius(5px);
+    @include box-shadow(0, 0, 10px,0, rgba(0,0,0,.4));
+
+}
+
+
+.item-box-title{
+    padding: 20px; 
+    font-weight: bold; 
+    background-color: #F06421; 
+    color: white;
+
+    .amount{
+        float: right;
+    }
+}
+
+.each-record{
+    height: 50px;
+    padding: 15px 10px;
+    span{margin:0 5px;}
+}
+
+.w4{
+    .each-record{
+        &:nth-child(odd){background-color:white}
+        &:nth-child(even) {background-color:#f4f4ff}
+
+    }
+}
 
 
 
@@ -565,6 +760,11 @@ margin-top: -80px
     vertical-align:top;
 }
 
+.w4{
+    width: 45%;
+    display: inline-block;
+    vertical-align:top;
+}
 
 .m-item-dec{
     font-size: 14px;
@@ -622,6 +822,9 @@ margin-top: -80px
     cursor: pointer;
 
     @include border-radius(3px);
+    @include transition(all 0.3s ease);
+
+    &:hover{opacity:.6;}
 }
 
 
@@ -636,6 +839,27 @@ margin-top: -80px
     width: 100px;
     display: block;
 }
+
+
+.lg-btn{
+    width: 200px;
+    height: 60px;
+    line-height: 58px;
+    font-size: 20px;
+}
+
+.btn-on-right{
+    width: 100px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: white;
+    padding: 0;
+
+    &:hover{opacity:.6;}
+}
+
 
 
 // =======================================btn-end========================================
@@ -676,14 +900,15 @@ h1, h2, h3, h4, h5, h6 {
 
   p {
       margin-top: 0; 
-      font-family: 'Lato', 'sans-serif';
+      font-family:"Microsoft YaHei",微软雅黑,"Microsoft JhengHei",华文细黑,STHeiti,MingLiu;
+      // font-family: 'Lato', 'sans-serif';
       font-weight: 300;
       font-size: 0.875rem;
       margin-bottom: 20px;
   }
 
 
-.text-on-white{
+  .text-on-white{
     color: #555;
 
     a{
@@ -698,7 +923,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
-  /*---------------------------------------FONT END-------------------------------------*/
+/*---------------------------------------FONT END-------------------------------------*/
 
 
 
