@@ -862,6 +862,33 @@ article{
 
 
 
+.sliderarrow{
+    width: 25px !important;
+    @include transition(all 0.3s ease);
+
+
+}
+
+
+
+.bjqs-controls{
+    .bjqs-next{
+        a{
+            @include transition(all 0.3s ease);
+            &:hover{right:320px}
+        }
+    }
+
+.bjqs-prev{
+        a{
+            @include transition(all 0.3s ease);
+            &:hover{left:40px}
+        }
+    }
+
+}
+
+
 // =======================================btn-end========================================
 
 
