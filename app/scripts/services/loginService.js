@@ -74,7 +74,6 @@ app.service('servicecallback', function($http, $rootScope) {
                     afterfunction();
                 }
             });
-            ;
         },
         test: function()
         {
@@ -100,8 +99,6 @@ app.factory('facotryblogs', function($http, $rootScope) {
         return decodeURI(body);
     };
     factory.getobjectbyid = function(id) {
-
-
         if ($rootScope.blogs)
         {
             var blogs = $rootScope.blogs;
@@ -110,7 +107,6 @@ app.factory('facotryblogs', function($http, $rootScope) {
                 var object = blogs[i];
                 if (object.Blogid == id)
                 {
-
                     return object;
                     break;
                 }

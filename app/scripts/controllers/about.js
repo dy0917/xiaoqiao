@@ -23,21 +23,33 @@ angular.module('xiaoqiaoApp')
 
         });
 angular.module('xiaoqiaoApp')
-        .controller('Subcribewindowcontroller', function($scope, servicecallback) {
-
+        .controller('Subcribewindowcontroller', function($scope, $http, $rootScope, $location) {
+            $scope.isSubscribewindow = false;
             $scope.submit = function(subcribe) {
+                $rootScope.$broadcast('isloading', true);
                 var path = apiPath + "/subscribe";
-                servicecallback.http(path, "POST", subcribe, function() {
+                return $http.post(path, subcribe).success(function(data) {
 
-                }, function() {
+                    $rootScope.$broadcast('isloading', false);
+                    $rootScope.$broadcast("toggleSubcribewindow", false);
+                    if (data == "register") {
+                        $rootScope.$broadcast("showmessage", {title: "message", body: "Thank you for subcribe us"}
+                        );
+
+                    } else {
+                        $rootScope.$broadcast("showmessage", {title: "message", body: "You have already register with us, and we have enable your registeration."}
+                        );
+                    }
                 });
-
             },
                     $scope.unsubmit = function(subcribe) {
+                        $rootScope.$broadcast('isloading', true);
                         var path = apiPath + "/subscribe/unsubscribe";
-                        servicecallback.http(path, "POST", subcribe, function() {
-
-                        }, function() {
+                        return $http.post(path, subcribe).success(function() {
+                            $rootScope.$broadcast('isloading', false);
+                            $rootScope.$broadcast("showmessage", {title: "message", body: "thank you for unsubcribe us"}
+                            );
+                            $location.path("/");
                         });
 
                     };

@@ -29,7 +29,7 @@ class MessageController extends Controller {
     }
 
     public function actionRead() {
-        echo "readddddd";
+        
     }
 
     public function actionCreate() {

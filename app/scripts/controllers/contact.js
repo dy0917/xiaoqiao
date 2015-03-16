@@ -8,10 +8,15 @@
  * Controller of the xtripApp
  */
 angular.module('xiaoqiaoApp')
-        .controller('ContactCtrl', function($scope, $http, servicecallback) {
+        .controller('ContactCtrl', function($scope, $http, servicecallback, $rootScope) {
 
             $scope.sendmail = function(mail) {
                 var path = apiPath + "/email/send";
-                servicecallback.http(path, "POST", mail, '', '', '');
+
+                return $http.post(path, mail).success(function() {
+                    $rootScope.$broadcast("showmessage", {title: "message", body: "asdfasdfa"}
+                    );
+
+                });
             };
         });

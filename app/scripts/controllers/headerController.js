@@ -16,6 +16,7 @@ angular.module('xiaoqiaoApp')
 
 
             $scope.login = function(user) {
+                $scope.message = "";
                 var hash = CryptoJS.MD5(user.password);
                 user.password = hash.toString();
                 var path = apiPath + "/site/login";
@@ -28,13 +29,11 @@ angular.module('xiaoqiaoApp')
                         $location.path("/distributor");
                     }
                     else {
-
+                        $scope.message = "User name or Password not correct";
                     }
                 }, function() {
                 });
-
             };
-
 
             $scope.toRegisterPage = function() {
 
@@ -56,6 +55,9 @@ angular.module('xiaoqiaoApp')
             });
             $scope.$on('routeupdate', function(event, route) {
                 $scope.currentroute = route;
+            });
+            $scope.$on('toggleSubcribewindow', function(event, bool) {
+                $scope.isSubscribewindow = bool;
             });
 
 

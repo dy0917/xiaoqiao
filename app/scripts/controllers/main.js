@@ -44,3 +44,16 @@ angular.module('xiaoqiaoApp')
                 console.log(args);
             });
         });
+angular.module('xiaoqiaoApp')
+        .controller('asiderCtrl', function($scope, $timeout) {
+            $scope.doesMessageappear = false;
+
+            $scope.$on("showmessage", function(event, data) {
+                $scope.doesMessageappear = true;
+                $scope.message = data;
+                $timeout(function() {
+                    $scope.doesMessageappear = false;
+                    $scope.message = {};
+                }, 5000);
+            });
+        });

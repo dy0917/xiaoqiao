@@ -43,20 +43,23 @@
 
         <div class="item contact-w3">
             <form name="emailform" novalidate>
-               <!--  <div class="email-pattern"></div> -->
+                <!--  <div class="email-pattern"></div> -->
 
-               <div class="item-box-title">SEND US AN ENQUIRY.</div>
+                <div class="item-box-title">SEND US AN ENQUIRY.</div>
                 <div class="m-item-dec-wrapper" >
                     <div class="send-email-wrapper">
                         <input class="input1" type="email" name="email" placeholder="Your Name (required)" ng-model="mail.email"required></input>
                         <input class="input1" type="text" name="title" placeholder="Email (valid email required)" ng-model="mail.title" required></input>
-                        <input class="input1" type="text" name="title" placeholder="Phone Number" ng-model="mail.title" required></input>
+                        <input class="input1" type="text" name="title" placeholder="Phone Number" ng-model="mail.mobile"></input>
                         <textarea class="input1" type="text" ng-model="mail.content" placeholder="想对小乔说..."></textarea>
                     </div>
 
                     <input class="btn-shape btn1 center-position" 
-                           type="submit" ng-disabled="emailform.email.$invalid||emailform.title.$invalid"
-                           ng-click="sendmail(mail)" value="Send">
+                           type="submit" ng-disabled="emailform.email.$invalid || emailform.title.$invalid"
+
+
+                           click-and-disable="sendmail(mail)"
+                           value="Send">
                     <!--//                    <div class="btn-shape btn1 center-position" ng-click="sendmail()"><i class="fa fa-paper-plane"></i>&nbsp;&nbsp;Send</div>-->
 
                 </div>

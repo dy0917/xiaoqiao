@@ -1,17 +1,14 @@
-<aside>
+<aside ng-controller="asiderCtrl">
 
 
 
-    <dialog>
+    <dialog style="display:block" ng-show="doesMessageappear">
 
-        <h6>title</h6>
-        <p >description</p>
+        <h6>{{message.title}}</h6>
+        <p >{{message.body}}</p>
 
 
     </dialog>
-
-
-
 
 
 

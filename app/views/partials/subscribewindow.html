@@ -19,7 +19,7 @@
             <div ng-if="subcribeform.mail.$invalid && !subcribe.email">请填写正确的邮箱地址</div>
         </div>
 
-        <input class="btn-shape btn1 center-position" type="submit" ng-click="unsubmit(subcribe)" ng-disabled="unsubcribeform.mail.$invalid" value="取消关注">
+        <input class="btn-shape btn1 center-position" type="submit"  click-and-disable="submit(subcribe)" ng-disabled="unsubcribeform.mail.$invalid" value="关注我们">
     </form>
 </div>
 

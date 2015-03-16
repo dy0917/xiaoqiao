@@ -29,3 +29,24 @@ app.directive('subscribewindow', function() {
         templateUrl: 'views/partials/subscribewindow.html'
     };
 });
+
+app.directive('clickAndDisable', function($timeout) {
+    return {
+        scope: {
+            clickAndDisable: '&'
+        },
+        link: function(scope, iElement, iAttrs) {
+            iElement.bind('click', function() {
+                iElement.prop('disabled', true);
+
+                scope.clickAndDisable().finally(function() {
+                    $timeout(function() {
+//                        iElement.css("background-color", "yellow");
+                        iElement.prop('disabled', false);
+                    }, 5000);
+
+                });
+            });
+        }
+    };
+});

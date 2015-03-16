@@ -160,4 +160,14 @@ class Controller extends CController {
         return $strtemp;
     }
 
+    public function sendEmail($from, $to, $title, $body) {
+
+
+        $subject = $title;
+        $headers = "From:" . $from;
+//        $headers .= "MIME-Version: 1.0\r\n";
+//        $headers .= "Content-Type: text/html;";
+        mail($to, $subject, $body, $headers);
+    }
+
 }

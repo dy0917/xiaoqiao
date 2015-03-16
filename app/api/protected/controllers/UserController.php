@@ -6,7 +6,18 @@ class UserController extends Controller {
     const JSON_RESPONSE_ROOT_PLURAL = 'users';
 
     public function actionIndex() {
-        $this->render('index');
+
+        $models = Yii::app()->db->createCommand()
+                ->select('*')
+                ->from('user')
+                ->queryAll();
+        $tempArray = array();
+        foreach ($models as $model) {
+            array_push($tempArray, $model);
+        }
+        $json = json_encode($tempArray);
+
+        $this->sendResponse(200, $json);
     }
 
     public function actionRead() {
