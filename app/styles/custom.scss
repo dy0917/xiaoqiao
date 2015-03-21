@@ -4,9 +4,9 @@
 
 
 $orange: #F06421;
-$darkblue: #121920;
+// $darkblue: #121920;
 $line-color:#ddd;
-
+$darkblue: #21456e;
 
 
 
@@ -155,7 +155,7 @@ aside{
     float: left;
 
 
-    img{width:60px; margin:33px 19px;}
+    img{width:60px; margin:26px 19px;}
 }
 
 
@@ -375,6 +375,31 @@ aside{
 
     &:hover{color:#555;}
 }
+
+
+
+.article-categories{
+    height: 55px;
+    margin: 30px 0;
+    width: calc(100% - 280px);
+    right: 280px;
+    text-align: center;
+
+
+    li{
+        padding:10px 30px;
+        margin: 0 5px;
+        display: inline-block;
+        cursor: pointer;
+        background-color:white;
+        @include border-radius(5px);
+        @include transition(all 0.3s ease);
+
+        &:hover{background-color:$orange;color:white}
+
+    }
+}
+
 
 
 
@@ -640,7 +665,6 @@ article{
     overflow: hidden;
 
     @include border-radius(50%);
-    @include box-shadow(0, 0, 10px,0, rgba(0,0,0,.4));
     display: inline-block;
     vertical-align: top;
 
@@ -841,6 +865,17 @@ article{
 }
 
 
+
+.btn-disable{
+    background-color: transparent!important;
+    border: 1px solid #ddd!important;
+    color: #ddd!important;
+}
+
+
+
+
+
 .lg-btn{
     width: 200px;
     height: 60px;
@@ -879,7 +914,7 @@ article{
         }
     }
 
-.bjqs-prev{
+    .bjqs-prev{
         a{
             @include transition(all 0.3s ease);
             &:hover{left:40px}
@@ -887,6 +922,79 @@ article{
     }
 
 }
+
+
+
+
+// exit btn 
+
+.cd-close-menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-color: $orange;
+  /* image replacement */
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}
+
+
+.cd-close-menu::before, .cd-close-menu::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 18px;
+  left: 10px;
+  width: 20px;
+  height: 1px;
+  background-color: #FFF;
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+
+
+.cd-close-menu::before {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.cd-close-menu::after {
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+.cd-close-menu:hover::before {
+  -webkit-transform: rotate(225deg);
+  -moz-transform: rotate(225deg);
+  -ms-transform: rotate(225deg);
+  -o-transform: rotate(225deg);
+  transform: rotate(225deg);
+}
+.cd-close-menu:hover::after {
+  -webkit-transform: rotate(315deg);
+  -moz-transform: rotate(315deg);
+  -ms-transform: rotate(315deg);
+  -o-transform: rotate(315deg);
+  transform: rotate(315deg);
+}
+
+
+
+
+
+
 
 
 // =======================================btn-end========================================

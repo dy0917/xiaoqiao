@@ -7,9 +7,28 @@
     </div>
 
 
+
+    <div class="article-categories">
+
+        <ul>
+            <li>全部</li>
+            <li>买房日记</li>
+            <li>投资案例</li>
+            <li>技巧分享</li>
+        </ul>
+
+
+    </div>
+
+
+
+
     <!-- masonry======================= -->
 
     <div id="container">
+
+
+
 <!--        <div ng-repeat="blog in testblogs">
 
 
@@ -31,19 +50,19 @@
             <div class="item">
                 <a href="#/blog/{{blog.Blogid}}"> 
                     <img  ng-src="{{getimage(blog)}}"></a>
-                <div class="m-item-dec-wrapper">
-                    <div class="m-item-dec">
-                        <div class="item-title">{{blog.title}}</div>
-                        <div class="item-date">{{blog.createTime}}</div>
+                    <div class="m-item-dec-wrapper">
+                        <div class="m-item-dec">
+                            <div class="item-title">{{blog.title}}</div>
+                            <div class="item-date">{{blog.createTime}}</div>
+                        </div>
+                        <div class="like"><i class="fa fa-heart-o">&nbsp;</i>{{blog.views}}</div>
                     </div>
-                    <div class="like"><i class="fa fa-heart-o">&nbsp;</i>{{blog.views}}</div>
                 </div>
+
             </div>
-
         </div>
-    </div>
 
-    <div aside></div>
+        <div aside></div>
 
 
-</main>
+    </main>
