@@ -7,14 +7,14 @@
  * Controller of the xtripApp
  */
 angular.module('xiaoqiaoApp')
-        .controller('MainCtrl', function($scope, masonryService, servicecallback) {
+        .controller('MainCtrl', function ($scope, masonryService, servicecallback) {
 
             masonryService.masonryinit(50);
-            $scope.getsliders = function() {
+            $scope.getsliders = function () {
                 var path = apiPath + "/slider/";
-                servicecallback.http(path, "GET", null, function(data) {
+                servicecallback.http(path, "GET", null, function (data) {
                     $scope.sliders = data;
-                    $scope.sliders.forEach(function(slider)
+                    $scope.sliders.forEach(function (slider)
                     {
                         console.log(slider.imagelUrl);
                         var li = '<li><a ng-href="' + slider.linkto + '"><img src="' + slider.imagelUrl + '" title=' + slider.title + '"></a></li>';
@@ -25,33 +25,47 @@ angular.module('xiaoqiaoApp')
                         width: 1600,
                         responsive: true
                     });
-                }, function() {
+                }, function () {
                 });
             };
             if (!$scope.sliders) {
                 $scope.getsliders();
             }
-            $scope.displayLogin = function() {
+            $scope.displayLogin = function () {
                 //	loginService.login(data,$scope); //call login service
             };
-            $scope.login = function(user) {
+            $scope.login = function (user) {
                 console.log("login");
                 //	loginService.login(data,$scope); //call login service
             };
-            $scope.$on("myEvent", function(event, args) {
+            $scope.$on("myEvent", function (event, args) {
 
                 console.log(event);
                 console.log(args);
             });
         });
+//angular.module('xiaoqiaoApp')
+//        .controller('asiderCtrl', function ($scope, $timeout) {
+//            $scope.doesMessageappear = false;
+//
+//            $scope.$on("showmessage", function (event, data) {
+//                $scope.doesMessageappear = true;
+//                $scope.message = data;
+//                $timeout(function () {
+//                    $scope.doesMessageappear = false;
+//                    $scope.message = {};
+//                }, 5000);
+//            });
+//        });
+
 angular.module('xiaoqiaoApp')
-        .controller('asiderCtrl', function($scope, $timeout) {
+        .controller('feedbackCtrl', function ($scope, $timeout) {
             $scope.doesMessageappear = false;
 
-            $scope.$on("showmessage", function(event, data) {
+            $scope.$on("showmessage", function (event, data) {
                 $scope.doesMessageappear = true;
                 $scope.message = data;
-                $timeout(function() {
+                $timeout(function () {
                     $scope.doesMessageappear = false;
                     $scope.message = {};
                 }, 5000);

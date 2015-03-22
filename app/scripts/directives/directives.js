@@ -6,41 +6,47 @@
 
 
 'use strict';
-app.directive('aside', function() {
+app.directive('aside', function () {
     return{
         templateUrl: 'views/partials/aside.html'
     };
 });
 
-app.directive('loginandregisterdirective', function() {
+app.directive('loginandregisterdirective', function () {
     return{
         templateUrl: 'views/partials/loginAndRegisterLightbox.html'
     };
 });
 
-app.directive('messagedirective', function() {
+app.directive('messagedirective', function () {
     return{
         templateUrl: 'views/partials/messageboard.html'
     };
 });
 
-app.directive('subscribewindow', function() {
+app.directive('subscribewindow', function () {
     return{
         templateUrl: 'views/partials/subscribewindow.html'
     };
 });
 
-app.directive('clickAndDisable', function($timeout) {
+app.directive('feedbackboard', function () {
+    return{
+        templateUrl: 'views/partials/feedbackboard.html'
+    };
+});
+
+app.directive('clickAndDisable', function ($timeout) {
     return {
         scope: {
             clickAndDisable: '&'
         },
-        link: function(scope, iElement, iAttrs) {
-            iElement.bind('click', function() {
+        link: function (scope, iElement, iAttrs) {
+            iElement.bind('click', function () {
                 iElement.prop('disabled', true);
 
-                scope.clickAndDisable().finally(function() {
-                    $timeout(function() {
+                scope.clickAndDisable().finally(function () {
+                    $timeout(function () {
 //                        iElement.css("background-color", "yellow");
                         iElement.prop('disabled', false);
                     }, 5000);
