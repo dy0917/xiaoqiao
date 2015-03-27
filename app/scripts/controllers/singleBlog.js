@@ -8,7 +8,7 @@
  * Controller of the xtripApp
  */
 angular.module('xiaoqiaoApp')
-        .controller('singleBlogCtrl', function($scope, $http, $routeParams, facotryblogs, $rootScope, factorymessages) {
+        .controller('singleBlogCtrl', function ($scope, $http, $routeParams, facotryblogs, $rootScope, factorymessages, encodeservice) {
 
             var currentId = $routeParams.blogid;
             $rootScope.blog = facotryblogs.getobjectbyid(currentId);
@@ -19,17 +19,17 @@ angular.module('xiaoqiaoApp')
                     url: apiPath + "/blog/" + $routeParams.blogid,
                     method: "get",
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).success(function(data, status, headers, config) {
+                }).success(function (data, status, headers, config) {
                     $rootScope.blog = data.blog;
-                    $rootScope.blog.body = facotryblogs.decodeuri($rootScope.blog.body);
+                    $rootScope.blog.body = encodeservice.htmlDecode($rootScope.blog.body);
                     factorymessages.getmessagesbyid($rootScope.blog.Blogid);
-                }).error(function(data, status, headers, config) {
+                }).error(function (data, status, headers, config) {
 
 
                 });
 
             } else {
-                $rootScope.blog.body = facotryblogs.decodeuri($rootScope.blog.body);
+                $rootScope.blog.body = encodeservice.htmlDecode($rootScope.blog.body);
                 factorymessages.getmessagesbyid($rootScope.blog.Blogid);
             }
 
@@ -37,9 +37,9 @@ angular.module('xiaoqiaoApp')
 
 
 angular.module('xiaoqiaoApp')
-        .controller('messageCtrl', function($scope, $rootScope, servicecallback, $http) {
+        .controller('messageCtrl', function ($scope, $rootScope, servicecallback, $http) {
             var path = apiPath + "/message/getmessagebyid";
-            $scope.sendmessage = function(event, message)
+            $scope.sendmessage = function (event, message)
             {
 
                 var buttonString = "wait";
@@ -47,13 +47,13 @@ angular.module('xiaoqiaoApp')
                 $scope.$emit("isloading", true);
                 $scope.message.Blogid = $rootScope.blog.Blogid;
                 var path = apiPath + "/message";
-                servicecallback.http(path, "POST", $scope.message, function(data) {
+                servicecallback.http(path, "POST", $scope.message, function (data) {
                     $scope.messages.push(data);
                     $scope.message.owner = "";
                     $scope.message.body = "";
                     $scope.$emit("isloading", false);
                     var i = 5;
-                    var t = setInterval(function() {
+                    var t = setInterval(function () {
                         if (i != 0)
                         {
                             i--;
@@ -63,10 +63,10 @@ angular.module('xiaoqiaoApp')
                             clearInterval();
                         }
                     }, 1000);
-                }, function() {
+                }, function () {
                 });
             };
-            $scope.$on('setMessages', function(event, data) {
+            $scope.$on('setMessages', function (event, data) {
                 $scope.messages = data;
             });
 
