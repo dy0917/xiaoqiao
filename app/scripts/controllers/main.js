@@ -16,8 +16,7 @@ angular.module('xiaoqiaoApp')
                     $scope.sliders = data;
                     $scope.sliders.forEach(function (slider)
                     {
-                        console.log(slider.imagelUrl);
-                        var li = '<li><a ng-href="' + slider.linkto + '"><img src="' + slider.imagelUrl + '" title=' + slider.title + '"></a></li>';
+                        var li = '<li><a href="' + slider.linkto + '"><img src="' + slider.imagelUrl + '" title=' + slider.title + '"></a></li>';
                         $('#mainslider').append(li);
                     })
                     $('#banner-fade').bjqs({

@@ -511,3 +511,45 @@ Stack trace:
 REQUEST_URI=/users
 HTTP_REFERER=http://localhost:9000/
 ---
+2015/03/22 21:42:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "read".' in /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CController.php:483
+Stack trace:
+#0 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CController.php(270): CController->missingAction('read')
+#1 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CWebApplication.php(282): CController->run('read')
+#2 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CWebApplication.php(141): CWebApplication->runController('site/read')
+#3 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /home/kingsley/NetBeansProjects/xiaoqiao/app/api/index.php(16): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/contact
+HTTP_REFERER=http://local.test.api.xiaoqiaonz.com/
+---
+2015/03/22 21:43:24 [error] [exception.CException] exception 'CException' with message 'CAssetManager.basePath "/home/kingsley/NetBeansProjects/xiaoqiao/app/api/assets" is invalid. Please make sure the directory exists and is writable by the Web server process.' in /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CAssetManager.php:138
+Stack trace:
+#0 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CAssetManager.php(123): CAssetManager->setBasePath('/home/kingsley/...')
+#1 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CAssetManager.php(217): CAssetManager->getBasePath()
+#2 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/gii/GiiModule.php(142): CAssetManager->publish('/home/kingsley/...')
+#3 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/base/CComponent.php(111): GiiModule->getAssetsUrl()
+#4 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/base/CModule.php(105): CComponent->__get('assetsUrl')
+#5 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/gii/views/layouts/main.php(5): CModule->__get('assetsUrl')
+#6 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CBaseController.php(126): require('/home/kingsley/...')
+#7 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/kingsley/...', Array, true)
+#8 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/widgets/CContentDecorator.php(76): CBaseController->renderFile('/home/kingsley/...', Array, true)
+#9 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate('<div class="con...')
+#10 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput('<div class="con...')
+#11 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CBaseController.php(206): COutputProcessor->run()
+#12 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CBaseController.php(300): CBaseController->endWidget('CContentDecorat...')
+#13 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/gii/views/layouts/column1.php(7): CBaseController->endContent()
+#14 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CBaseController.php(126): require('/home/kingsley/...')
+#15 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/kingsley/...', Array, true)
+#16 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CController.php(784): CBaseController->renderFile('/home/kingsley/...', Array, true)
+#17 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/gii/controllers/DefaultController.php(47): CController->render('login', Array)
+#18 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/actions/CInlineAction.php(49): DefaultController->actionLogin()
+#19 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#21 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#22 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CWebApplication.php(282): CController->run('login')
+#23 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CWebApplication.php(141): CWebApplication->runController('gii/default/log...')
+#24 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#25 /home/kingsley/NetBeansProjects/xiaoqiao/app/api/index.php(14): CApplication->run()
+#26 {main}
+REQUEST_URI=/gii/default/login
+---

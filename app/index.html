@@ -49,21 +49,6 @@
                     </div></a>
 
 
-                <div class="blog-breadcrums" ng-switch on="currentroute">
-                    <div ng-switch-when="/blog">
-                        <div  ng-controller="BlogCtrl">
-                            <span>博客  </span>&nbsp;/&nbsp;
-                            <span class="blog-menu-btn">
-                                <select ng-options="blogtype as blogtype.value for blogtype in blogtypes" ng-model="selectItem" ng-change="test()">
-
-                                </select>
-                                <i class="fa fa-angle-down"></i> </span>&nbsp;/&nbsp;
-                        </div>
-                    </div>
-                </div>
-
-
-
                 <div class="search-box">
                     <input class="input1" type="text" placeholder="搜索文章"></input>
                     <i class="fa fa-search"></i>

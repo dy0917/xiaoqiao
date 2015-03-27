@@ -6,24 +6,24 @@
 
 
 
-<div class="subscribe-insert-part">
+    <div class="subscribe-insert-part">
 
-   <a href="#0" class="cd-close-menu">Close<span></span></a>
+        <a class="cd-close-menu" ng-click="toggleSubcribewindow()">Close<span></span></a>
 
-    <img src="../../images/logo2.png"/>
+        <img src="../../images/logo2.png"/>
 
-    <h6><i class="fa fa-star"></i>&nbsp;&nbsp;关注我们</h6>
-    <form role="form" name="unsubcribeform">
-        <div class="form-group">
+        <h6><i class="fa fa-star"></i>&nbsp;&nbsp;关注我们</h6>
+        <form role="form" name="unsubcribeform">
+            <div class="form-group">
 
-            <label for="exampleInputEmail1"><i class="fa fa-envelope"></i></label>
-            <input type="email" placeholder="请输入邮箱地址" name="mail" class="form-control" ng-model="subcribe.email" required>
-            <div ng-if="subcribeform.mail.$invalid && !subcribe.email">请填写正确的邮箱地址</div>
-        </div>
+                <label for="exampleInputEmail1"><i class="fa fa-envelope"></i></label>
+                <input type="email" placeholder="请输入邮箱地址" name="mail" class="form-control" ng-model="subcribe.email" required>
+                <div ng-if="subcribeform.mail.$invalid && !subcribe.email">请填写正确的邮箱地址</div>
+            </div>
 
-        <input class="btn-shape btn1 center-position" type="submit"  click-and-disable="submit(subcribe)" ng-disabled="unsubcribeform.mail.$invalid" value="关注我们">
-    </form>
-</div>
+            <input class="btn-shape btn1 center-position" type="submit"  click-and-disable="submit(subcribe)" ng-disabled="unsubcribeform.mail.$invalid" value="关注我们">
+        </form>
+    </div>
 
 </div>
 

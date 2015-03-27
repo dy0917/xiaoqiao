@@ -34,19 +34,16 @@ class SubscribeController extends Controller {
 
     public function actionCreate() {
         $request = $this->getClientPost();
-
-
         $model = SubscribeEmail::model()->findByAttributes(array(
             'email' => $request['email']
         ));
 
-
         if ($model) {
             $model->enable = 1;
             $model->save(false);
-            $this->sendResponse(200, "registered");
-            $message = " wrote the following:" . "\n\n" . '<a href="www.xiaoqiao.com/#/unsubcript">unsubscribe</a>';
+            $message = " wrote the following:" . "\n\n" . '<a href="www.xiaoqiao.com/#/unsubcript?email=' . $request['email'] . '">unsubscribe</a>';
             $this->sendEmail('xiaoqiaonz@gmail.com', $request['email'], "Subscribe", $message);
+            $this->sendResponse(200, "registered");
         } else {
             $model = new SubscribeEmail;
             $model->setAttributes($request);
@@ -54,7 +51,7 @@ class SubscribeController extends Controller {
             $model->createtime = new CDbExpression(' UTC_TIMESTAMP()');
             $model->lastupdatetime = new CDbExpression('UTC_TIMESTAMP()');
             if ($model->validate()) {
-                $message = " wrote the following:" . "\n\n" . '<a href="www.xiaoqiao.com/#/unsubcript">unsubscribe</a>';
+                $message = " wrote the following:" . "\n\n" . '<a href="www.xiaoqiao.com/#/unsubcript?email=' . $request['email'] . '">unsubscribe</a>';
                 $this->sendEmail('xiaoqiaonz@gmail.com', $request['email'], "Subscribe", $message);
                 $model->save(false);
                 $model->createtime = date("Y-m-d H:i:s");

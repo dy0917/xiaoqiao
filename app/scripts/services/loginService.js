@@ -1,5 +1,4 @@
 'use strict';
-
 /**
  * @ngdoc overview
  * @name xtripApp
@@ -8,33 +7,30 @@
  *
  * Main module of the application.
  */
-app.factory('loginService', function($http) {
+app.factory('loginService', function ($http) {
     return {
-        login: function()
+        login: function ()
         {
             $http({
                 url: apiPath + "test",
                 method: "POST",
                 data: "asdfasdfa",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function(data, status, headers, config) {
+            }).success(function (data, status, headers, config) {
                 //  $scope.persons = data; // assign  $scope.persons here as promise is resolved here 
                 console.log("ok");
-            }).error(function(data, status, headers, config) {
+            }).error(function (data, status, headers, config) {
                 // $scope.status = status;
                 console.log("error");
             });
-
         },
     };
-
 });
-
-app.factory('masonryService', function() {
+app.factory('masonryService', function () {
     return {
-        masonryinit: function(milliseconds)
+        masonryinit: function (milliseconds)
         {
-            setTimeout(function() {
+            setTimeout(function () {
                 var container = document.querySelector('#container');
                 var msnry = new Masonry(container, {
                     // options
@@ -42,63 +38,64 @@ app.factory('masonryService', function() {
                     itemSelector: '.item'
                 });
             }, milliseconds);
-
         },
     };
-
 });
-app.service('servicecallback', function($http, $rootScope) {
+app.service('servicecallback', function ($http, $rootScope) {
+   
+    function private_error() {
+        alert("contactkingsley");
+    }
+    ;
     return {
-        http: function(url, method, data, successcallback, errorcallback, afterfunction)
+        http: function (url, method, data, successcallback, errorcallback, afterfunction)
         {
             $rootScope.$broadcast('isloading', true);
-            $http({
+            return  $http({
                 url: url,
                 method: method,
                 data: data,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function(data, status, headers, config) {
+            }).success(function (data, status, headers, config) {
                 //  $scope.persons = data; // assign  $scope.persons here as promise is resolved here 
                 if (successcallback) {
                     successcallback(data);
                 }
                 $rootScope.$broadcast('isloading', false);
-            }).error(function(data, status, headers, config) {
+            }).error(function (data, status, headers, config) {
+                private_error();
                 if (errorcallback) {
                     errorcallback(data);
                 }
                 $rootScope.$broadcast('isloading', false);
-            }).then(function() {
+            }).then(function (data, status, headers, config) {
                 $rootScope.$broadcast('isloading', false);
                 if (afterfunction) {
-                    afterfunction();
+                    afterfunction(data);
                 }
             });
-        },
-        test: function()
+        }, getmethod: function (url)
         {
-            console.log("test");
+
+            return $http.get(url).error(function () {
+                private_error();
+            }).then(function (result) {
+
+                var blogs = result;
+                return  blogs;
+            });
         }
     };
 });
-
-app.factory('facotryblogs', function($http, $rootScope) {
+app.factory('facotryblogs', function ($http, $rootScope, servicecallback) {
 
     var factory = [];
     var blogs;
-    factory.getblogs = function() {
-        return $http.get(apiPath + "/blog/").then(function(result) {
+    factory.getblogs = function () {
 
-            var blogs = result.data;
-
-            return  blogs;
-        });
+        return  servicecallback.getmethod(apiPath + "/blog/");
     };
-    factory.decodeuri = function(body) {
-
-        return decodeURI(body);
-    };
-    factory.getobjectbyid = function(id) {
+    factory.getobjectbyid = function (id) {
         if ($rootScope.blogs)
         {
             var blogs = $rootScope.blogs;
@@ -116,44 +113,40 @@ app.factory('facotryblogs', function($http, $rootScope) {
             return null;
         }
     };
-    factory.getBlog = function()
+    factory.getBlog = function ()
     {
         return $rootScope.blog;
     };
-
-
     return factory;
 });
-app.factory('blogservice', function() {
+app.factory('blogservice', function () {
 
     var blog = {};
     return {
-        init: function(blogObj)
+        init: function (blogObj)
         {
             blog = blogObj;
         },
-        getBlog: function()
+        getBlog: function ()
         {
             return blog;
         },
-        settitle: function(title) {
+        settitle: function (title) {
             blog.title = title;
         },
-        getTitle: function() {
+        getTitle: function () {
             return  blog.title;
         }
 
     };
 });
-
-
-app.factory('factorymessages', function($http, $rootScope, shareservice) {
+app.factory('factorymessages', function ($http, $rootScope, shareservice) {
 
     return {
-        getmessagesbyid: function(id) {
+        getmessagesbyid: function (id) {
             var path = apiPath + "/message/getmessagebyid";
             $http.post(path, {id: id}).success(
-                    function(data, status, headers, config)
+                    function (data, status, headers, config)
                     {
                         shareservice.broadcastItem('setMessages', data);
                     }
@@ -161,10 +154,9 @@ app.factory('factorymessages', function($http, $rootScope, shareservice) {
         }
     };
 });
-
-app.factory('checkoutservice', function() {
+app.factory('checkoutservice', function () {
     return {
-        redirectPost: function(post, location, args, target)
+        redirectPost: function (post, location, args, target)
         {
             var form = document.createElement("form");
             form.action = location;
@@ -183,17 +175,63 @@ app.factory('checkoutservice', function() {
             form.submit();
         }
     };
-
-
 });
-
-app.factory('shareservice', function($rootScope) {
+app.factory('shareservice', function ($rootScope) {
 
     return {
-        broadcastItem: function(event, value) {
+        broadcastItem: function (event, value) {
             $rootScope.$broadcast(event, value);
         }
     };
+});
+app.factory('encodeservice', function () {
 
+    var obj = {};
+    var i = 0;
+    return {
+        htmlEncode: function (html)
+        {
+            return document.createElement('a').appendChild(
+                    document.createTextNode(html)).parentNode.innerHTML;
+        },
+        htmlDecode: function (html)
+        {
+
+            var find = '&lt;';
+            var re = new RegExp(find, 'g');
+            var str = html.replace(re, '<');
+            find = '&gt;';
+            var re = new RegExp(find, 'g');
+            str = str.replace(re, '>');
+            console.log(str);
+            return str;
+        }
+    };
+});
+app.factory("typeservice", function ($http, servicecallback) {
+    return {
+        gettype: function ()
+        {
+            var getstatusMethod = servicecallback.getmethod(apiPath + "/blogtype/");
+            return getstatusMethod;
+        }
+    };
 });
 
+app.factory("formcheckservice", function () {
+    return {
+        isemail: function (email)
+        {
+            var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+            return re.test(email);
+        },
+        isfilled: function (input)
+        {
+            var b = true;
+            if (typeof input === 'undefined') {
+                b = false;
+            }
+            return b;
+        }
+    };
+});

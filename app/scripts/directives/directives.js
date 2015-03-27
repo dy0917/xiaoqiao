@@ -43,11 +43,15 @@ app.directive('clickAndDisable', function ($timeout) {
         },
         link: function (scope, iElement, iAttrs) {
             iElement.bind('click', function () {
+                console.log(iElement);
+                iElement[0].className += " btn-disable";
                 iElement.prop('disabled', true);
 
                 scope.clickAndDisable().finally(function () {
                     $timeout(function () {
-//                        iElement.css("background-color", "yellow");
+                        iElement[0].className =
+                                iElement[0].className.replace
+                                (/(?:^|\s)btn-disable(?!\S)/g, '');
                         iElement.prop('disabled', false);
                     }, 5000);
 
