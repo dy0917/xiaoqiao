@@ -88,7 +88,9 @@ main{
 
 
 nav{
-    background: $darkblue;
+    background-image: url("../images/nav-bg.jpg");
+    background-size:100%;
+    // background: $darkblue;
     width: 100px;
     height: 100%;
     position:fixed;
@@ -401,15 +403,21 @@ aside{
 }
 
 
-
-
-article{
+.article-wrapper{
     @include clearfix;
     width: calc(100% - 320px);
     left: 0px;
     right: 280px;
     margin: 20px 0;
-    padding: 0 6%;
+    padding:0 6%;
+
+}
+
+article{
+
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
 
     font-size: 11px;
 
@@ -636,7 +644,7 @@ article{
 // =======================commet section===================
 
 .comment-section{
-    width: calc(100% - 320px);
+    width:100%;
     left: 0px;
     right: 280px;
     margin: 20px 0;
@@ -690,9 +698,10 @@ article{
     @include border-radius(5px);
     width: 45%;
     max-width: 600px;
+    min-width: 400px;
     padding:10px;
     display: inline-block;
-    margin: 0 10px;
+    margin: 10px;
     vertical-align: top;
     position: relative;
 overflow: hidden;
@@ -784,9 +793,12 @@ text-align:left;
 
 
 .item.contact-w3{
-    width: 380px;
+    width: 45%;
+    max-width: 600px ;
+    min-width: 400px;
     display: inline-block;
     vertical-align:top;
+    text-align: left;
 }
 
 .w4{
@@ -1047,8 +1059,9 @@ p {
     font-family:"Microsoft YaHei",微软雅黑,"Microsoft JhengHei",华文细黑,STHeiti,MingLiu;
     // font-family: 'Lato', 'sans-serif';
     font-weight: 300;
-    font-size: 0.875rem;
+    font-size: .9rem;
     margin-bottom: 20px;
+    line-height: 22px;
 }
 
 

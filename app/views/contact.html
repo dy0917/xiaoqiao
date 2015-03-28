@@ -11,12 +11,12 @@
         <!-- masonry======================= -->
 
 
-        <div id="container">
+        <div id="container" style="text-align:center;">
 
 
             <div class="item contact-w3">
                 <img src="images/contact.jpg">
-                <div class="m-item-dec-wrapper" style="padding:15px 20px;">
+                <div class="m-item-dec-wrapper" style="padding:15px 30px;">
 
                     <div class="contact-info-each">
                         <i class="fa fa-map-marker"></i>
@@ -43,14 +43,14 @@
 
             <div class="item contact-w3">
                 <form name="emailform" >
-                    <!--  <div class="email-pattern"></div> -->
+                   <div class="email-pattern"></div> 
 
-                    <div class="item-box-title">SEND US AN ENQUIRY.</div>
+<!--                     <div class="item-box-title">SEND US AN ENQUIRY.</div> -->
                     <div class="m-item-dec-wrapper" >
                         <div class="send-email-wrapper">
-                            <input class="input1" type="text" name="title" placeholder="Your Name (required)" ng-model="mail.title" required></input>
-                            <input class="input1" type="email" name="email" placeholder="Email (valid email required)" ng-model="mail.email" required></input>
-                            <input class="input1" type="text" name="mobile" placeholder="Phone Number" ng-model="mail.mobile"></input>
+                            <input class="input1" type="text" name="title" placeholder="您的姓名(必填)" ng-model="mail.title" required></input>
+                            <input class="input1" type="email" name="email" placeholder="邮箱地址 (请填写有效地址)" ng-model="mail.email" required></input>
+                            <input class="input1" type="text" name="mobile" placeholder="电话号码" ng-model="mail.mobile"></input>
                             <textarea class="input1" type="text" ng-model="mail.content" placeholder="想对小乔说..."></textarea>
                         </div>
 
@@ -58,7 +58,7 @@
                                type="submit" ng-disabled="!formcheck(mail)"
 
                                click-and-disable="sendmail(mail)"
-                               value="Send">
+                               value="发送">
                         <!--//                    <div class="btn-shape btn1 center-position" ng-click="sendmail()"><i class="fa fa-paper-plane"></i>&nbsp;&nbsp;Send</div>-->
 
                     </div>
