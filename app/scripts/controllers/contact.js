@@ -22,7 +22,7 @@ angular.module('xiaoqiaoApp')
                     });
                 }
             };
-            $scope.formcheck = function (mail)
+            $scope.isFormCorrect = function (mail)
             {
 
                 var b = false;

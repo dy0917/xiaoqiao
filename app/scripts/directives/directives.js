@@ -43,7 +43,6 @@ app.directive('clickAndDisable', function ($timeout) {
         },
         link: function (scope, iElement, iAttrs) {
             iElement.bind('click', function () {
-                console.log(iElement);
                 iElement[0].className += " btn-disable";
                 iElement.prop('disabled', true);
 
@@ -58,5 +57,36 @@ app.directive('clickAndDisable', function ($timeout) {
                 });
             });
         }
+    };
+});
+
+app.directive('radioclick', function () {
+
+    return {
+        scope: {
+            radioclick: '&'
+        },
+        link: function (scope, iElement, iAttrs) {
+            iElement.bind('click', function () {
+                iElement.toggleClass("btn-click");
+                scope.radioclick();
+
+            });
+
+        }
+    };
+});
+
+app.directive('ngEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if (event.which === 13) {
+                scope.$apply(function () {
+                    scope.$eval(attrs.ngEnter);
+                });
+
+                event.preventDefault();
+            }
+        });
     };
 });

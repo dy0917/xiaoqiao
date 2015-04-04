@@ -43,7 +43,7 @@ angular.module('xiaoqiaoApp')
             {
 
                 var buttonString = "wait";
-                console.log(buttonString);
+
                 $scope.$emit("isloading", true);
                 $scope.message.Blogid = $rootScope.blog.Blogid;
                 var path = apiPath + "/message";

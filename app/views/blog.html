@@ -11,7 +11,7 @@
     <div class="article-categories">
 
         <ul >
-            <li ng-repeat="blogtype in blogtypes"  ng-click="filterbyType({{blogtype}})" value="{{blogtype.BlogTypeid}}">{{blogtype.BlogType}}</li>
+            <li ng-repeat="blogtype in blogtypes"  radioclick="filterbyType(blogtype)" value="{{blogtype.BlogTypeid}}">{{blogtype.BlogType}}</li>
 
         </ul>
 
@@ -26,23 +26,9 @@
 
 
 
-        <!--        <div ng-repeat="blog in testblogs">
-        
-        
-                    <div class="item">
-                        <a href="#/blog/{{blog.blogid}}"> <img  ng-src="{{blog.imgurl}}"></a>
-                        <div class="m-item-dec-wrapper">
-                            <div class="m-item-dec">
-                                <div class="item-title">About Joanne</div>
-                                <div class="item-date">5 Jan 2015</div>
-                            </div>
-                            <div class="like"><i class="fa fa-heart-o">&nbsp;</i>{{blog.views}}</div>
-                        </div>
-                    </div>
-        
-                </div>-->
+   
 
-        <div ng-repeat="blog in blogs| filter:searchText">
+        <div ng-repeat="blog in blogs">
 
             <div class="item">
                 <a href="#/blog/{{blog.Blogid}}"> 

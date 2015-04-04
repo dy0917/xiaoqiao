@@ -1,20 +1,17 @@
 
 
 
-<div class="fade-bg" ng-click="toggleSubcribewindow()"></div>
+<div class="fade-bg" ></div>
 
 <div class="login-popup"  ng-controller="Subcribewindowcontroller" style="height:auto">
 
+    <div class="subscribe-insert-part">
 
+        <a href="#" class="cd-close-menu" >Close<span></span></a>
 
+        <img src="../../images/logo2.png"/>
 
-<div class="subscribe-insert-part">
-
-    <a href="#0" class="cd-close-menu">Close<span></span></a>
-
-    <img src="../../images/logo2.png"/>
-
-    <h6><i class="fa fa-sign-in"></i>&nbsp;&nbsp;注册成为分销商</h6>
+        <h6><i class="fa fa-sign-in"></i>&nbsp;&nbsp;注册成为分销商</h6>
         <form role="form" name="registerform">
             <div class="form-group">
                 <!-- <p>Welcome : <span>{{user.mail}}</span></p> -->
@@ -30,16 +27,14 @@
                 <input type="password" placeholder="请再次输入密码" name="password" id="exampleInputPassword1" class="form-control" ng-model="user.password2" required>
             </div>
 
-
-            <!--            <div class="remember-pw">
-                            <div class="check-box"></div>
-                            <span>Remember Passwords</span>
-                        </div>-->
-            <input class="btn-shape btn1 center-position" type="submit" ng-click="register(user)" value="Register">
+            <input class="btn-shape btn1 center-position btn_disable_{{!isFormCorrect(user)}}" type="submit"
+                   ng-click="register(user)" value="Register"  ng-disabled="!isFormCorrect(user)">
+       
         </form>
-</div>
+    </div>
 
 </div>
+
 
 
 

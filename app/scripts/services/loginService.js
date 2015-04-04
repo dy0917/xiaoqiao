@@ -8,22 +8,14 @@
  * Main module of the application.
  */
 app.factory('loginService', function ($http) {
+    var loginuser;
     return {
-        login: function ()
-        {
-            $http({
-                url: apiPath + "test",
-                method: "POST",
-                data: "asdfasdfa",
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data, status, headers, config) {
-                //  $scope.persons = data; // assign  $scope.persons here as promise is resolved here 
-                console.log("ok");
-            }).error(function (data, status, headers, config) {
-                // $scope.status = status;
-                console.log("error");
-            });
+        setUser: function (aUser) {
+            loginuser = aUser;
         },
+        isLoggedIn: function () {
+            return(loginuser) ? loginuser : null;
+        }
     };
 });
 app.factory('masonryService', function () {
@@ -42,7 +34,7 @@ app.factory('masonryService', function () {
     };
 });
 app.service('servicecallback', function ($http, $rootScope) {
-   
+
     function private_error() {
         alert("contactkingsley");
     }
@@ -235,3 +227,5 @@ app.factory("formcheckservice", function () {
         }
     };
 });
+
+

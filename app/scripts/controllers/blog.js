@@ -8,39 +8,52 @@
  * Controller of the xtripApp
  */
 angular.module('xiaoqiaoApp')
-        .controller('BlogCtrl', function ($scope, masonryService, facotryblogs, $rootScope, typeservice, $filter) {
+        .controller('BlogCtrl', function ($scope, masonryService, facotryblogs, $rootScope, typeservice, $filter, $routeParams) {
 
             $scope.blogs = [];
 
 
+            $scope.filterbyKeyword = function (keyword) {
+
+                $scope.blogs = $filter('blogStringFilter')($rootScope.blogs, keyword);
+                masonryService.masonryinit(500);
+            };
 
             $scope.init = function ()
             {
 
+                var searchString = $routeParams.keyword;
+
                 typeservice.gettype().then(function (result) {
                     $scope.blogtypes = [{BlogTypeid: "0", BlogType: "全部"}];
                     $scope.blogtypes = $scope.blogtypes.concat(result.data);
-
                 });
 
                 $rootScope.$broadcast('isloading', true);
                 if ($rootScope.blogs == undefined) {
                     facotryblogs.getblogs().then(function (result) {
-
                         $rootScope.blogs = result.data;
-                        $scope.blogs = $rootScope.blogs;
-                        $rootScope.$broadcast('isloading', false);
-                        masonryService.masonryinit(500);
+                        $scope.afterinit(searchString);
 
                     });
                 } else {
-                    $scope.blogs = $rootScope.blogs;
-                    $rootScope.$broadcast('isloading', false);
-                    masonryService.masonryinit(500);
+                    $scope.afterinit(searchString);
                 }
 
 
             };
+            $scope.afterinit = function (searchString) {
+
+
+                $scope.blogs = $rootScope.blogs;
+                if (searchString)
+                {
+                    $scope.filterbyKeyword(searchString);
+                }
+                $rootScope.$broadcast('isloading', false);
+                masonryService.masonryinit(500);
+            };
+
             $scope.init();
 
 
@@ -59,15 +72,17 @@ angular.module('xiaoqiaoApp')
 
                 if (condition.BlogTypeid == 0)
                 {
-                    console.log(condition);
                     $scope.blogs = $rootScope.blogs;
 
                 } else
                 {
                     $scope.blogs = $filter("filter")($rootScope.blogs, {BlogTypeid: condition.BlogTypeid});
                 }
+                $scope.$apply();
                 masonryService.masonryinit(500);
             };
+
+
 
 
         });

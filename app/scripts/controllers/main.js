@@ -39,34 +39,25 @@ angular.module('xiaoqiaoApp')
             };
             $scope.$on("myEvent", function (event, args) {
 
-                console.log(event);
-                console.log(args);
+       
             });
         });
-//angular.module('xiaoqiaoApp')
-//        .controller('asiderCtrl', function ($scope, $timeout) {
-//            $scope.doesMessageappear = false;
-//
-//            $scope.$on("showmessage", function (event, data) {
-//                $scope.doesMessageappear = true;
-//                $scope.message = data;
-//                $timeout(function () {
-//                    $scope.doesMessageappear = false;
-//                    $scope.message = {};
-//                }, 5000);
-//            });
-//        });
+
 
 angular.module('xiaoqiaoApp')
         .controller('feedbackCtrl', function ($scope, $timeout) {
-            $scope.doesMessageappear = false;
+            $scope.isshow = false;
+            $scope.switch = function (b)
+            {
+                $scope.isshow = b;
+            },
+                    $scope.$on("showmessage", function (event, data) {
 
-            $scope.$on("showmessage", function (event, data) {
-                $scope.doesMessageappear = true;
-                $scope.message = data;
-                $timeout(function () {
-                    $scope.doesMessageappear = false;
-                    $scope.message = {};
-                }, 5000);
-            });
+                        $scope.isshow = true;
+                        $scope.message = data;
+                        $timeout(function () {
+                            $scope.isshow = false;
+                            $scope.message = {};
+                        }, 5000);
+                    });
         });

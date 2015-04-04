@@ -21,7 +21,7 @@ var app = angular
             'ngTouch',
                     //  'angular-redactor'
         ])
-        .config(function($routeProvider) {
+        .config(function ($routeProvider) {
 
             $routeProvider
                     .when('/', {
@@ -56,6 +56,10 @@ var app = angular
                         templateUrl: 'views/singleblog.html',
                         controller: 'singleBlogCtrl'
                     })
+                    .when('/blog/search/:keyword', {
+                        templateUrl: 'views/blog.html',
+                        controller: 'BlogCtrl'
+                    })
                     .when('/test', {
                         templateUrl: 'views/test.html',
                         controller: 'testCtrl'
@@ -74,23 +78,25 @@ var app = angular
 //                controller: 'testCtrl'
                     }).when('/distributor', {
                 templateUrl: 'views/distributor.html',
-//                controller: 'testCtrl'
+                controller: 'distributorCtrl'
             }).when('/register', {
                 templateUrl: 'views/register.html',
                 controller: 'registerCtrl'
             })
-            .when('/unsubcript', {
-                templateUrl: 'views/unsubcript.html',
-                // controller: 'registerCtrl'
+                    .when('/unsubcript', {
+                        templateUrl: 'views/unsubcript.html',
+                    }).when('/calculator', {
+                templateUrl: 'views/calculator.html',
+                controller: 'calculatorCtrl'
             })
                     .otherwise({
                         redirectTo: '/'
                     });
-            //  redactorOptions.buttons = ['formatting', '|', 'bold', 'italic']; 
-        }).run(function($rootScope, $location) {
-    $rootScope.$on('$routeChangeStart', function(event, next, current) {
+
+        }).run(function ($rootScope, $location) {
+    $rootScope.$on('$routeChangeStart', function (event, next, current) {
         $rootScope.$broadcast('routeupdate', $location.path());
-//        console.log("asdfasdfasdf");
+
     });
 });
 

@@ -1,0 +1,54 @@
+
+
+
+<div class="fade-bg"></div>
+
+<div class="login-popup"   style="height:auto">
+
+
+    <div class="subscribe-insert-part">
+        <a ng-href="/" class="cd-close-menu" >Close<span></span></a>
+
+        <img src="../../images/logo2.png"/>
+
+        <h6><i class="fa fa-star"></i>&nbsp;&nbsp;贷款计算器</h6>
+        <form role="form" name="unsubcribeform">
+            <div class="form-group">
+                <label >姓:</label>
+                <input type="text"  name="mail" class="form-control" ng-model="customer.surname" required>
+                <label >名:</label>
+                <input type="text" name="mail" class="form-control" ng-model="customer.givenname" required>
+                <label for="exampleInputEmail1">邮箱：</label>
+                <input name="email" class="form-control" ng-model="customer.email" required/>
+                <label for="exampleInputEmail1">是否新西兰居民：</label><br/>
+                <input type="button" ng-model="customer.pr" ng-click="isPR(true)" value="是" />
+                <input type="button" ng-model="customer.pr" ng-click="isPR(false)" value="否"/>
+                <div>
+                    <label for="exampleInputEmail1">可证明年税前收入（新西兰币）:</label>
+                    <br/>
+                    <input ng-model="customer.income" required/>
+                </div>
+            </div>
+
+            <input class="btn-shape btn1 center-position" type="submit"  click-and-disable="getResult(customer)" ng-disabled="" value="询问额度">
+        </form>
+        <div ng-show="isResult">
+            <table class="table">
+                <thead>
+                <th>Bank Name</th>
+                <th>minimum </th>
+                <th>maximum </th>
+                <th>Cash Back</th>
+                </thead>
+                <tr ng-repeat="bank in banks">
+                    <td>{{bank.bankname}}</td>
+                    <td>{{bank.minimum * customer.income}}</td>
+                    <td>{{bank.maximum * customer.income}}</td>
+
+                </tr>
+            </table>
+
+        </div>
+    </div>
+
+</div>

@@ -2,37 +2,40 @@
 
 
 
-<main>
-    <div class="theme-slide">
-        <img src="images/home-theme.jpg"/>
-    </div>
-    <div aside></div>
-
-    <article>
-
-        <h6>{{blog.title}}</h6>
-        <span>----<a>小乔</a>&nbsp;&nbsp;&nbsp;{{blog.createTime}}&nbsp;&nbsp;&nbsp;
-            <div class="like" style="display: inline-block; vertical-align: top; margin:0; float: none;"><i class="fa fa-heart-o">&nbsp;</i>3.6k</div>
-        </span>
-
-        <div class="article-in-here" ng-bind-html="blog.body">
+    <main>
+        <div class="theme-slide">
+            <img src="images/home-theme.jpg"/>
         </div>
-    </article>
-
-    <div class="control-btn-section">
-        <div class="btn-shape btn1 "><i class="fa fa-heart-o"></i>&nbsp; 赞一下</div>
-        <div class="btn-shape btn1 "><i class="fa fa-share"></i>&nbsp; 分享到&nbsp; <i class="fa fa-caret-down"></i></div>
-    </div>
-
-    <div messagedirective></div>
+        <div aside></div>
 
 
-</main>
-<!-- Footer -->
+        <div class="article-wrapper">
+            <article>
 
-<footer >
+                <h6>{{blog.title}}</h6>
+                <span>----<a>小乔</a>&nbsp;&nbsp;&nbsp;{{blog.createTime}}&nbsp;&nbsp;&nbsp;
+                    <div class="like" style="display: inline-block; vertical-align: top; margin:0; float: none;"><i class="fa fa-heart-o">&nbsp;</i>3.6k</div>
+                </span>
 
-</footer>
+                <div class="article-in-here" ng-bind-html="blog.body">
+                </div>
+            </article>
+
+
+            <!--            <div class="control-btn-section">
+                            <div class="btn-shape btn1 "><i class="fa fa-heart-o"></i>&nbsp; 赞一下</div>
+                            <div class="btn-shape btn1 "><i class="fa fa-share"></i>&nbsp; 分享到&nbsp; <i class="fa fa-caret-down"></i></div>
+                        </div>-->
+
+            <!--<div messagedirective></div>-->
+        </div>
+
+    </main>
+    <!-- Footer -->
+
+    <footer >
+
+    </footer>
 
 
 </body>

@@ -43,15 +43,14 @@ class UserController extends Controller {
             $model->UserType = 1;
             $model->createTime = new CDbExpression(' UTC_TIMESTAMP()');
             $model->lastUpdateTime = new CDbExpression('UTC_TIMESTAMP()');
-
             if ($model->validate()) {
                 $model->save(false);
-                echo "create";
+                echo "registered";
             } else {
                 $this->sendResponse(500);
             }
         } else {
-            echo "email registered";
+            echo "email_already_registered";
         }
     }
 

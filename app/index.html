@@ -28,8 +28,6 @@
         <!-- Add your site or application content here -->
         <div class="container" ng-controller="headerController">
 
-
-
             <div id="loadingProgressG" ng-if="isloading"> 
                 <div id="loadingProgressG_1" class="loadingProgressG">
                 </div>
@@ -52,7 +50,7 @@
 
 
                 <div class="search-box">
-                    <input class="input1" type="text" placeholder="搜索文章"></input>
+                    <input class="input1" type="text" ng-enter="search(searchkeyword)" placeholder="搜索文章" ng-model="searchkeyword"></input>
                     <i class="fa fa-search"></i>
                 </div>
 
@@ -66,7 +64,9 @@
                 </div>
                 <div class="right-col"  ng-if=" user != null">
                     <i class="fa fa-sign-in">&nbsp;&nbsp;&nbsp;</i>
-                    Hi, {{user.username}}
+
+                    <span> Hi, {{user.username}}</span>
+                    <span ng-click="logout()">Logout</span>
                 </div>
 
             </header>  
@@ -91,7 +91,7 @@
                         </li></a>
                     <a ng-href="#/contact"> <li>
                             <i class="fa fa-phone"></i>
-                            <span>联系方式</span>
+                            <span>联系我们</span>
                         </li></a>
 
                 </ul>
@@ -175,6 +175,7 @@
         <script src="scripts/controllers/headerController.js"></script>
         <script src="scripts/directives/directives.js"></script>
         <script src="scripts/services/loginService.js"></script>
+        <script src="scripts/filters/filters.js"></script>
         <script src="scripts/lib/summernote/summernote.js"></script>
         <!--<script src="scripts/lib/script.js"></script>-->
         <!-- endbuild -->
