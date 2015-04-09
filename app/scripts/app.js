@@ -95,7 +95,13 @@ var app = angular
 
         }).run(function ($rootScope, $location) {
     $rootScope.$on('$routeChangeStart', function (event, next, current) {
-        $rootScope.$broadcast('routeupdate', $location.path());
+
+        var re = new RegExp("^/blog", "i");
+//        var match = re.test(str);
+        if (!re.test($location.path()))
+        {
+            $rootScope.$broadcast('emptySearch');
+        }
 
     });
 });

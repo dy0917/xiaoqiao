@@ -7,23 +7,33 @@
  * Controller of the xtripApp
  */
 angular.module('xiaoqiaoApp')
-        .controller('MainCtrl', function ($scope, masonryService, servicecallback) {
+        .controller('MainCtrl', function ($scope, masonryService, servicecallback, $timeout) {
 
             masonryService.masonryinit(50);
             $scope.getsliders = function () {
                 var path = apiPath + "/slider/";
                 servicecallback.http(path, "GET", null, function (data) {
                     $scope.sliders = data;
+
                     $scope.sliders.forEach(function (slider)
                     {
-                        var li = '<li><a href="' + slider.linkto + '"><img src="' + slider.imagelUrl + '" title=' + slider.title + '"></a></li>';
+                        var img = document.createElement("img");
+                        img.setAttribute("src", slider.imagelUrl);
+                        img.setAttribute("title", slider.title);
+                        var a = document.createElement('a');
+                        a.setAttribute('href', slider.linkto);
+                        a.appendChild(img);
+                        var li = document.createElement("li");
+                        li.appendChild(a);
                         $('#mainslider').append(li);
-                    })
+
+                    });
                     $('#banner-fade').bjqs({
                         height: 450,
                         width: 1600,
                         responsive: true
                     });
+
                 }, function () {
                 });
             };
@@ -39,7 +49,7 @@ angular.module('xiaoqiaoApp')
             };
             $scope.$on("myEvent", function (event, args) {
 
-       
+
             });
         });
 

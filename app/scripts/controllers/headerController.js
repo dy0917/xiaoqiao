@@ -69,6 +69,9 @@ angular.module('xiaoqiaoApp')
             $scope.$on('toggleSubcribewindow', function (event, bool) {
                 $scope.isSubscribewindow = bool;
             });
+            $scope.$on('emptySearch', function (event) {
+                $scope.searchkeyword = "";
+            });
         });
 
 
