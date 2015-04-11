@@ -1335,11 +1335,16 @@ p {
     transition: box-shadow 0.2s ease-in-out;
 }
 
-/*--- added by @Rain---*/
+
+/*================================ added by @Rain ===================================*/
+/*======================== Calculator ==============================*/
 input[name=email]{padding-left:50px;}
 input[name=income-before-tax]{padding-left:5px; margin-top: 20px;}
 .pr-yes{margin-top: 40px; padding-left:10px;}
 .pr-no{ padding-left:10px;}
+.pr-yesorno-selected{background-color: #F06421; color: #fff;}
+
+
 
 /*================================MEDIA QUERIES FROM HERE=======================================*/
 
