@@ -14,19 +14,27 @@
         <h6><i class="fa fa-star"></i>&nbsp;&nbsp;贷款计算器</h6>
         <form role="form" name="unsubcribeform">
             <div class="form-group">
-                <label >姓:</label>
-                <input type="text"  name="mail" class="form-control" ng-model="customer.surname" required>
-                <label >名:</label>
-                <input type="text" name="mail" class="form-control" ng-model="customer.givenname" required>
-                <label for="exampleInputEmail1">邮箱：</label>
-                <input name="email" class="form-control" ng-model="customer.email" required/>
-                <label for="exampleInputEmail1">是否新西兰居民：</label><br/>
-                <input class="pr-yes" type="button" ng-model="customer.pr" ng-click="isPR(true)" value="是" />
-                <input class="pr-no" type="button" ng-model="customer.pr" ng-click="isPR(false)" value="否"/>
+                <div>
+                    <label >姓:</label>
+                    <input type="text"  name="mail" class="form-control" ng-model="customer.surname" required>
+                </div>
+                <div>
+                    <label >名:</label>
+                    <input type="text" name="mail" class="form-control" ng-model="customer.givenname" required>
+                </div>
+                <div>
+                    <label for="exampleInputEmail1">邮箱：</label>
+                    <input name="email" class="form-control" ng-model="customer.email" required/>
+                </div>
+                <div>
+                    <label for="exampleInputEmail1">是否新西兰居民：</label><br/>
+                    <input type="button" ng-model="customer.pr" ng-click="isPR(true)" value="是" />
+                    <input type="button" ng-model="customer.pr" ng-click="isPR(false)" value="否"/>
+                </div> 
                 <div>
                     <label for="exampleInputEmail1">可证明年税前收入（新西兰币）:</label>
                     <br/>
-                    <input name="income-before-tax" ng-model="customer.income" required/>
+                    <input ng-model="customer.income" required/>
                 </div>
             </div>
 
