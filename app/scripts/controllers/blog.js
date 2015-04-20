@@ -70,6 +70,7 @@ angular.module('xiaoqiaoApp')
 
             $scope.filterbyType = function (condition) {
 
+                console.log(condition);
                 if (condition.BlogTypeid == 0)
                 {
                     $scope.blogs = $rootScope.blogs;

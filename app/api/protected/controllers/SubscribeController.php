@@ -228,8 +228,10 @@ class SubscribeController extends Controller {
                                 </table>
                                 <!-- end wrapper-->
                                 <p style="margin:0; padding:34px 0 0; text-align:center; font-size:11px; line-height:13px; color:#333333;">
-                                    不想再收到此邮件？您可以点<a href="http://xiaoqiaonz.com/#/unsubcript" style="color:#F06421; text-decoration:underline;">这里</a>取消关注。
+                                    不想再收到此邮件？您可以点<a href="http://www.xiaoqiaonz.com/#/unsubcript" style="color:#F06421; text-decoration:underline;">这里</a>取消关注。
                                 </p>
+                                <p style="margin:0; padding:34px 0 0; text-align:center; font-size:11px; line-height:13px; color:#333333;">如果该链接不工作，你可以复制以下链接</p>
+                                <p style="margin:0; padding:34px 0 0; text-align:center; font-size:11px; line-height:13px; ">www.xiaoqiaonz.com//#/unsubcript</p>
                             </td>
                         </tr>
                     </tbody>
