@@ -88,6 +88,8 @@ var app = angular
                     }).when('/calculator', {
                 templateUrl: 'views/calculator.html',
                 controller: 'calculatorCtrl'
+            }).when('/advertisementdemo', {
+                templateUrl: 'views/advertisementdemo.html',
             })
                     .otherwise({
                         redirectTo: '/'

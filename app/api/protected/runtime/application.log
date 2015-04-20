@@ -553,3 +553,36 @@ Stack trace:
 #26 {main}
 REQUEST_URI=/gii/default/login
 ---
+2015/04/20 20:35:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "read".' in /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CController.php:483
+Stack trace:
+#0 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CController.php(270): CController->missingAction('read')
+#1 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CWebApplication.php(282): CController->run('read')
+#2 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CWebApplication.php(141): CWebApplication->runController('site/read')
+#3 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /home/kingsley/NetBeansProjects/xiaoqiao/app/api/index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/contact
+HTTP_REFERER=http://local.test.api.xiaoqiaonz.com/site/page/view/about
+---
+2015/04/20 20:35:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "read".' in /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CController.php:483
+Stack trace:
+#0 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CController.php(270): CController->missingAction('read')
+#1 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CWebApplication.php(282): CController->run('read')
+#2 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CWebApplication.php(141): CWebApplication->runController('site/read')
+#3 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /home/kingsley/NetBeansProjects/xiaoqiao/app/api/index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/index
+HTTP_REFERER=http://local.test.api.xiaoqiaonz.com/site/contact
+---
+2015/04/20 20:35:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "read".' in /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CController.php:483
+Stack trace:
+#0 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CController.php(270): CController->missingAction('read')
+#1 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CWebApplication.php(282): CController->run('read')
+#2 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/web/CWebApplication.php(141): CWebApplication->runController('site/read')
+#3 /home/kingsley/NetBeansProjects/yii-1.1.13/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /home/kingsley/NetBeansProjects/xiaoqiao/app/api/index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/contact
+HTTP_REFERER=http://local.test.api.xiaoqiaonz.com/site/page/view/about
+---

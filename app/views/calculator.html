@@ -21,16 +21,18 @@
                 <label for="exampleInputEmail1">邮箱：</label>
                 <input name="email" class="form-control" ng-model="customer.email" required/>
                 <label for="exampleInputEmail1">是否新西兰居民：</label><br/>
-                <input type="button" ng-model="customer.pr" ng-click="isPR(true)" value="是" />
-                <input type="button" ng-model="customer.pr" ng-click="isPR(false)" value="否"/>
+                <input class="pr-yes btn-clicked" type="button" ng-model="customer.pr" radioclick="setPR(true)" value="是"/>
+                <input class="pr-no" type="button" ng-model="customer.pr" radioclick="setPR(false)" value="否"/>
                 <div>
                     <label for="exampleInputEmail1">可证明年税前收入（新西兰币）:</label>
                     <br/>
-                    <input ng-model="customer.income" required/>
+                    <input name="income-before-tax" ng-model="customer.income" required/>
                 </div>
             </div>
 
-            <input class="btn-shape btn1 center-position" type="submit"  click-and-disable="getResult(customer)" ng-disabled="" value="询问额度">
+            <input class="btn-shape btn1 center-position  btn_disable_{{!isFormCorrect(customer)}}" type="submit" ng-click="getResult(customer)"
+                   value="询问额度" ng-disabled="!isFormCorrect(customer)"/>
+
         </form>
         <div ng-show="isResult">
             <table class="table">

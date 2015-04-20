@@ -53,5 +53,18 @@ class UserController extends Controller {
             echo "email_already_registered";
         }
     }
+    
+        public function actionDelete() {
+        $request = $this->getClientPost();
+        $model = User::model()->findByPk($request["userid"]);
+
+        if ($model->validate()) {
+            $model->delete();
+            echo "updateSeccessful";
+        } else {
+
+            $this->sendResponse(500);
+        }
+    }
 
 }

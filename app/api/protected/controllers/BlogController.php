@@ -9,14 +9,12 @@ class BlogController extends Controller {
 
         $criteria = new CDbCriteria;
         $criteria->select = 't.id';
-//        $models = Blog::model()->with('blogStatus')->together()->findAll($criteria);
 
         $models = Yii::app()->db->createCommand()
                 ->select('*')
                 ->from('Blog, BlogStatus')
                 ->where('Blog.BlogStatusid=BlogStatus.BlogStatusid')
                 ->queryAll();
-////        var_dump($models);
         $json = json_encode($models);
         $this->sendResponse(200, $json);
     }

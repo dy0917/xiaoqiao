@@ -224,7 +224,12 @@ app.factory("formcheckservice", function () {
                 b = false;
             }
             return b;
+        },
+        isNumeric: function (n)
+        {
+            return !isNaN(parseFloat(n)) && isFinite(n);
         }
+
     };
 });
 

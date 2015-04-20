@@ -23,7 +23,6 @@ angular.module('xiaoqiaoApp')
                 servicecallback.http(path, "POST", user, function (data) {
                     if (data.error != "ERROR_USERNAME_INVALID" && data.error != "ERROR_PASSWORD_INVALID")
                     {
-//                        $scope.user = data;
                         loginService.setUser(data);
                         $scope.user = loginService.isLoggedIn();
                         $scope.toggleLogin();

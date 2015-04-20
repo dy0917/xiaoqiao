@@ -66,7 +66,7 @@ module.exports = function (grunt) {
     // The actual grunt server settings
     connect: { 
      options: {
-        port: 9000,
+        port: 9002,
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: 'localhost',
         livereload: 35729
@@ -267,16 +267,16 @@ module.exports = function (grunt) {
     //   dist: {}
     // },
 
-    imagemin: {
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.app %>/images',
-          src: '{,*/}*.{png,jpg,jpeg,gif}',
-          dest: '<%= yeoman.dist %>/images'
-        }]
-      }
-    },
+//    imagemin: {
+//      dist: {
+//        files: [{
+//          expand: true,
+//          cwd: '<%= yeoman.app %>/images',
+//          src: '{,*/}*.{png,jpg,jpeg,gif}',
+//          dest: '<%= yeoman.dist %>/images'
+//        }]
+//      }
+//    },
 
     svgmin: {
       dist: {
@@ -374,7 +374,7 @@ module.exports = function (grunt) {
       ],
       dist: [
         'compass:dist',
-        'imagemin',
+//        'imagemin',
         'svgmin'
       ]
     },

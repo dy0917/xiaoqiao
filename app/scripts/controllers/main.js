@@ -26,14 +26,13 @@ angular.module('xiaoqiaoApp')
                         var li = document.createElement("li");
                         li.appendChild(a);
                         $('#mainslider').append(li);
-
                     });
                     $('#banner-fade').bjqs({
                         height: 450,
                         width: 1600,
                         responsive: true
                     });
-
+                    masonryService.masonryinit(50);
                 }, function () {
                 });
             };
