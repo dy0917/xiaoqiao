@@ -188,14 +188,17 @@ app.factory('encodeservice', function () {
         },
         htmlDecode: function (html)
         {
+            var find = '&amp;';
+            var re = new RegExp(find, 'g');
+            var str = html.replace(re, '&');
 
             var find = '&lt;';
             var re = new RegExp(find, 'g');
-            var str = html.replace(re, '<');
+            var str = str.replace(re, '<');
             find = '&gt;';
             var re = new RegExp(find, 'g');
             str = str.replace(re, '>');
-            console.log(str);
+
             return str;
         }
     };
