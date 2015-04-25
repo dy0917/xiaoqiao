@@ -66,6 +66,7 @@ header{
     background-color:white;
     position: fixed;
     z-index: 100;
+    overflow: hidden;
 
     @include transition(all 0.3s ease);
     @include box-shadow(0, 0 , 5px, 0, rgba(0,0,0,.6));
@@ -81,7 +82,9 @@ header{
 }
 
 main{
-    background-color:#eee;
+    //background-color:#eee;
+    background-image:url("https://www.squirrel.co.nz/wp-content/themes/squirrelmortgages/images/squirrel-bg-repeat.jpg");
+    bbackground-repeat: repeat-y;
     width: calc(100% - 100px);
     left: 100px;
     position: relative;
@@ -96,6 +99,8 @@ nav{
     width: 100px;
     height: 100%;
     position:fixed;
+    z-index: 10;
+    @include box-shadow(0,0,5px,0,rgba(0,0,0,.6));
 
     .left-menu{
         color: white;
@@ -127,16 +132,6 @@ nav{
 }
 
 
-dialog{
-    position: fixed;
-    top: 110px;
-    right: 20px;
-    width: 300px;
-    padding: 10px 20px;
-
-    @include border-radius(5px);
-    background-color:rgba(250, 255, 189,.95);
-}
 
 
 aside{
@@ -162,6 +157,7 @@ aside{
     background-color:$orange;
     height: 100px;
     width: 100px;
+    //@include box-shadow(0,0,5px,0,rgba(0,0,0,.6));
 
     position:relative;
     float: left;
@@ -199,10 +195,10 @@ aside{
     overflow: hidden;
 
     ul{height:450px!important;
-     li{height:450px!important;overflow:hidden;}
- }
+       li{height:450px!important;overflow:hidden;}
+   }
 
- img{width:100%;height:auto!important; }
+   img{width:100%;height:auto!important; }
 }
 
 .wechat-box{
@@ -936,6 +932,28 @@ input[name=income-before-tax]{padding-left:5px; margin-top: 20px;}
 
 
 
+
+.feedBackBoard{
+    position: fixed;
+    right: 20px;
+    top: 120px;
+    z-index: 100;
+    overflow: hidden;
+    @include box-shadow(0,0,0,10px,rgba(0,0,0,.4));
+    @include border-radius(3px);
+
+    width: 400px;
+    padding: 10px 15px;
+
+
+    background-color: rgba(255,255,255,.9);
+
+    h6{font-size:18px;margin-bottom:5px;&:empty {display: none;}}
+    p{font-size:12px;margin-bottom:5px;&:empty {display: none;}}
+
+
+
+}
 
 
 // =======================================btn========================================
