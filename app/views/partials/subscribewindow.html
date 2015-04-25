@@ -3,14 +3,19 @@
 
 <div class="login-popup"  ng-controller="Subcribewindowcontroller">
 
+    <div class="login-intro">
+        <img src="https://ununsplash.imgix.net/photo-1428604467652-115d9d71a7f1?fit=crop&fm=jpg&h=700&q=75&w=1050">
+        <div class="intro-content">
+            <h6>关于我们</h6>
+            <p>这里需要文字内容，为什么要订阅我们？小高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高</p>
+        </div>
+    </div>
 
 
-
-    <div class="subscribe-insert-part">
+    <div class="login-insert-part" style="padding-top: 100px;">
 
         <a class="cd-close-menu" ng-click="toggleSubcribewindow()">Close<span></span></a>
 
-        <img src="../../images/logo2.png"/>
 
         <h6><i class="fa fa-star"></i>&nbsp;&nbsp;订阅我们</h6>
         <form role="form" name="unsubcribeform">
@@ -21,7 +26,7 @@
                 <div ng-if="subcribeform.mail.$invalid && !subcribe.email">请填写正确的邮箱地址</div>
             </div>
 
-            <input class="btn-shape btn1 center-position" type="submit"  click-and-disable="submit(subcribe)" ng-disabled="unsubcribeform.mail.$invalid" value="关注我们">
+            <input class="btn-shape btn1 center-position" type="submit"  click-and-disable="submit(subcribe)" ng-disabled="unsubcribeform.mail.$invalid" value="订阅我们">
         </form>
     </div>
 

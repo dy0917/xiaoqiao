@@ -5,13 +5,19 @@
 
 <div class="login-popup"  ng-controller="Subcribewindowcontroller" style="height:auto">
 
-    <div class="subscribe-insert-part">
 
-        <a href="#" class="cd-close-menu" >Close<span></span></a>
 
-        <img src="../../images/logo2.png"/>
+    <a href="#" class="cd-close-menu" >Close<span></span></a>
+
+    <div class="calculator-header" style="background-image: url('https://unsplash.imgix.net/photo-1414912925664-0c502cc25dde?fit=crop&fm=jpg&h=700&q=75&w=1050');">
 
         <h6><i class="fa fa-sign-in"></i>&nbsp;&nbsp;注册成为分销商</h6>
+
+    </div>
+
+    <div class="subscribe-insert-part">
+
+
         <form role="form" name="registerform">
             <div class="form-group">
                 <!-- <p>Welcome : <span>{{user.mail}}</span></p> -->
@@ -28,8 +34,8 @@
             </div>
 
             <input class="btn-shape btn1 center-position btn_disable_{{!isFormCorrect(user)}}" type="submit"
-                   ng-click="register(user)" value="Register"  ng-disabled="!isFormCorrect(user)">
-       
+            ng-click="register(user)" value="Register"  ng-disabled="!isFormCorrect(user)">
+
         </form>
     </div>
 
