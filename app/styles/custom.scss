@@ -4,6 +4,7 @@
 
 
 $orange: #F06421;
+$orange2:rgba(240,100,33,.8);
 // $darkblue: #121920;
 $line-color:#ddd;
 $darkblue: #21456e;
@@ -82,6 +83,7 @@ header{
 }
 
 main{
+    @include transition(all 0.3s ease);
     //background-color:#eee;
     background-image:url("https://www.squirrel.co.nz/wp-content/themes/squirrelmortgages/images/squirrel-bg-repeat.jpg");
     bbackground-repeat: repeat-y;
@@ -93,8 +95,10 @@ main{
 
 
 nav{
+    @include transition(all 0.3s ease);
     background-image: url("../images/nav-bg.jpg");
     background-size:100%;
+    overflow: hidden;
     // background: $darkblue;
     width: 100px;
     height: 100%;
@@ -135,12 +139,14 @@ nav{
 
 
 aside{
+    @include transition(all 0.3s ease);
     position: absolute;
     max-width: 350px;
     width:280px;
     right: 0; 
     top: 0;
     background-color:white;
+    overflow: hidden;
 
 }
 
@@ -285,25 +291,70 @@ aside{
 }
 
 
+.mobile-bottom{
+    position:fixed;
+    bottom:0;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    line-height: 60px;
+    color: white;
+
+    @include transition(all 0.3s ease);
+
+
+    .wechat-box-mob{
+        float: left;
+        width: 75%;
+        background-color:$orange2;
+        i{
+          font-size: 25px;
+          margin: 20px 15px;
+          float: left;
+      }
+      img{width:50px;  margin: 5px; float:left}
+
+      p{
+          float: left;
+          font-size: 15px;
+          letter-spacing: 1px;
+          margin: 0 12px 0 5px;
+      }
+  }
+
+  .calculator-mob{
+    @include transition(all 0.3s ease);
+    float: left;
+    width: 25%;
+    background-color:white;
+    text-align: center;
+    cursor: pointer;
+
+    a{
+        color: $orange2;
+        font-size: 15px;
+    }
+    &:hover{background-color:$orange2;a{color:white;}}
+
+}
+}
+
+
+
+
 
 
 
 
 .search-box{
-    margin: 30px;
-    position: relative;
-    display: block;
-    float: left;
-    border-bottom: 1px solid $line-color;
-    width:350px;
-    padding: 10px 0;
 
     margin: 15px 30px;
     position: relative;
     display: block;
     float: left;
     border-bottom: 1px solid $line-color;
-    width: 350px;
+    width: 40%;
+    max-width: 350px;
     padding: 10px 0;
 
     i{
@@ -336,7 +387,10 @@ aside{
 
 // ==================================contact page======================================
 
-
+.map{
+    top:100px; 
+    position: relative;
+}
 
 .email-pattern{
     background: #00ff00 url("../images/contactbg.png") repeat fixed center; 
@@ -449,6 +503,11 @@ article{
     margin: auto;
 
     font-size: 11px;
+
+    p::after{
+        content: "All Rights Reserved by xiaoqiaonz.com";
+        color: transparent;
+    }
 
 
     .article-in-here{
@@ -875,12 +934,16 @@ article{
 
 // =======================================calculator========================================
 /*================================ added by @Rain ===================================*/
-/*======================== Calculator ==============================*/
 input[name=email]{padding-left:50px;}
 input[name=income-before-tax]{padding-left:5px; margin-top: 20px;}
 .pr-yes{margin-top: 40px; padding-left:10px;}
 .pr-no{padding-left:10px;}
 .btn-clicked{background-color: #F06421!important; color: #fff;}
+
+
+
+
+
 
 
 .calculator-panel{
@@ -1455,12 +1518,10 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 639px) { 
 
-
 }
 
 /* Landscape phone to portrait tablet */
 @media (min-width: 640px) and (max-width: 780px) { 
-
 
 }
 
@@ -1470,16 +1531,45 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 
+
 /* Large desktop */
 @media (min-width: 1200px) { 
 
 
 }
 
+@media (max-width: 500px) { 
+    .search-box{display:none}
+}
 
 
+@media (max-width: 979px) { 
+    header{
+        height:60px;
+        .search-box{margin:0}
+        .right-col{height:60px;line-height:60px; width: auto;padding: 0 30px;}
+        .home-btn{height:60px; img{margin: 6px 19px;}}
+    }
 
-@media (max-width: 410px) { 
+    .map{top:60px;}
+
+    nav{width:0}
+
+    main{left:0;width:100%;}
+
+    .wechat-box{padding-top:70px;}
+
+}
+
+@media (max-width: 780px) { 
+    ul.bjqs-controls.v-centered li.bjqs-next a {right:30px!important}
+
+    aside{width: 0;}
+
+    .mobile-bottom{
+        height: 60px;
+    }
+
 
 
 }
