@@ -14,7 +14,7 @@
     </div>
 
 
-    <form role="form" name="unsubcribeform">
+    <form role="form" name="unsubcribeform" ng-hide="isResult">
         <div class="form-group" style="margin: 20px">
             <table style="border-spacing: 10px 0">
                 <tbody>    
@@ -38,7 +38,7 @@
 
                     <tr>
                         <td><label for="exampleInputEmail1">联系电话：</label></td>
-                        <td><input name="email" class="form-control" ng-model="customer.email" required/></td>
+                        <td><input name="email" class="form-control" ng-model="customer.phone" required/></td>
                     </tr>
                     
                     <tr>
