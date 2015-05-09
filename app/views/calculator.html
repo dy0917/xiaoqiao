@@ -62,21 +62,41 @@
         value="询问额度" ng-disabled="!isFormCorrect(customer)"/>
 
     </form>
-    <div ng-show="isResult">
-        <table class="table">
-            <thead>
-                <th>Bank Name</th>
-                <th>minimum </th>
-                <th>maximum </th>
-                <th>Cash Back</th>
-            </thead>
-            <tr ng-repeat="bank in banks">
-                <td>{{bank.bankname}}</td>
-                <td>{{bank.minimum * customer.income}}</td>
-                <td>{{bank.maximum * customer.income}}</td>
+    <div ng-show="isResult" class="calculator-result">
 
-            </tr>
+
+
+        <!-- ========please loop this part======== -->
+        <table style="border-spacing: 10px 30px">
+
+            <tbody>    
+                <tr>
+                    <td><b>Bank Name:</b></td>
+                    <td>{{bank.bankname}}</td>
+                </tr>
+
+                <tr>
+                    <td>Minimum：</td>
+                    <td>{{bank.minimum * customer.income}}</td>
+                </tr>
+
+                <tr>
+                    <td>Maximum：</td>
+                    <td>{{bank.maximum * customer.income}}</td>
+                </tr>
+
+                <tr>
+                    <td>Cash Back:</td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+
         </table>
+        <!-- ========please loop this part======== -->
+
+
+
 
     </div>
 
