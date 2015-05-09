@@ -56,7 +56,7 @@ angular.module('xiaoqiaoApp')
                 $scope.user = loginService.isLoggedIn();
                 $location.path("/");
             },
-                    $scope.toggleSubcribewindow = function () {
+            $scope.toggleSubcribewindow = function () {
                         $scope.isSubscribewindow = !$scope.isSubscribewindow;
                     };
             $scope.$on('isloading', function (event, bool) {
@@ -71,6 +71,7 @@ angular.module('xiaoqiaoApp')
             $scope.$on('emptySearch', function (event) {
                 $scope.searchkeyword = "";
             });
+
         });
 
 

@@ -8,11 +8,30 @@
  * Controller of the xtripApp
  */
 angular.module('xiaoqiaoApp')
-        .controller('singleBlogCtrl', function ($scope, $http, $routeParams, facotryblogs, $rootScope, factorymessages, encodeservice) {
+        .controller('singleBlogCtrl', function ($scope, $http, $routeParams, facotryblogs, $rootScope, factorymessages, encodeservice, typeservice
+         ,$location       ) {
 
             var currentId = $routeParams.blogid;
-            $rootScope.blog = facotryblogs.getobjectbyid(currentId);
+            $scope.blog = facotryblogs.getobjectbyid(currentId);
+            $scope.type = "";
 
+            $scope.setblogtype = function () {
+                typeservice.gettype().then(function (result) {
+                    result.data.forEach(function (entry) {
+                        if (entry.BlogTypeid == $scope.blog.BlogTypeid) {
+                            $scope.type = entry;
+
+                        }
+                    });
+                });
+            };
+            $scope.filterbyType = function ()
+            {
+
+                $location.path('/blog/filerbytype/'+  $scope.type.BlogTypeid);
+
+
+            };
             if (typeof $scope.blog == 'undefined' || $scope.blog == null)
             {
                 $http({
@@ -20,18 +39,23 @@ angular.module('xiaoqiaoApp')
                     method: "get",
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).success(function (data, status, headers, config) {
-                    $rootScope.blog = data.blog;
-                    $rootScope.blog.body = encodeservice.htmlDecode($rootScope.blog.body);
-                    factorymessages.getmessagesbyid($rootScope.blog.Blogid);
+                    $scope.blog = data.blog;
+                    $scope.blog.body = encodeservice.htmlDecode($scope.blog.body);
+                    $scope.setblogtype();
                 }).error(function (data, status, headers, config) {
-
 
                 });
 
             } else {
-                $rootScope.blog.body = encodeservice.htmlDecode($rootScope.blog.body);
-                factorymessages.getmessagesbyid($rootScope.blog.Blogid);
+                $scope.blog.body = encodeservice.htmlDecode($scope.blog.body);
+                factorymessages.getmessagesbyid($scope.blog.Blogid);
+                $scope.setblogtype();
             }
+
+
+
+
+
 
         });
 

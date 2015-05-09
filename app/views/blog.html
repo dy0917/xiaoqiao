@@ -11,7 +11,7 @@
     <div class="article-categories">
 
         <ul >
-            <li ng-repeat="blogtype in blogtypes"  radioclick="filterbyType(blogtype)" value="{{blogtype.BlogTypeid}}">{{blogtype.BlogType}}</li>
+            <li ng-repeat="blogtype in blogtypes" class="{{blogtype.cssclass}}" radioclick="filterbyType(blogtype)" value="{{blogtype.BlogTypeid}}">{{blogtype.BlogType}}</li>
 
         </ul>
 

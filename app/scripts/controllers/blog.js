@@ -8,7 +8,7 @@
  * Controller of the xtripApp
  */
 angular.module('xiaoqiaoApp')
-        .controller('BlogCtrl', function ($scope, masonryService, facotryblogs, $rootScope, typeservice, $filter, $routeParams) {
+        .controller('BlogCtrl', function ($scope, masonryService, facotryblogs, $rootScope, typeservice, $filter, $routeParams, $location,servicecallback) {
 
             $scope.blogs = [];
 
@@ -19,27 +19,71 @@ angular.module('xiaoqiaoApp')
                 masonryService.masonryinit(500);
             };
 
-            $scope.init = function ()
-            {
+            $scope.filterbyType = function (condition) {
 
+                if (condition.BlogTypeid == 0)
+                {
+                    $scope.blogs = $rootScope.blogs;
+
+                } else
+                {
+                    $scope.blogs = $filter("filter")($rootScope.blogs, {BlogTypeid: condition.BlogTypeid});
+                }
+                $scope.$apply();
+                masonryService.masonryinit(500);
+            };
+
+            $scope.search = function () {
                 var searchString = $routeParams.keyword;
 
-                typeservice.gettype().then(function (result) {
-                    $scope.blogtypes = [{BlogTypeid: "0", BlogType: "全部"}];
-                    $scope.blogtypes = $scope.blogtypes.concat(result.data);
-                });
-
                 $rootScope.$broadcast('isloading', true);
-                if ($rootScope.blogs == undefined) {
-                    facotryblogs.getblogs().then(function (result) {
-                        $rootScope.blogs = result.data;
-                        $scope.afterinit(searchString);
 
+                $scope.afterinit(searchString);
+            };
+
+            $scope.init = function ()
+            {
+                //filter type settings
+                typeservice.gettype().then(function (result) {
+                    $scope.blogtypes = [{BlogTypeid: "0", BlogType: "全部", cssclass: "ng-scope ng-isolate-scope ng-binding"}];
+//                  class="ng-scope ng-isolate-scope ng-binding btn-clicked"
+                    result.data.forEach(function (element) {
+
+                        if ($location.path().indexOf("filerbytype") > -1 && element.BlogTypeid == $routeParams.keyword) {
+                            element.cssclass = "ng-scope ng-isolate-scope ng-binding btn-clicked";
+                        }
+                        else {
+                            element.cssclass = "ng-scope ng-isolate-scope ng-binding";
+                        }
                     });
-                } else {
-                    $scope.afterinit(searchString);
-                }
+                    $scope.blogtypes = $scope.blogtypes.concat(result.data);
 
+                });
+                if ($rootScope.blogs == undefined) {
+
+                    var homepageblog = apiPath + "/blog/getsataticblog";
+                    servicecallback.http(homepageblog, "POST", null, function (data) {
+                        $rootScope.blogs = data;
+                        if ($location.path().indexOf("filerbytype") > -1) {
+                            var searchString = $routeParams.keyword;
+
+                            $scope.blogs = $filter("filter")($rootScope.blogs, {BlogTypeid: searchString});
+
+                            masonryService.masonryinit(500);
+                        }
+                        else {
+                            $scope.search();
+                        }
+                        masonryService.masonryinit(50);
+                    });
+
+//                    facotryblogs.getblogs().then(function (result) {
+//
+//                    });
+                }
+                else {
+                    $scope.search();
+                }
 
             };
             $scope.afterinit = function (searchString) {
@@ -59,30 +103,8 @@ angular.module('xiaoqiaoApp')
 
             $scope.getimage = function (blog)
             {
-                if (typeof blog.FeatureIamge === 'undefined' || blog.FeatureIamge === null)
-                {
-                    return "defaultmissing.jpg";
-                }
-                else {
-                    return blog.FeatureIamge;
-                }
+                return facotryblogs.getimage(blog);
             };
-
-            $scope.filterbyType = function (condition) {
-
-                console.log(condition);
-                if (condition.BlogTypeid == 0)
-                {
-                    $scope.blogs = $rootScope.blogs;
-
-                } else
-                {
-                    $scope.blogs = $filter("filter")($rootScope.blogs, {BlogTypeid: condition.BlogTypeid});
-                }
-                $scope.$apply();
-                masonryService.masonryinit(500);
-            };
-
 
 
 

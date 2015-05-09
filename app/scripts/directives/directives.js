@@ -68,6 +68,7 @@ app.directive('radioclick', function () {
         },
         link: function (scope, iElement, iAttrs) {
             iElement.bind('click', function () {
+                
                 $('.ng-isolate-scope').removeClass("btn-clicked");
                 iElement.addClass("btn-clicked");
                 scope.radioclick();
