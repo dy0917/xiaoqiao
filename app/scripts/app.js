@@ -118,7 +118,6 @@ function mySrollFunction() {
     {
         $("#header").addClass('header-scrollDown');
     } else {
-       $("#header").removeClass('header-scrollDown');
+        $("#header").removeClass('header-scrollDown');
     }
-
 }

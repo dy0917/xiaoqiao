@@ -42,8 +42,9 @@ angular.module('xiaoqiaoApp')
             };
             $scope.search = function (searchString) {
 
-                $location.path("/blog/search/" + searchString);
-
+                if (searchString) {
+                    $location.path("/blog/search/" + searchString);
+                }
             };
 
             $scope.toggleLogin = function () {
@@ -56,7 +57,7 @@ angular.module('xiaoqiaoApp')
                 $scope.user = loginService.isLoggedIn();
                 $location.path("/");
             },
-            $scope.toggleSubcribewindow = function () {
+                    $scope.toggleSubcribewindow = function () {
                         $scope.isSubscribewindow = !$scope.isSubscribewindow;
                     };
             $scope.$on('isloading', function (event, bool) {

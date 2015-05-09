@@ -68,10 +68,32 @@ app.directive('radioclick', function () {
         },
         link: function (scope, iElement, iAttrs) {
             iElement.bind('click', function () {
-                
+
                 $('.ng-isolate-scope').removeClass("btn-clicked");
                 iElement.addClass("btn-clicked");
                 scope.radioclick();
+
+            });
+
+        }
+    };
+});
+
+app.directive('menuclick', function () {
+
+    return {
+        scope: {
+            radiomenuclickclick: '&'
+        },
+        link: function (scope, iElement, iAttrs) {
+            iElement.bind('click', function () {
+
+                if ($(".lines").hasClass("menu-x")) {
+                    $(".lines").removeClass("menu-x");
+                } else {
+                    $(".lines").addClass("menu-x");
+                }
+//                scope.radioclick();
 
             });
 
