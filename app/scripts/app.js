@@ -111,3 +111,14 @@ var app = angular
 
     });
 });
+
+
+function mySrollFunction() {
+    if ($(document.body).scrollTop() > 100)
+    {
+        $("#header").addClass('header-scrollDown');
+    } else {
+       $("#header").removeClass('header-scrollDown');
+    }
+
+}
