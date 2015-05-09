@@ -105,6 +105,17 @@ app.factory('facotryblogs', function ($http, $rootScope, servicecallback) {
             return null;
         }
     };
+
+    factory.getimage = function (blog)
+    {
+        if (typeof blog.FeatureIamge === 'undefined' || blog.FeatureIamge === null)
+        {
+            return "defaultmissing.jpg";
+        }
+        else {
+            return blog.FeatureIamge;
+        }
+    };
     factory.getBlog = function ()
     {
         return $rootScope.blog;

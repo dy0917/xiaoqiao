@@ -7,14 +7,27 @@
  * Controller of the xtripApp
  */
 angular.module('xiaoqiaoApp')
-        .controller('MainCtrl', function ($scope, masonryService, servicecallback, $timeout) {
+        .controller('MainCtrl', function ($scope, masonryService, servicecallback, facotryblogs) {
 
             masonryService.masonryinit(50);
+            $scope.init = function () {
+                var path = apiPath + "/blog/gethomepageblog";
+                var homepageblog = apiPath + "/blog/getsataticblog";
+                servicecallback.http(homepageblog, "POST", {BlogTypeid:4}, function (data) {
+                    $scope.blogs = data;
+                    masonryService.masonryinit(50);
+                });
+
+//                servicecallback.http(path, "POST", null, function (data) {
+//                    $scope.blogs = data;
+//                    masonryService.masonryinit(50);
+//                });
+            };
+
             $scope.getsliders = function () {
                 var path = apiPath + "/slider/";
                 servicecallback.http(path, "GET", null, function (data) {
                     $scope.sliders = data;
-
                     $scope.sliders.forEach(function (slider)
                     {
                         var img = document.createElement("img");
@@ -36,9 +49,25 @@ angular.module('xiaoqiaoApp')
                 }, function () {
                 });
             };
+
             if (!$scope.sliders) {
                 $scope.getsliders();
             }
+
+
+            $scope.getimage = function (blog)
+            {
+
+                return  facotryblogs.getimage(blog);
+            };
+
+
+            $scope.getblogcss = function (blog)
+            {
+
+            };
+
+            $scope.init();
             $scope.displayLogin = function () {
                 //	loginService.login(data,$scope); //call login service
             };
@@ -51,8 +80,6 @@ angular.module('xiaoqiaoApp')
 
             });
         });
-
-
 angular.module('xiaoqiaoApp')
         .controller('feedbackCtrl', function ($scope, $timeout) {
             $scope.isshow = false;

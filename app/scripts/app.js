@@ -60,6 +60,10 @@ var app = angular
                         templateUrl: 'views/blog.html',
                         controller: 'BlogCtrl'
                     })
+                    .when('/blog/filerbytype/:keyword', {
+                        templateUrl: 'views/blog.html',
+                        controller: 'BlogCtrl'
+                    })
                     .when('/test', {
                         templateUrl: 'views/test.html',
                         controller: 'testCtrl'
@@ -107,16 +111,3 @@ var app = angular
 
     });
 });
-
-//app.factory('routeservice', function($rootScope, $location) {
-//    return {
-//        updateroute: function() {
-//
-//            $rootScope.$broadcast('routeupdate', $location.path());
-//        }
-//
-//    };
-//
-//
-//});
-//app.constant

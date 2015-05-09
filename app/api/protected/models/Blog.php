@@ -38,8 +38,8 @@ class Blog extends CActiveRecord {
         // will receive user inputs.
         return array(
             array('title', 'required'),
-            array('BlogTypeid, BlogStatusid, CreatebyUser', 'numerical', 'integerOnly' => true),
-            array('body', 'length', 'max' => 255),
+            array('BlogTypeid, BlogStatusid, CreatebyUser, displaysize', 'numerical', 'integerOnly' => true),
+            array('body', 'length', 'max' => 65535),
             array('FeatureIamge, createTime, LastUpdateTime', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.

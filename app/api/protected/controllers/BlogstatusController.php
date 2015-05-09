@@ -12,6 +12,7 @@ class BlogstatusController extends Controller {
         foreach ($models as $model) {
             array_push($tempArray, $model);
         }
+
         $json = json_encode($tempArray);
 
         $this->sendResponse(200, $json);

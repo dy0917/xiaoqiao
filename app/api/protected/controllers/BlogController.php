@@ -7,8 +7,8 @@ class BlogController extends Controller {
 
     public function actionIndex() {
 
-        $criteria = new CDbCriteria;
-        $criteria->select = 't.id';
+//        $criteria = new CDbCriteria;
+//        $criteria->select = 't.id';
 
         $models = Yii::app()->db->createCommand()
                 ->select('*')
@@ -47,6 +47,53 @@ class BlogController extends Controller {
 
             $this->sendResponse(500);
         }
+    }
+
+    public function actionGethomepageblog() {
+        $models1 = Yii::app()->db->createCommand()
+                ->select('*')
+                ->from('Blog')
+                ->where('Blog.BlogTypeid=1')
+                ->limit(3)
+                ->where('Blog.BlogStatusid=1')
+                ->queryAll();
+        $models2 = Yii::app()->db->createCommand()
+                ->select('*')
+                ->from('Blog')
+                ->where('Blog.BlogTypeid=2')
+                ->limit(3)
+                ->where('Blog.BlogStatusid=1')
+                ->queryAll();
+        $models3 = Yii::app()->db->createCommand()
+                ->select('*')
+                ->from('Blog')
+                ->where('Blog.BlogTypeid=3')
+                ->where('Blog.BlogStatusid=1')
+                ->limit(3)
+                ->queryAll();
+        $models = array_merge($models1, $models2, $models3);
+        $json = json_encode($models);
+        $this->sendResponse(200, $json);
+    }
+
+    public function actionGetsataticblog() {
+        $request = $this->getClientPost();
+        $condiction = 'Blog.BlogTypeid=';
+     
+        if ($request["BlogTypeid"]) {
+            $condiction = $condiction .$request["BlogTypeid"];
+        } else {
+            $condiction = '';
+        }
+
+        $models = Yii::app()->db->createCommand()
+                ->select('*')
+                ->from('Blog')
+                ->where($condiction)
+                ->andWhere('Blog.BlogStatusid=1')
+                ->queryAll();
+        $json = json_encode($models);
+        $this->sendResponse(200, $json);
     }
 
     public function actionUpdate() {
