@@ -865,13 +865,14 @@ article{
 
 .m-item-dec-wrapper{
     width: 100%;
-    min-height: 50px;
+    min-height: 60px;
     background-color: white;
     padding: 10px 15px;
     margin-top: -3px;
     color: #555;
 
     @include clearfix();
+
 }
 
 
@@ -897,7 +898,6 @@ article{
 
 .m-item-dec{
     font-size: 14px;
-    position: absolute;
 
     .item-title{font-weight:bold;}
     .item-date{font-size:11px;}
@@ -909,7 +909,7 @@ article{
     font-weight: bold;
     color: $orange;
 
-    margin-top: 8px;
+    margin-top: -15px;
 }
 
 
@@ -923,7 +923,7 @@ article{
     font-weight: bold;
     background-color: #F06421;
     color: white;
-    margin-top: -30px;
+    margin-top: -65px;
     z-index: 10;
     position:relative ;
 
@@ -934,7 +934,7 @@ article{
 
 // =======================================calculator========================================
 /*================================ added by @Rain ===================================*/
-input[name=email]{padding-left:50px;}
+
 input[name=income-before-tax]{padding-left:5px; margin-top: 20px;}
 .pr-yes{margin-top: 40px; padding-left:10px;}
 .pr-no{padding-left:10px;}
@@ -1000,11 +1000,13 @@ input[name=income-before-tax]{padding-left:5px; margin-top: 20px;}
 
 .feedBackBoard{
     position: fixed;
-    right: 20px;
+    right: 50%;
+    min-height: 50px;
+    margin-right:-200px;
     top: 120px;
     z-index: 100;
     overflow: hidden;
-    @include box-shadow(0,0,0,10px,rgba(0,0,0,.4));
+    @include box-shadow(0,0,0,5px,$orange2);
     @include border-radius(3px);
 
     width: 400px;

@@ -7,29 +7,31 @@
         <img src="https://ununsplash.imgix.net/photo-1428604467652-115d9d71a7f1?fit=crop&fm=jpg&h=700&q=75&w=1050">
         <div class="intro-content">
             <h6>关于我们</h6>
-            <p>这里需要文字内容，为什么要订阅我们？小高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高</p>
-        </div>
-    </div>
-
-
-    <div class="login-insert-part" style="padding-top: 100px;">
-
-        <a class="cd-close-menu" ng-click="toggleSubcribewindow()">Close<span></span></a>
-
-
-        <h6><i class="fa fa-star"></i>&nbsp;&nbsp;订阅我们</h6>
-        <form role="form" name="unsubcribeform">
-            <div class="form-group">
-
-                <label for="exampleInputEmail1"><i class="fa fa-envelope"></i></label>
-                <input type="email" placeholder="请输入邮箱地址" name="mail" class="form-control" ng-model="subcribe.email" required>
-                <div ng-if="subcribeform.mail.$invalid && !subcribe.email">请填写正确的邮箱地址</div>
+            <p>欢迎关注新西兰精算师小乔工作室。</P>
+                <p>我们是以投资精算师小乔为核心的策略咨询团队，旨在帮助投资置业者买到称心的物业，帮助有意于投资新西兰的投资者进行项目可行性研究等。</p>
+                <p>快快关注我们，我们将不定期推送各种行业最新动态，投资案例分析，政策走向解析等高质量信息。</p>
             </div>
+        </div>
 
-            <input class="btn-shape btn1 center-position" type="submit"  click-and-disable="submit(subcribe)" ng-disabled="unsubcribeform.mail.$invalid" value="订阅我们">
-        </form>
+
+        <div class="login-insert-part" style="padding-top: 100px;">
+
+            <a class="cd-close-menu" ng-click="toggleSubcribewindow()">Close<span></span></a>
+
+
+            <h6><i class="fa fa-star"></i>&nbsp;&nbsp;订阅我们</h6>
+            <form role="form" name="unsubcribeform">
+                <div class="form-group">
+
+                    <label for="exampleInputEmail1"><i class="fa fa-envelope"></i></label>
+                    <input type="email" placeholder="请输入邮箱地址" name="mail" class="form-control" ng-model="subcribe.email" required>
+                    <div ng-if="subcribeform.mail.$invalid && !subcribe.email">请填写正确的邮箱地址</div>
+                </div>
+
+                <input class="btn-shape btn1 center-position" type="submit"  click-and-disable="submit(subcribe)" ng-disabled="unsubcribeform.mail.$invalid" value="订阅我们">
+            </form>
+        </div>
+
     </div>
-
-</div>
 
 
