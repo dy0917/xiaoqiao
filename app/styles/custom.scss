@@ -11,7 +11,6 @@ $darkblue: #21456e;
 
 
 
-
 * {
     margin: 0;
     padding: 0;
@@ -206,10 +205,10 @@ aside{
     overflow: hidden;
 
     ul{height:450px!important;
-     li{height:450px!important;overflow:hidden;}
- }
+       li{height:450px!important;overflow:hidden;}
+   }
 
- img{width:100%;height:auto!important; }
+   img{width:100%;height:auto!important; }
 }
 
 .wechat-box{
@@ -1677,6 +1676,14 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 500px) { 
     .search-box{display:none}
+
+    .theme-slide{
+        width: 120%!important;
+        margin-left: -10%;
+        margin-right: -10%;
+    }
+
+    //.item, .w2{width: calc(100% - 30px)}
 }
 
 
@@ -1688,6 +1695,7 @@ h1, h2, h3, h4, h5, h6 {
         .home-btn{height:60px; a{display:none;}}
         .menu-btn{display:block}
     }
+
 
     .map{top:60px;}
 
@@ -1707,7 +1715,6 @@ h1, h2, h3, h4, h5, h6 {
     .mobile-bottom{
         height: 60px;
     }
-
 
 
 }
