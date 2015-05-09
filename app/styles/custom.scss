@@ -204,10 +204,10 @@ aside{
     overflow: hidden;
 
     ul{height:450px!important;
-     li{height:450px!important;overflow:hidden;}
- }
+       li{height:450px!important;overflow:hidden;}
+   }
 
- img{width:100%;height:auto!important; }
+   img{width:100%;height:auto!important; }
 }
 
 .wechat-box{
@@ -451,11 +451,20 @@ aside{
 
 
 
-.blog-breadcrums{
-    float: left;
+.breadcrumbs{
     font-size: 14px;
-    margin: 40px 100px 40px 40px;
-    color: #aaa;
+    margin: 40px 100px 40px 0px;
+    color: #555;
+
+    a{
+        color:$orange;
+        cursor: pointer;
+
+        &:hover,&:focus{
+            opacity: .6;
+        }
+
+    }
 }
 
 .blog-menu-btn{
