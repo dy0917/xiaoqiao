@@ -90,8 +90,10 @@ app.directive('menuclick', function () {
 
                 if ($(".lines").hasClass("menu-x")) {
                     $(".lines").removeClass("menu-x");
+                    $("nav").removeClass("open");
                 } else {
                     $(".lines").addClass("menu-x");
+                    $("nav").addClass("open");
                 }
 //                scope.radioclick();
 
