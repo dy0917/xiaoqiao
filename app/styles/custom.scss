@@ -139,6 +139,11 @@ nav{
     }
 }
 
+.left-menu li.active{
+                background-color:white;
+                color: $orange;
+}
+
 nav.open{
     width: 100px;
 }
@@ -504,10 +509,10 @@ aside{
 
 .article-wrapper{
     @include clearfix;
-    width: calc(100% - 320px);
+    width: calc(100% - 280px);
     left: 0px;
     right: 280px;
-    margin: 20px 0;
+    margin: 40px 0;
     padding:0 6%;
 
 }
@@ -1708,6 +1713,7 @@ h1, h2, h3, h4, h5, h6 {
 
     .wechat-box{padding-top:70px;}
 
+
 }
 
 @media (max-width: 780px) { 
@@ -1718,6 +1724,13 @@ h1, h2, h3, h4, h5, h6 {
     .mobile-bottom{
         height: 60px;
     }
+
+    .article-wrapper{
+      width: 100%;
+      padding: 0 6% 10%;
+  }
+  .about-squirrel-theme{width:100%;}
+
 
 
 }
