@@ -1683,7 +1683,10 @@ h1, h2, h3, h4, h5, h6 {
 
         .login-intro{width:100%;height:auto;img{width:100%}}
         .login-insert-part{width:100%;padding: 30px;}
+    }
 
+    .login-insert-part{
+        .cd-close-menu::before, .cd-close-menu::after{background-color: #fff;}
     }
 
 }
