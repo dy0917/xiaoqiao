@@ -216,10 +216,10 @@ aside{
     overflow: hidden;
 
     ul{height:450px!important;
-       li{height:450px!important;overflow:hidden;}
-   }
+     li{height:450px!important;overflow:hidden;}
+ }
 
-   img{width:100%;height:auto!important; }
+ img{width:100%;height:auto!important; }
 }
 
 .wechat-box{
@@ -667,6 +667,13 @@ article{
 
 // ==========================================popup boxes=====================================
 
+.popup-wrapper{
+    position:fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    overflow: auto;
+}
 
 .fade-bg{
     background-color: rgba(255,255,255,.6);
@@ -678,7 +685,7 @@ article{
 
 .login-popup{
     top:50%;
-    position: fixed;
+    position: relative;
     width: 600px;
     height: 400px;
     margin: -250px auto 0; 
@@ -1680,6 +1687,7 @@ h1, h2, h3, h4, h5, h6 {
     .login-popup{
         width: 95%;
         height: auto;
+        margin: -280px auto 50px;
 
         .login-intro{width:100%;height:auto;img{width:100%}}
         .login-insert-part{width:100%;padding: 30px;}
@@ -1688,6 +1696,8 @@ h1, h2, h3, h4, h5, h6 {
     .login-insert-part{
         .cd-close-menu::before, .cd-close-menu::after{background-color: #fff;}
     }
+
+    .theme-slide img{height:100%!important;width:auto;}
 
 }
 
@@ -1717,6 +1727,10 @@ h1, h2, h3, h4, h5, h6 {
         margin-left: -10%;
         margin-right: -10%;
     }
+
+
+
+       .login-popup{margin: -200px auto 50px;}
 
     //.item, .w2{width: calc(100% - 30px)}
 }
