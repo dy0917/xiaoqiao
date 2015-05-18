@@ -216,10 +216,10 @@ aside{
     overflow: hidden;
 
     ul{height:450px!important;
-     li{height:450px!important;overflow:hidden;}
- }
+       li{height:450px!important;overflow:hidden;}
+   }
 
- img{width:100%;height:auto!important; }
+   img{width:100%;height:auto!important; }
 }
 
 .wechat-box{
@@ -628,7 +628,7 @@ article{
 
 
 .control-btn-section{
-    margin: 40px 40px 20px;
+    margin: 20px auto;
 }
 
 
@@ -891,7 +891,7 @@ article{
 
 .item { 
     background-color:white;
-    width: 250px; 
+    //width: 250px; 
     overflow: hidden;
     margin: 15px;
     border: 1px solid #e5e5e5;
@@ -914,7 +914,7 @@ article{
 
 
 .item.w2 { 
-    width: 530px; 
+    //width: 530px; 
 }
 
 
@@ -1677,7 +1677,9 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
+    .item{width:30%;}
 
+    .item.w2{width:60%}
 
 
 
@@ -1727,6 +1729,11 @@ h1, h2, h3, h4, h5, h6 {
 
     .information-container{min-width:0;width:95%;}
 
+    .item{width:46%;margin:1%}
+
+    .item.w2{width:46%}
+
+
 
 }
 
@@ -1761,10 +1768,9 @@ h1, h2, h3, h4, h5, h6 {
     padding:20px 5%;
 }
 
-.item{width:30%}
+    .item{width:30%;}
 
-.item.w2{width:60%}
-
+    .item.w2{width:60%}
 
 
 }
@@ -1820,7 +1826,10 @@ h1, h2, h3, h4, h5, h6 {
 
     .login-popup{margin: -200px auto 50px;}
     .item, .item.w2{width: 94%}
-
+    .item.contact-w3{min-width: 0;width: 95%;}
+.send-email-wrapper{
+    input,textarea{padding: 8px;}
+}
 
 }
 
