@@ -333,7 +333,7 @@ aside{
             float: left;
             font-size: 15px;
             letter-spacing: 1px;
-            margin: 0 12px 0 5px;
+            margin: 0 5px;
             line-height: inherit;
         }
     }
@@ -529,10 +529,10 @@ article{
 
     font-size: 11px;
 
-    p::after{
-        content: "All Rights Reserved by xiaoqiaonz.com";
-        color: transparent;
-    }
+    // p::after{
+    //     content: "All Rights Reserved by xiaoqiaonz.com";
+    //     color: transparent;
+    // }
 
 
     .article-in-here{
@@ -604,8 +604,7 @@ article{
         z-index: 10;
         color: white;
         position: absolute;
-        top: -10px;
-        right: 20px;
+        right: 15px;
     }
 }
 
@@ -1701,7 +1700,18 @@ h1, h2, h3, h4, h5, h6 {
 
     .theme-slide img{height:100%!important;width:auto;}
 
+    .demo-chapter{margin:40px auto 10px}
+    .product-img{width:100%}
+    .product-info{
+        text-align: center;
+      width: 100%;
+      padding: 10px 5%;
+      h6{margin-bottom:15px}
+      p{line-height:15px}
+      .purchure-btn-section{margin-top:20px;}
+  }
 
+  .fa-weixin,span{display:none;}
 
 
 }
@@ -1735,7 +1745,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
-       .login-popup{margin: -200px auto 50px;}
+    .login-popup{margin: -200px auto 50px;}
 
     //.item, .w2{width: calc(100% - 30px)}
 }
