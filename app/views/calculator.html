@@ -51,7 +51,10 @@
 
                         <tr>
                             <td><label for="exampleInputEmail1">可证明年税前收入（新西兰币）:</label></td>
-                            <td><input style="margin:0!important;" name="income-before-tax" ng-model="customer.income" required/></td>
+                            <td>
+                                <!--<input style="margin:0!important;" name="income-before-tax" ng-model="customer.income" required/>-->
+                            <select data-ng-options="o.name for o in options" data-ng-model="selectedOption"></select>
+                            </td>
                         </tr>
 
                     </tbody>

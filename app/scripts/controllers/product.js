@@ -15,7 +15,10 @@ angular.module('xiaoqiaoApp')
 angular.module('xiaoqiaoApp')
         .controller('calculatorCtrl', function ($scope, $rootScope, servicecallback, formcheckservice) {
 
+            $scope.options = [{name: "请选择", id: 0},{name: "40000 - 50000", id: 1}, {name: "50001 - 60000", id: 2},{name: "60001 - 70000", id: 3},{name: "70001 - 80000", id: 4}];
+            $scope.selectedOption = $scope.options[0];
             $scope.customer = {isPR: true};
+            
             $scope.getResult = function (customer) {
                 $rootScope.$broadcast('isloading', true);
                 var path = apiPath + "/bankratio";
@@ -26,7 +29,6 @@ angular.module('xiaoqiaoApp')
 
                 });
 
-//                }
             };
 
             $scope.setPR = function (b) {
