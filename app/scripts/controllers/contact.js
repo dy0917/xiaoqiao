@@ -16,7 +16,7 @@ angular.module('xiaoqiaoApp')
                     var path = apiPath + "/email/send";
                     return $http.post(path, mail).success(function () {
                         $scope.mail = {};
-                        $rootScope.$broadcast("showmessage", {title: "message", body: "asdfasdfa"}
+                        $rootScope.$broadcast("showmessage", {title: "邮件已发送", body: "非常感谢您的咨询，我们的工作人员将在第一时间与您取得联系。谢谢！"}
                         );
 
                     });

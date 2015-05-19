@@ -32,7 +32,7 @@ angular.module('xiaoqiaoApp')
                     $rootScope.$broadcast('isloading', false);
                     $rootScope.$broadcast("toggleSubcribewindow", false);
                     if (data !== "registered") {
-                        $rootScope.$broadcast("showmessage", {title: "欢迎关注小乔工作室", body: "欢迎关注新西兰精算师小乔工作室。我们是以投资精算师小乔为核心的策略咨询团队，旨在帮助投资置业者买到称心的物业，帮助有意于投资新西兰的投资者进行项目可行性研究等。快快关注我们，我们将不定期推送各种行业最新动态，投资案例分析，政策走向解析等高质量信息。"}
+                        $rootScope.$broadcast("showmessage", {title: "感谢您的关注！", body: ""}
                         );
 
                     } else {

@@ -13,15 +13,11 @@ angular.module('xiaoqiaoApp')
             $scope.init = function () {
                 var path = apiPath + "/blog/gethomepageblog";
                 var homepageblog = apiPath + "/blog/getsataticblog";
-                servicecallback.http(homepageblog, "POST", {BlogTypeid:4}, function (data) {
+                servicecallback.http(homepageblog, "POST", {BlogTypeid: 4}, function (data) {
                     $scope.blogs = data;
                     masonryService.masonryinit(50);
                 });
 
-//                servicecallback.http(path, "POST", null, function (data) {
-//                    $scope.blogs = data;
-//                    masonryService.masonryinit(50);
-//                });
             };
 
             $scope.getsliders = function () {
