@@ -1,191 +1,190 @@
 
+<div class="popup-wrapper">
 
+    <div class="fade-bg"></div>
 
-<div class="fade-bg"></div>
+    <div class="login-popup calculator-panel"   style="height:auto">
 
-<div class="login-popup calculator-panel"   style="height:auto">
+        <a ng-href="/" class="cd-close-menu" style="z-index: 100">Close<span></span></a>
 
-    <a ng-href="/" class="cd-close-menu" style="z-index: 100">Close<span></span></a>
+        <div class="calculator-header" style="background-image: url('http://2.bp.blogspot.com/-hoMLjRut8o8/UFq9I43jSsI/AAAAAAAAAKM/j2Yp3m6_w-o/s1600/Family-Stock.jpg');">
 
-    <div class="calculator-header" style="background-image: url('http://2.bp.blogspot.com/-hoMLjRut8o8/UFq9I43jSsI/AAAAAAAAAKM/j2Yp3m6_w-o/s1600/Family-Stock.jpg');">
+            <h6><i class="fa fa-calculator"></i>&nbsp;&nbsp;贷款计算器</h6>
 
-        <h6><i class="fa fa-calculator"></i>&nbsp;&nbsp;贷款计算器</h6>
-
-    </div>
-
-
-    <form role="form" name="unsubcribeform" ng-hide="isResult">
-        <div class="form-group" style="margin: 20px">
-            <table style="border-spacing: 10px 0">
-                <tbody>    
-
-                    <tr>
-                        <td><label >姓:</label></td>
-                        <td><input type="text"  name="mail" class="form-control" ng-model="customer.surname" required></td>
-                        <td><label >名:</label></td>
-                        <td><input type="text" name="mail" class="form-control" ng-model="customer.givenname" required></td>
-                    </tr>
-
-                </tbody>
-            </table>
-
-            <table style="border-spacing: 10px 30px">
-                <tbody>    
-                    <tr>
-                        <td><label for="exampleInputEmail1">邮箱：</label></td>
-                        <td><input name="email" class="form-control" ng-model="customer.email" required/></td>
-                    </tr>
-
-                    <tr>
-                        <td><label for="exampleInputEmail1">联系电话：</label></td>
-                        <td><input name="email" class="form-control" ng-model="customer.phone" required/></td>
-                    </tr>
-                    
-                    <tr>
-                        <td style="padding-top:10px"><label for="exampleInputEmail1">是否新西兰居民：</label></td>
-                        <td style="padding-top:10px">                    
-                            <input class="pr-yes btn-clicked select-circle" type="button" ng-model="customer.pr" radioclick="setPR(true)" value="是"/>
-                            <input class="pr-no select-circle" type="button" ng-model="customer.pr" radioclick="setPR(false)" value="否"/>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td><label for="exampleInputEmail1">可证明年税前收入（新西兰币）:</label></td>
-                        <td><input style="margin:0!important;" name="income-before-tax" ng-model="customer.income" required/></td>
-                    </tr>
-                    
-                </tbody>
-            </table>
         </div>
 
-        <input class="btn-shape btn1 center-position  btn_disable_{{!isFormCorrect(customer)}}" type="submit" ng-click="getResult(customer)"
-        value="询问额度" ng-disabled="!isFormCorrect(customer)"/>
 
-    </form>
-    <div ng-show="isResult" class="calculator-result">
+        <form role="form" name="unsubcribeform" ng-hide="isResult">
+            <div class="form-group" style="margin: 20px">
+                <table style="border-spacing: 10px 0">
+                    <tbody>    
 
+                        <tr>
+                            <td><label >姓:</label></td>
+                            <td><input type="text"  name="mail" class="form-control" ng-model="customer.surname" required></td>
+                            <td><label >名:</label></td>
+                            <td><input type="text" name="mail" class="form-control" ng-model="customer.givenname" required></td>
+                        </tr>
 
+                    </tbody>
+                </table>
 
-        <!-- ========please loop this part======== -->
-        <table style="border-spacing: 10px 30px">
+                <table style="border-spacing: 10px 30px">
+                    <tbody>    
+                        <tr>
+                            <td><label for="exampleInputEmail1">邮箱：</label></td>
+                            <td><input name="email" class="form-control" ng-model="customer.email" required/></td>
+                        </tr>
 
-            <tbody>    
-                <tr>
-                    <td><b>Bank Name:</b></td>
-                    <td>{{bank.bankname}}</td>
-                </tr>
+                        <tr>
+                            <td><label for="exampleInputEmail1">联系电话：</label></td>
+                            <td><input name="email" class="form-control" ng-model="customer.phone" required/></td>
+                        </tr>
 
-                <tr>
-                    <td>Minimum：</td>
-                    <td>{{bank.minimum * customer.income}}</td>
-                </tr>
+                        <tr>
+                            <td style="padding-top:10px"><label for="exampleInputEmail1">是否新西兰居民：</label></td>
+                            <td style="padding-top:10px">                    
+                                <input class="pr-yes btn-clicked select-circle" type="button" ng-model="customer.pr" radioclick="setPR(true)" value="是"/>
+                                <input class="pr-no select-circle" type="button" ng-model="customer.pr" radioclick="setPR(false)" value="否"/>
+                            </td>
+                        </tr>
 
-                <tr>
-                    <td>Maximum：</td>
-                    <td>{{bank.maximum * customer.income}}</td>
-                </tr>
+                        <tr>
+                            <td><label for="exampleInputEmail1">可证明年税前收入（新西兰币）:</label></td>
+                            <td><input style="margin:0!important;" name="income-before-tax" ng-model="customer.income" required/></td>
+                        </tr>
 
-                <tr>
-                    <td>Cash Back:</td>
-                    <td></td>
-                </tr>
+                    </tbody>
+                </table>
+            </div>
 
-            </tbody>
+            <input class="btn-shape btn1 center-position  btn_disable_{{!isFormCorrect(customer)}}" type="submit" ng-click="getResult(customer)"
+            value="询问额度" ng-disabled="!isFormCorrect(customer)"/>
 
-        </table>
-        <!-- ========please loop this part======== -->
-
-          <!-- ========please loop this part======== -->
-        <table style="border-spacing: 10px 30px">
-
-            <tbody>    
-                <tr>
-                    <td><b>Bank Name:</b></td>
-                    <td>{{bank.bankname}}</td>
-                </tr>
-
-                <tr>
-                    <td>Minimum：</td>
-                    <td>{{bank.minimum * customer.income}}</td>
-                </tr>
-
-                <tr>
-                    <td>Maximum：</td>
-                    <td>{{bank.maximum * customer.income}}</td>
-                </tr>
-
-                <tr>
-                    <td>Cash Back:</td>
-                    <td></td>
-                </tr>
-
-            </tbody>
-
-        </table>
-        <!-- ========please loop this part======== -->
-
-
-          <!-- ========please loop this part======== -->
-        <table style="border-spacing: 10px 30px">
-
-            <tbody>    
-                <tr>
-                    <td><b>Bank Name:</b></td>
-                    <td>{{bank.bankname}}</td>
-                </tr>
-
-                <tr>
-                    <td>Minimum：</td>
-                    <td>{{bank.minimum * customer.income}}</td>
-                </tr>
-
-                <tr>
-                    <td>Maximum：</td>
-                    <td>{{bank.maximum * customer.income}}</td>
-                </tr>
-
-                <tr>
-                    <td>Cash Back:</td>
-                    <td></td>
-                </tr>
-
-            </tbody>
-
-        </table>
-        <!-- ========please loop this part======== -->
-
-
-          <!-- ========please loop this part======== -->
-        <table style="border-spacing: 10px 30px">
-
-            <tbody>    
-                <tr>
-                    <td><b>Bank Name:</b></td>
-                    <td>{{bank.bankname}}</td>
-                </tr>
-
-                <tr>
-                    <td>Minimum：</td>
-                    <td>{{bank.minimum * customer.income}}</td>
-                </tr>
-
-                <tr>
-                    <td>Maximum：</td>
-                    <td>{{bank.maximum * customer.income}}</td>
-                </tr>
-
-                <tr>
-                    <td>Cash Back:</td>
-                    <td></td>
-                </tr>
-
-            </tbody>
-
-        </table>
-        <!-- ========please loop this part======== -->
+        </form>
+        <div ng-show="isResult" class="calculator-result">
 
 
 
+            <!-- ========please loop this part======== -->
+            <table style="border-spacing: 10px 30px">
+
+                <tbody>    
+                    <tr>
+                        <td><b>Bank Name:</b></td>
+                        <td>{{bank.bankname}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Minimum：</td>
+                        <td>{{bank.minimum * customer.income}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Maximum：</td>
+                        <td>{{bank.maximum * customer.income}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Cash Back:</td>
+                        <td></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+            <!-- ========please loop this part======== -->
+
+            <!-- ========please loop this part======== -->
+            <table style="border-spacing: 10px 30px">
+
+                <tbody>    
+                    <tr>
+                        <td><b>Bank Name:</b></td>
+                        <td>{{bank.bankname}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Minimum：</td>
+                        <td>{{bank.minimum * customer.income}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Maximum：</td>
+                        <td>{{bank.maximum * customer.income}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Cash Back:</td>
+                        <td></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+            <!-- ========please loop this part======== -->
+
+
+            <!-- ========please loop this part======== -->
+            <table style="border-spacing: 10px 30px">
+
+                <tbody>    
+                    <tr>
+                        <td><b>Bank Name:</b></td>
+                        <td>{{bank.bankname}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Minimum：</td>
+                        <td>{{bank.minimum * customer.income}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Maximum：</td>
+                        <td>{{bank.maximum * customer.income}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Cash Back:</td>
+                        <td></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+            <!-- ========please loop this part======== -->
+
+
+            <!-- ========please loop this part======== -->
+            <table style="border-spacing: 10px 30px">
+
+                <tbody>    
+                    <tr>
+                        <td><b>Bank Name:</b></td>
+                        <td>{{bank.bankname}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Minimum：</td>
+                        <td>{{bank.minimum * customer.income}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Maximum：</td>
+                        <td>{{bank.maximum * customer.income}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Cash Back:</td>
+                        <td></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+            <!-- ========please loop this part======== -->
+
+        </div>
 
     </div>
 

@@ -1,48 +1,48 @@
+<div class="popup-wrapper">
+
+
+    <div class="fade-bg" ></div>
+
+    <div class="login-popup"  ng-controller="Subcribewindowcontroller" style="height:auto">
 
 
 
-<div class="fade-bg" ></div>
+        <a href="#" class="cd-close-menu" >Close<span></span></a>
 
-<div class="login-popup"  ng-controller="Subcribewindowcontroller" style="height:auto">
+        <div class="calculator-header" style="background-image: url('https://unsplash.imgix.net/photo-1414912925664-0c502cc25dde?fit=crop&fm=jpg&h=700&q=75&w=1050');">
+
+            <h6><i class="fa fa-sign-in"></i>&nbsp;&nbsp;注册成为分销商</h6>
+
+        </div>
+
+        <div class="subscribe-insert-part">
 
 
+            <form role="form" name="registerform">
+                <div class="form-group">
+                    <!-- <p>Welcome : <span>{{user.mail}}</span></p> -->
+                    <label for="exampleInputEmail1"><i class="fa fa-envelope"></i></label>
+                    <input type="text" placeholder="请输入账号" name="mail" class="form-control" ng-model="user.email" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1"><i class="fa fa-lock"></i></label>
+                    <input type="password" placeholder="请输入密码" name="password" id="exampleInputPassword1" class="form-control" ng-model="user.Password" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1"><i class="fa fa-lock"></i></label>
+                    <input type="password" placeholder="请再次输入密码" name="password" id="exampleInputPassword1" class="form-control" ng-model="user.password2" required>
+                </div>
 
-    <a href="#" class="cd-close-menu" >Close<span></span></a>
+                <input class="btn-shape btn1 center-position btn_disable_{{!isFormCorrect(user)}}" type="submit"
+                ng-click="register(user)" value="Register"  ng-disabled="!isFormCorrect(user)">
 
-    <div class="calculator-header" style="background-image: url('https://unsplash.imgix.net/photo-1414912925664-0c502cc25dde?fit=crop&fm=jpg&h=700&q=75&w=1050');">
-
-        <h6><i class="fa fa-sign-in"></i>&nbsp;&nbsp;注册成为分销商</h6>
+            </form>
+        </div>
 
     </div>
 
-    <div class="subscribe-insert-part">
 
-
-        <form role="form" name="registerform">
-            <div class="form-group">
-                <!-- <p>Welcome : <span>{{user.mail}}</span></p> -->
-                <label for="exampleInputEmail1"><i class="fa fa-envelope"></i></label>
-                <input type="text" placeholder="请输入账号" name="mail" class="form-control" ng-model="user.email" required>
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1"><i class="fa fa-lock"></i></label>
-                <input type="password" placeholder="请输入密码" name="password" id="exampleInputPassword1" class="form-control" ng-model="user.Password" required>
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1"><i class="fa fa-lock"></i></label>
-                <input type="password" placeholder="请再次输入密码" name="password" id="exampleInputPassword1" class="form-control" ng-model="user.password2" required>
-            </div>
-
-            <input class="btn-shape btn1 center-position btn_disable_{{!isFormCorrect(user)}}" type="submit"
-            ng-click="register(user)" value="Register"  ng-disabled="!isFormCorrect(user)">
-
-        </form>
-    </div>
 
 </div>
-
-
-
-
 
 
