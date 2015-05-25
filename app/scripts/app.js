@@ -48,10 +48,10 @@ var app = angular
                         templateUrl: 'views/aboutJo.html',
 //                        controller: 'ProductCtrl'
                     })
-                    .when('/book', {
-                        templateUrl: 'views/book.html',
-                        controller: 'BookCtrl'
-                    })
+//                    .when('/book', {
+//                        templateUrl: 'views/book.html',
+//                        controller: 'BookCtrl'
+//                    })
                     .when('/blog/:blogid', {
                         templateUrl: 'views/singleblog.html',
                         controller: 'singleBlogCtrl'
