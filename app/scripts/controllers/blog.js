@@ -8,7 +8,7 @@
  * Controller of the xtripApp
  */
 angular.module('xiaoqiaoApp')
-        .controller('BlogCtrl', function ($scope, masonryService, facotryblogs, $rootScope, typeservice, $filter, $routeParams, $location,servicecallback) {
+        .controller('BlogCtrl', function ($scope, masonryService, facotryblogs, $rootScope, typeservice, $filter, $routeParams, $location, servicecallback) {
 
             $scope.blogs = [];
 
@@ -44,9 +44,10 @@ angular.module('xiaoqiaoApp')
             $scope.init = function ()
             {
                 //filter type settings
+
                 typeservice.gettype().then(function (result) {
                     $scope.blogtypes = [{BlogTypeid: "0", BlogType: "全部", cssclass: "ng-scope ng-isolate-scope ng-binding"}];
-//                  class="ng-scope ng-isolate-scope ng-binding btn-clicked"
+
                     result.data.forEach(function (element) {
 
                         if ($location.path().indexOf("filerbytype") > -1 && element.BlogTypeid == $routeParams.keyword) {
@@ -55,9 +56,11 @@ angular.module('xiaoqiaoApp')
                         else {
                             element.cssclass = "ng-scope ng-isolate-scope ng-binding";
                         }
+                 
                     });
-                    $scope.blogtypes = $scope.blogtypes.concat(result.data);
-
+        
+                        $scope.blogtypes = $scope.blogtypes.concat(result.data);
+                   
                 });
                 if ($rootScope.blogs == undefined) {
 

@@ -7,6 +7,7 @@ class BlogtypeController extends Controller {
         $models = Yii::app()->db->createCommand()
                 ->select('*')
                 ->from('BlogType')
+                ->where('BlogType.BlogTypeid<4')
                 ->queryAll();
         $tempArray = array();
         foreach ($models as $model) {
