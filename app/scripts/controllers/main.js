@@ -30,7 +30,9 @@ angular.module('xiaoqiaoApp')
                         img.setAttribute("src", slider.imagelUrl);
                         img.setAttribute("title", slider.title);
                         var a = document.createElement('a');
+                        if(slider.linkto){
                         a.setAttribute('href', slider.linkto);
+                    }
                         a.appendChild(img);
                         var li = document.createElement("li");
                         li.appendChild(a);

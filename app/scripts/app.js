@@ -87,7 +87,7 @@ var app = angular
                 templateUrl: 'views/register.html',
                 controller: 'registerCtrl'
             })
-                    .when('/unsubcript', {
+                    .when('/unsubscript', {
                         templateUrl: 'views/unsubcript.html',
                     }).when('/calculator', {
                 templateUrl: 'views/calculator.html',
@@ -113,11 +113,11 @@ var app = angular
 });
 
 
-function mySrollFunction() {
-    if ($(document.body).scrollTop() > 100)
-    {
-        $("#header").addClass('header-scrollDown');
-    } else {
-        $("#header").removeClass('header-scrollDown');
-    }
-}
+//function mySrollFunction() {
+//    if ($(document.body).scrollTop() > 100)
+//    {
+//        $("#header").addClass('header-scrollDown');
+//    } else {
+//        $("#header").removeClass('header-scrollDown');
+//    }
+//}

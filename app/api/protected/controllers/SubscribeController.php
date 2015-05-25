@@ -41,7 +41,7 @@ class SubscribeController extends Controller {
         if ($model) {
             $model->enable = 1;
             $model->save(false);
-            $message = " wrote the following:" . "\n\n" . '<a href="' . $_SERVER['HTTP_HOST'] . '"/#/unsubcript?email=' . $request['email'] . '">unsubscribe</a>';
+            $message = " wrote the following:" . "\n\n" . '<a href="' . $_SERVER['HTTP_HOST'] . '"/#/unsubscript?email=' . $request['email'] . '">unsubscribe</a>';
 //            $this->sendEmail('xiaoqiaonz@gmail.com', $request['email'], "Subscribe", $message);
             $this->setandsendemail("Subscribe: " . $request['email'], "Subscribe" . $message, $request['email']);
             $this->sendResponse(200, "registered");
@@ -52,7 +52,7 @@ class SubscribeController extends Controller {
             $model->createtime = new CDbExpression(' UTC_TIMESTAMP()');
             $model->lastupdatetime = new CDbExpression('UTC_TIMESTAMP()');
             if ($model->validate()) {
-                $message = " wrote the following:" . "\n\n" . '<a href="' . $_SERVER['HTTP_HOST'] . '"/#/unsubcript?email=' . $request['email'] . '">unsubscribe</a>';
+                $message = " wrote the following:" . "\n\n" . '<a href="' . $_SERVER['HTTP_HOST'] . '"/#/unsubscript?email=' . $request['email'] . '">unsubscribe</a>';
 //                $this->sendEmail('xiaoqiaonz@gmail.com', $request['email'], "Subscribe", $message);
                 $this->setandsendemail("Subscribe: " . $request['email'], "Subscribe" . $message, $request['email']);
                 $model->save(false);
@@ -282,10 +282,10 @@ class SubscribeController extends Controller {
         </table>
         <!--end wrapper-->
         <p style = "margin:0; padding:34px 0 0; text-align:center; font-size:11px; line-height:13px; color:#333333;">
-        不想再收到此邮件？您可以点<a href = "' . $hosturl . '#/unsubcript" style = "color:#F06421; text-decoration:underline;">这里</a>取消关注。
+        不想再收到此邮件？您可以点<a href = "' . $hosturl . '#/unsubscript" style = "color:#F06421; text-decoration:underline;">这里</a>取消关注。
         </p>
         <p style = "margin:0; padding:34px 0 0; text-align:center; font-size:11px; line-height:13px; color:#333333;">如果该链接不工作，你可以复制以下链接</p>
-        <p style = "margin:0; padding:34px 0 0; text-align:center; font-size:11px; line-height:13px; ">www.xiaoqiaonz.com//#/unsubcript</p>
+        <p style = "margin:0; padding:34px 0 0; text-align:center; font-size:11px; line-height:13px; ">www.xiaoqiaonz.com//#/unsubscript</p>
         </td>
         </tr>
         </tbody>

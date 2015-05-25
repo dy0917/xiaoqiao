@@ -17,7 +17,7 @@ class BlogtypeController extends Controller {
         $this->sendResponse(200, $json);
     }
 
-        public function actionGetFilter() {
+        public function actionGetfilter() {
 
         $models = Yii::app()->db->createCommand()
                 ->select('*')
