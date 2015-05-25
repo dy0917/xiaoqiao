@@ -8,7 +8,7 @@
  * Controller of the xtripApp
  */
 angular.module('xiaoqiaoApp')
-        .controller('BlogCtrl', function ($scope, masonryService, facotryblogs, $rootScope, typeservice, $filter, $routeParams, $location,servicecallback) {
+        .controller('BlogCtrl', function ($scope, masonryService, facotryblogs, $rootScope, typeservice, $filter, $routeParams, $location, servicecallback) {
 
             $scope.blogs = [];
 
@@ -44,10 +44,11 @@ angular.module('xiaoqiaoApp')
             $scope.init = function ()
             {
                 //filter type settings
-                typeservice.gettype().then(function (result) {
-                    $scope.blogtypes = [{BlogTypeid: "0", BlogType: "全部", cssclass: "ng-scope ng-isolate-scope ng-binding"}];
-//                  class="ng-scope ng-isolate-scope ng-binding btn-clicked"
-                    result.data.forEach(function (element) {
+                $scope.blogtypes = [{BlogTypeid: "0", BlogType: "全部", cssclass: "ng-scope ng-isolate-scope ng-binding"}];
+                var homepageblog = apiPath + "/blogtype/getfilter";
+                servicecallback.http(homepageblog, "POST", null, function (data) {
+                    console.log(data);
+                    data.forEach(function (element) {
 
                         if ($location.path().indexOf("filerbytype") > -1 && element.BlogTypeid == $routeParams.keyword) {
                             element.cssclass = "ng-scope ng-isolate-scope ng-binding btn-clicked";
@@ -55,10 +56,12 @@ angular.module('xiaoqiaoApp')
                         else {
                             element.cssclass = "ng-scope ng-isolate-scope ng-binding";
                         }
-                    });
-                    $scope.blogtypes = $scope.blogtypes.concat(result.data);
 
+                    });
+
+                    $scope.blogtypes = $scope.blogtypes.concat(data);
                 });
+
                 if ($rootScope.blogs == undefined) {
 
                     var homepageblog = apiPath + "/blog/getsataticblog";
@@ -77,9 +80,6 @@ angular.module('xiaoqiaoApp')
                         masonryService.masonryinit(50);
                     });
 
-//                    facotryblogs.getblogs().then(function (result) {
-//
-//                    });
                 }
                 else {
                     $scope.search();

@@ -46,7 +46,7 @@
 
 
 
-            <header id="header">
+            <header id="header" class="header-scrollDown">
 
                 <div class="home-btn">
                     <a ng-href="#"><img src="images/logo2(white).png"/></a>
@@ -66,11 +66,11 @@
                 <i ng-click="search(searchkeyword)" class="fa fa-search"></i>
             </div>
 
-<!--                 <div class="lang-switch">
+<!--    english version             <div class="lang-switch">
                     <span class="lang-en">En</span>&nbsp; / &nbsp;<span class="lang-cn">中</span>
                 </div> -->
 
-                <div class="right-col"  ng-if=" user == null">
+<!--   login             <div class="right-col"  ng-if=" user == null">
                     <i class="fa fa-sign-in">&nbsp;&nbsp;&nbsp;</i>
                     <span ng-click="toggleLogin()">分销商登陆</span>
                 </div>
@@ -79,7 +79,7 @@
 
                     <span> Hi, {{user.username}}</span>
                     <span ng-click="logout()">Logout</span>
-                </div>
+                </div>-->
 
             </header>  
 

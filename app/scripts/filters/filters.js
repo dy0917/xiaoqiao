@@ -13,7 +13,10 @@ app.filter('blogStringFilter', function () {
 
         for (var i = 0; i < items.length; i++) {
             var item = items[i];
-            if (item.title.indexOf(keyword) > -1 || item.body.indexOf(keyword) > -1) {
+            // include search word in body
+            //|| item.body.indexOf(keyword) > -1 
+            
+            if (item.title.indexOf(keyword) > -1 ) {
                 filtered.push(item);
             }
         }

@@ -15,10 +15,10 @@ angular.module('xiaoqiaoApp')
 angular.module('xiaoqiaoApp')
         .controller('calculatorCtrl', function ($scope, $rootScope, servicecallback, formcheckservice) {
 
-            $scope.options = [{name: "请选择", id: 0},{name: "40000 - 50000", id: 1}, {name: "50001 - 60000", id: 2},{name: "60001 - 70000", id: 3},{name: "70001 - 80000", id: 4}];
+            $scope.options = [{name: "请选择", id: 0}, {value: 45000, name: "40000 - 50000", id: 1}, {value: 55000, name: "50001 - 60000", id: 2}, {value: 65000, name: "60001 - 70000", id: 3}, {value: 75000, name: "70001 - 80000", id: 4}];
             $scope.selectedOption = $scope.options[0];
             $scope.customer = {isPR: true};
-            
+
             $scope.getResult = function (customer) {
                 $rootScope.$broadcast('isloading', true);
                 var path = apiPath + "/bankratio";
@@ -48,11 +48,17 @@ angular.module('xiaoqiaoApp')
 
                 if (customer && formcheckservice.isemail(customer.email) && formcheckservice.isfilled(customer.surname)
                         && formcheckservice.isfilled(customer.givenname) && formcheckservice.isNumeric(customer.income)) {
-
                     b = true;
+                }
+                return b;
+            };
+            $scope.selectAction = function () {
+
+                if ($scope.selectedOption.id != 0)
+                {
+                    $scope.customer.income = $scope.selectedOption.value;
 
                 }
 
-                return b;
-            };
+            }
         });

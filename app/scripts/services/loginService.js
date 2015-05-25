@@ -218,7 +218,7 @@ app.factory("typeservice", function ($http, servicecallback) {
     return {
         gettype: function ()
         {
-            var getstatusMethod = servicecallback.getmethod(apiPath + "/blogtype/");
+            var getstatusMethod = servicecallback.http(apiPath + "/blogtype/getfilter","POST");
             return getstatusMethod;
         }
     };
